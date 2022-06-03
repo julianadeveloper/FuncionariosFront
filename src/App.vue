@@ -1,30 +1,39 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/LoginView"></router-link> 
+    <router-link to="/about"></router-link>
   </nav>
+  <main>
+  <div>
+  </div>
+
+  <div>
+  </div>
+  </main>
   <router-view/>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+#app{
+  width: 100vw;
+  max-height: 100vh;
+  background-color: rgb(12, 11, 11);
+  margin:0; 
+  padding:0; 
+  box-sizing:border-box; 
+  overflow: hidden;
 }
 
-nav {
-  padding: 30px;
-}
+@media only screen and (max-width:720px ){
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+#app{
+    display: flex;
+    flex-shrink: inherit;
+    align-items: flex-start;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 
-nav a.router-link-exact-active {
-  color: #42b983;
+  }
 }
 </style>
