@@ -34,7 +34,6 @@
 #app{
     display: flex;
     flex-shrink: inherit;
-    align-items: flex-start;
     width: 100vw;
     height: 100vh;
     overflow: hidden;

@@ -13,8 +13,8 @@
     <label for="exampleInputEmail1">Nome do usuário</label>
 <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Numero de matrícula">
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Senha</label>
+   <div class="form-group">
+    <label for="exampleInputPassword1">Confirmar Senha</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
   </div>
   <div class="form-group form-check">
@@ -32,16 +32,14 @@ export default defineComponent({
 })
 </script>
 <style scope>
-section{
+.create-user{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
     overflow: hidden;
     background: rgb(7, 6, 6);
 }
 .form-create{
+    align-items: center;
+    justify-content: center;
     color: white;
     background-color: rgba(17, 16, 16, 0.747);
     padding: 1rem;
