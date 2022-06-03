@@ -2,7 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import LateralBar from '../views/HomeView.vue'
 import LoginUser from '../views/LoginView.vue'
 import CardUser from '../components/CardUser.vue'
-
+import FormCreateUser from '../components/FormCreateUser.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -13,6 +13,13 @@ const routes: Array<RouteRecordRaw> = [
     path: '/home',
     name: 'home',
     component: LateralBar
+  },
+  {
+    path: '/createuser',
+    name: 'CreateUser',
+    component: FormCreateUser
+      
+
   },
   {
     path: '/panel',

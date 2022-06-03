@@ -3,6 +3,9 @@
   <section>
     <LateralBar/> 
   </section>
+  <section>
+    <FormCreateUser/>
+  </section>
   <!-- <MenuUser/> -->
 
 
@@ -12,11 +15,13 @@
 <script lang="ts">
 import { defineAsyncComponent, defineComponent } from 'vue';
 import LateralBar from '@/components/LateralBar.vue'; // @ is an alias to /src
+import FormCreateUser from '../components/FormCreateUser.vue'
 export default defineComponent({
   name: 'HomeView',
   components: {
     LateralBar,
-  },
+    FormCreateUser,
+   },
 });
 </script>
 <style scope> 

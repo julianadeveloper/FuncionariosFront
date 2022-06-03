@@ -1,6 +1,8 @@
 <template>
   <nav>
     <router-link to="/LoginView"></router-link> 
+        <router-link to="/CreateUser"></router-link> 
+
     <router-link to="/about"></router-link>
   </nav>
   <main>
@@ -14,6 +16,7 @@
 </template>
 
 <style>
+
 #app{
   width: 100vw;
   max-height: 100vh;
@@ -22,6 +25,8 @@
   padding:0; 
   box-sizing:border-box; 
   overflow: hidden;
+  
+  
 }
 
 @media only screen and (max-width:720px ){
@@ -35,5 +40,7 @@
     overflow: hidden;
 
   }
+
+
 }
 </style>
