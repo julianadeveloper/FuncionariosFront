@@ -1,9 +1,7 @@
 <template>
   <nav>
-    <router-link to="/LoginView"></router-link> 
-        <router-link to="/CreateUser"></router-link> 
-
-    <router-link to="/about"></router-link>
+    <!-- <router-link to="/LoginView"></router-link> 
+    <router-link to="/CreateUser"></router-link>  -->
   </nav>
   <main>
   <div>
@@ -26,7 +24,6 @@
   box-sizing:border-box; 
   overflow: hidden;
   
-  
 }
 
 @media only screen and (max-width:720px ){
@@ -36,7 +33,6 @@
     flex-shrink: inherit;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
 
   }
 

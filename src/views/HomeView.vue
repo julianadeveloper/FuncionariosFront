@@ -2,25 +2,17 @@
   <div id="homeview" class="home">
   <section>
     <LateralBar/> 
-  </section>
-  <!-- <section>
-    <FormCreateUser/>
-  </section> -->
-  <!-- <MenuUser/> -->
-
-
+     </section>
   </div>
 </template>
 
 <script lang="ts">
-import { defineAsyncComponent, defineComponent } from 'vue';
+import {  defineComponent } from 'vue';
 import LateralBar from '@/components/LateralBar.vue'; // @ is an alias to /src
-// import FormCreateUser from '../components/FormCreateUser.vue'
 export default defineComponent({
   name: 'HomeView',
   components: {
     LateralBar,
-    // FormCreateUser,
    },
 });
 </script>
@@ -33,7 +25,6 @@ export default defineComponent({
   margin:0; 
   padding:0; 
   box-sizing:border-box; 
-  overflow: hidden;
 }
 
 @media only screen and (max-width:720px ){
@@ -45,7 +36,6 @@ export default defineComponent({
     align-items: flex-start;
     width: 100vw;
     max-height: 100vh;
-    overflow: hidden;
 
   }
 
