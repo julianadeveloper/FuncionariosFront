@@ -5,9 +5,10 @@
         <h5 class="card-title">Usuario</h5>
         <p>Nome:{{ user.username }}</p>
         <p>Matricula:{{ user.name }}</p>
-    <div> 
-       <ButtonsCardsVue/>
-    </div>
+
+        <a href="#" class="btn btn-primary btn-sm">Alterar dados</a>
+        <a href="#" class="btn btn-danger btn-sm">Excluir Funcionario</a>
+
     </div>
         <!-- aqui irei retornar o procedimento q foi feito como get, delet, update... -->
         <p class="card-text column"></p>
@@ -17,15 +18,11 @@
 </template>
 
 <script lang="ts">
-import ButtonsCardsVue from "./ButtonsCards.vue";
 import { defineComponent, onMounted, ref } from "vue";
 import { ApiService } from "../services/api";
 export default defineComponent({
   name: "CardUser",
 
-  components:{
-    ButtonsCardsVue,
-  },
   setup() {
     const apiService = new ApiService();
 
@@ -33,8 +30,8 @@ export default defineComponent({
 
     onMounted(async () => {
       users.value = await apiService.listUsers();
-    });
 
+    });
     return { users };
   },
 });

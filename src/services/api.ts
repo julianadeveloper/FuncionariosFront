@@ -16,6 +16,10 @@ export class ApiService {
   }
 
   async userUdpdate(data: any){
-    return this.api.put('/users/:id', data);
+    return this.api.put('/users/:username', data);
   }
+
+async login(data: any){
+  return this.api.post('/auth/login', data);
+}
 }
