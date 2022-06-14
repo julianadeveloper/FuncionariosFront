@@ -64,7 +64,7 @@ export default defineComponent({
   },
 
   methods:{
-    register(){
+    register(){ 
       
      const passwordOk =  this.user.password === this.user.passwordConfirm
 

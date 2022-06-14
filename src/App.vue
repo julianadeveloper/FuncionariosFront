@@ -1,41 +1,28 @@
 <template>
   <nav>
-    <!-- <router-link to="/LoginView"></router-link> 
-    <router-link to="/CreateUser"></router-link>  -->
-  </nav>
-  <main>
-  <div>
-  </div>
 
-  <div>
-  </div>
+  </nav>
+  <main class="modo-escuro">
+
   </main>
-  <router-view/>
+  <router-view />
 </template>
 
 <style>
-
-#app{
+#app {
   width: 100vw;
-  max-height: 100vh;
-  background-color: rgb(12, 11, 11);
-  margin:0; 
-  padding:0; 
-  box-sizing:border-box; 
-  overflow: hidden;
-  
+  height: 100vh;
+  background-color: var(--bg-primary);
 }
 
-@media only screen and (max-width:720px ){
-
-#app{
-    display: flex;
-    flex-shrink: inherit;
-    width: 100vw;
-    height: 100vh;
-
-  }
-
-
+main{
+  --bg-primary: #fff;
+  --text-primary: #000;
 }
+main.modo-escuro{
+ --bg-primary: rgb(254, 254, 254);
+  --text-primary: #000;
+}
+
+
 </style>

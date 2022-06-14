@@ -1,41 +1,76 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import LateralBar from '../views/HomeView.vue'
-import FormCreateUser from '../components/FormCreateUser.vue'
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import FormCreateUser from "../components/FormCreateUser.vue";
+import LateralBar from "../views/HomeView.vue";
 
 
-const routes: Array<RouteRecordRaw> = [
+//logica de autenticação pro rota, nativa do vue-router 
+const authGuard = () => (to: any, from: any, next: any) => {
+  //esta checando se meu token foi armazenado no localstorage (dps ele fica no state)
+  if (localStorage.getItem("token")) {
+    next();
+  } else {
+    next("/");
+  }
+};
+
+export const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'login',
-    component: () => import(/* webpackChunkName: "loginVue" */ '../views/LoginView.vue')
+    path: "/",
+    name: "login",
+    component: () =>
+      import(/* webpackChunkName: "loginVue" */ "../views/LoginView.vue"),
   },
   {
-    path: '/home',
-    name: 'home',
+    path: "/home",
+    name: "home",
+    beforeEnter: authGuard(),
     component: LateralBar,
   },
   {
-    path: '/createuser',
-    name: 'CreateUser',
-    component: FormCreateUser
-      
-
+    path: "/createuser",
+    name: "CreateUser",
+    beforeEnter: authGuard(),
+    component: FormCreateUser,
   },
   {
-    path: '/UpdateUser',
-    name: 'UpdateUser',
-    component: () => import(/* webpackChunkName: "updateUser" */ '../components/UpdateUser.vue')
+    path: "/UpdateUser",
+    name: "UpdateUser",
+    beforeEnter: authGuard(),
+    component: () =>
+      import(
+        /* webpackChunkName: "updateUser" */ "../components/UpdateUser.vue"
+      ),
   },
   {
-    path: '/panel',
-    name: 'panel',
-   component: () => import(/* webpackChunkName: "CardUser" */ '../components/CardUser.vue')  },
-
-]
+    path: "/panel",
+    name: "panel",
+    beforeEnter: authGuard(),
+    component: () =>
+      import(/* webpackChunkName: "CardUser" */ "../components/CardUserAdmin.vue"),
+  },
+  {
+    path: "/panel",
+    name: "panel",
+    beforeEnter: authGuard(),
+    component: () =>
+      import(/* webpackChunkName: "CardUser" */ "../components/CardUserAdmin.vue"),
+  }
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+});
+
+router.beforeEach((to, from, next) => {
+  console.log('to', to)
+  if(to.path === '/'){
+    if(localStorage.getItem("token"))
+      return next("/home")
+
+    }
+    
+    next()
 })
 
-export default router
+export default router;

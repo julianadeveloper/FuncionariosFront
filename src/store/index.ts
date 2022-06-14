@@ -1,12 +1,34 @@
 import { createStore } from "vuex";
 
+import { State } from "./auth/types";
+
 export default createStore({
-  state: {},
+  state: {
+  },
 
   getters: {},
+
   mutations: {},
 
-  actions: {},
+  actions: {
 
-  modules: {},
+    
+  },
+
+  modules: {
+    authModule: {
+      namespaced: true,
+      state: (): State => ({
+        token: localStorage.getItem("token") || "",
+      }),
+
+      getters: {
+        getToken: (state) => state.token,
+      },
+
+      mutations: {
+        setToken: (state, value) => (state.token = value),
+      },
+    },
+  },
 });

@@ -1,88 +1,71 @@
 <template>
- <header class="header">
-   <!-- <h1>Bem vindo, User.</h1> -->
+  <header class="header">
+    <button class="icon-theme">
+      <i class="fa-solid fa-moon-over-sun fa-lg"></i>
+    </button>
+    <button class="home-icon">
+      <i class="fa-solid fa-house-user fa-lg"></i>
+    </button>
 
-     <button class="home-icon">
-     <i class="fa-solid fa-house-user fa-lg"></i>
-   </button>
+    <button class="user-icon">
+      <i class="fa-solid fa-user-group fa-lg"></i>
+    </button>
 
-<button  class="user-icon">
-<i class="fa-solid fa-user-group fa-lg"></i>
-</button>
-
-<button class="logout-icon">
-  <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
-</button>
-
-
-<MenuUser/>
- </header>
+    <button class="logout-icon" @click="logout">
+      <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
+    </button>
+  </header>
 </template>
 
 <script lang="ts">
-import { defineComponent, defineAsyncComponent} from 'vue';
+import { defineComponent, defineAsyncComponent } from "vue";
 
 export default defineComponent({
-  name: 'LateralBar',
-  components:{
-    'MenuUser':defineAsyncComponent(()=> import('./Menu.vue')),
+  name: "LateralBar",
+  components: {},
+  methods:{
+      async logout(){
+      localStorage.setItem("token", '')
+            this.$router.push({ name: "login" })
 
-}})
+    }
+  }
+});
 </script>
 
 <style scoped>
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 10rem;
+  height: 100vh;
+  background: rgba(17, 16, 16, 0.747);
+}
 
-.header{
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-width: 10%;
-height: 100vh;
-background: rgba(17, 16, 16, 0.747);
-
-}
-span .logout-icon{
-  width: 10px;
-  height: 10px;
-}
-h1{
-padding: 1rem;
-color: rgb(85, 118, 226);
-font-size: 1rem;
-text-align: center;
-}
-h1:hover{
-  font-size: 2rem;
-}
-button{
-  cursor:pointer;
+button {
+  cursor: pointer;
   border: 1px solid transparent;
   background-color: transparent;
+  outline: none;
 }
 ::before {
-    color: rgb(73, 73, 73);
+  color: rgb(210, 205, 205);
 }
-
-.home-icon, .user-icon, .logout-icon{
-display: flex;
-align-items: center;
-justify-content: center;  
-margin:auto;
- 
- }
-@media screen and (max-width:840px ) {
-
-  .header{
+.icon-theme,
+.home-icon,
+.user-icon,
+.logout-icon {
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+@media screen and (max-width: 720px) {
+  .header {
     display: flex;
-    flex-direction:row;
-    justify-content:flex-end;
-    margin-top:960px;
-    align-items:center;
-    width:100vw;
+    width: 100vw;
     height: 12rem;
-    background: rgba(17, 16, 16, 0.747);
-    
+    flex-direction: row;
   }
 }
-
 </style>

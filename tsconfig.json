@@ -34,8 +34,9 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
-  ],
+    "tests/**/*.tsx",
+     "src/store/mutations.ts",
+     "src/store/index-store.ts", "src/store/types.ts", "src/store/state.src/store/actions.tsons.src/store/actions.tsons.js"  ],
   "exclude": [
     "node_modules"
   ]

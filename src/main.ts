@@ -6,6 +6,11 @@ import store from "./store";
 import "@fortawesome/fontawesome-free/css/all.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
+import'@/assets/globalStyle.css'
+
 
 library.add(fas);
-createApp(App).use(store).use(router).mount("#app");
+
+const app = createApp(App)
+app.use(store)
+app.use(router).mount("#app");

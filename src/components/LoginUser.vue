@@ -2,8 +2,10 @@
   <body class="login">
     <form class="formulario-login center" @submit.prevent="login()">
       <div class="form-group">
-        <h5>Login</h5>
-        <label for="exampleInputEmail1">Número de matricula</label>
+      
+
+      <h5>Login</h5>
+  <label for="exampleInputEmail1">Número de matricula</label>
         <input
           type="login"
           class="form-control"
@@ -29,9 +31,7 @@
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
         <label class="form-check-label" for="exampleCheck1">Salvar</label>
       </div>
-      <button type="submit" class="btn btn-primary" >
-        Enviar
-      </button>
+      <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
   </body>
 </template>
@@ -39,7 +39,7 @@
 <script lang="ts">
 import { ApiService } from "@/services/api";
 import { defineComponent, ref } from "vue";
-
+import { mapGetters, mapMutations } from 'vuex'
 export default defineComponent({
   name: "LoginUser",
 
@@ -50,19 +50,33 @@ export default defineComponent({
       username: "",
       password: "",
       role: "",
+      token: "",
     });
     return { user, apiService };
   },
 
   methods: {
+    ...mapMutations({
+      setToken: "authModule/setToken"
+    }),
     async login() {
-      await this.apiService.login({
+      const response = await this.apiService.login({
+        required: true,
         username: this.user.username,
         password: this.user.password,
+        role: this.user.role,
       });
-    
+
+      this.setToken(response.data.access_token)
+      localStorage.setItem("token", response.data.access_token)
+      this.$router.push({ name: "home" })
+      const token = response.data;
     },
+  
   },
+  mounted(){
+    console.log(this.setToken)
+  }
 });
 </script>
 

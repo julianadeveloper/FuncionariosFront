@@ -4,6 +4,7 @@
 <form class="center form-create">
   <div class="form-group">
     <h5>Alterar dados de Usuario</h5>
+     <div class="card-body">
     <label for="exampleInputEmail1">Número de matricula</label>
 <input type="text" class="form-control" id="exampleInputEmail1" placeholder="matrícula" v-model="user.username">
   </div>
@@ -22,6 +23,7 @@
     <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirmar senha" v-model="user.passwordConfirm">
   </div>
   <button type="submit" class="btn btn-success" @click="userUdpdate()">Cadastrar</button>
+  </div>
 </form>
 </section>
 </template>

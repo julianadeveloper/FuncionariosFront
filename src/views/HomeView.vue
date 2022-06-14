@@ -1,43 +1,86 @@
 <template>
-  <div id="homeview" class="home">
-  <section>
-    <LateralBar/> 
-     </section>
+  <div id="homeview">
+    <section>
+      <LateralBar />
+    </section>
+
+    <nav>
+      <div class="input-search">
+        <InputSearch />
+      </div>
+
+      <div class="card-home">
+        <CardUserAdminVue />
+      </div>
+    </nav>
   </div>
 </template>
 
 <script lang="ts">
-import {  defineComponent } from 'vue';
-import LateralBar from '@/components/LateralBar.vue'; // @ is an alias to /src
+import { defineComponent } from "vue";
+import LateralBar from "@/components/LateralBar.vue";
+import CardUserAdminVue from "@/components/CardUserAdmin.vue"; // @ is an alias to /src
+import InputSearch from "@/components/InputSearch.vue";
 export default defineComponent({
-  name: 'HomeView',
+  name: "HomeView",
   components: {
     LateralBar,
-   },
+    CardUserAdminVue,
+    InputSearch,
+  },
 });
 </script>
 
-<style scope> 
-#homeview{
+<style scope>
+section {
+  display: flex;
+  max-width: 100%;
+  text-align: center;
+}
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+.card-home {
+  padding: 1rem;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#homeview {
+  display: flex;
   width: 100vw;
-  max-height: 100vh;
-  background-color: rgb(12, 11, 11);
-  margin:0; 
-  padding:0; 
-  box-sizing:border-box; 
+  height: 100vh;
+  background: rgb(14, 14, 14);
+}
+.input-search {
+  justify-content: center;
+  align-items: center;
 }
 
-@media only screen and (max-width:720px ){
-
-#homeview{
-  
+@media only screen and (max-width: 720px) {
+  #homeview {
     display: flex;
-    flex-shrink: inherit;
-    align-items: flex-start;
-    width: 100vw;
-    max-height: 100vh;
-
+    flex-direction: column;
+    flex-wrap: wrap;
   }
+}
+#card-home {
+  justify-content: row;
+}
 
+
+div #homeview {
+  --bg-primary: rgb(238, 238, 238);
+  --text-primary: #000;
+}
+section .modo-escuro {
+  --bg-secondary: rgb(14, 14, 14);
+  --text-secondary: #fff;
 }
 </style>
