@@ -20,8 +20,8 @@ main{
   --text-primary: #000;
 }
 main.modo-escuro{
- --bg-primary: rgb(254, 254, 254);
-  --text-primary: #000;
+ --bg-secondary: rgb(32, 31, 31);
+  --text-secondary: rgb(251, 251, 251);
 }
 
 

@@ -12,6 +12,7 @@
       <div class="card-home">
         <CardUserAdminVue />
       </div>
+
     </nav>
   </div>
 </template>
@@ -21,12 +22,14 @@ import { defineComponent } from "vue";
 import LateralBar from "@/components/LateralBar.vue";
 import CardUserAdminVue from "@/components/CardUserAdmin.vue"; // @ is an alias to /src
 import InputSearch from "@/components/InputSearch.vue";
+// import FormCreateUser from '@/components/FormCreateUser.vue'
 export default defineComponent({
   name: "HomeView",
   components: {
     LateralBar,
     CardUserAdminVue,
     InputSearch,
+    // FormCreateUser
   },
 });
 </script>
@@ -75,12 +78,4 @@ nav {
 }
 
 
-div #homeview {
-  --bg-primary: rgb(238, 238, 238);
-  --text-primary: #000;
-}
-section .modo-escuro {
-  --bg-secondary: rgb(14, 14, 14);
-  --text-secondary: #fff;
-}
 </style>

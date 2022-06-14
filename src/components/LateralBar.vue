@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, defineAsyncComponent } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "LateralBar",

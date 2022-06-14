@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import FormCreateUser from "../components/FormCreateUser.vue";
+import FormCreateUser from "../views/CreateView.vue";
 import LateralBar from "../views/HomeView.vue";
 
 
@@ -27,8 +27,8 @@ export const routes: Array<RouteRecordRaw> = [
     component: LateralBar,
   },
   {
-    path: "/createuser",
-    name: "CreateUser",
+    path: "/cadastro",
+    name: "CreateView",
     beforeEnter: authGuard(),
     component: FormCreateUser,
   },
