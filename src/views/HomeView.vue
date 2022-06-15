@@ -6,13 +6,12 @@
 
     <nav>
       <div class="input-search">
-        <InputSearch />
+        <InputSearch @value="search" />
       </div>
 
       <div class="card-home">
-        <CardUserAdminVue />
+        <CardUserAdminVue :search="searchUsername" />
       </div>
-
     </nav>
   </div>
 </template>
@@ -30,6 +29,17 @@ export default defineComponent({
     CardUserAdminVue,
     InputSearch,
     // FormCreateUser
+  },
+  data() {
+    return {
+      searchUsername: "",
+    };
+  },
+  methods: {
+    search(event: any) {
+      console.log('evento ', event);
+      this.searchUsername = event
+    },
   },
 });
 </script>
@@ -69,13 +79,12 @@ nav {
 @media only screen and (max-width: 720px) {
   #homeview {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
+    overflow: scroll;
+    position: absolute;
   }
 }
 #card-home {
   justify-content: row;
 }
-
-
 </style>

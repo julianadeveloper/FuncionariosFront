@@ -3,11 +3,11 @@
     <button class="icon-theme">
       <i class="fa-solid fa-moon-over-sun fa-lg"></i>
     </button>
-    <button class="home-icon">
+    <button class="home-icon" @click="$router.push({ name: 'home' })">
       <i class="fa-solid fa-house-user fa-lg"></i>
     </button>
 
-    <button class="user-icon">
+    <button class="user-icon" @click="$router.push({ name: 'CreateView' })">
       <i class="fa-solid fa-user-group fa-lg"></i>
     </button>
 
@@ -23,13 +23,12 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "LateralBar",
   components: {},
-  methods:{
-      async logout(){
-      localStorage.setItem("token", '')
-            this.$router.push({ name: "login" })
-
-    }
-  }
+  methods: {
+    async logout() {
+      localStorage.setItem("token", "");
+      this.$router.push({ name: "login" });
+    },
+  },
 });
 </script>
 
@@ -37,7 +36,8 @@ export default defineComponent({
 .header {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-evenly;
   width: 10rem;
   height: 100vh;
   background: rgba(17, 16, 16, 0.747);

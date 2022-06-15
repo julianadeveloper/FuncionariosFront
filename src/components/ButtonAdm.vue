@@ -17,7 +17,7 @@ export default defineComponent({
   props: {
     user: {
       type: Object as PropType<User>,
-      required: true
+      required: true,
     },
   },
   setup() {
@@ -30,9 +30,7 @@ export default defineComponent({
     async deleteUser() {
       await this.apiService.deleteUser([this.user._id]);
 
-        this.$emit('delete', this.user)
-
-  
+      this.$emit("delete", this.user);
     },
   },
 });

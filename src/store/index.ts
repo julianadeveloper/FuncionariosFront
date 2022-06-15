@@ -29,6 +29,9 @@ export default createStore({
       mutations: {
         setToken: (state, value) => (state.token = value),
       },
+      actions:{
+ 
+      }
     },
   },
 });

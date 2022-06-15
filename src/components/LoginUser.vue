@@ -2,10 +2,8 @@
   <body class="login">
     <form class="formulario-login center" @submit.prevent="login()">
       <div class="form-group">
-      
-
-      <h5>Login</h5>
-  <label for="exampleInputEmail1">Número de matricula</label>
+        <h5>Login</h5>
+        <label for="exampleInputEmail1">Número de matricula</label>
         <input
           type="login"
           class="form-control"
@@ -39,7 +37,7 @@
 <script lang="ts">
 import { ApiService } from "@/services/api";
 import { defineComponent, ref } from "vue";
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapMutations } from "vuex";
 export default defineComponent({
   name: "LoginUser",
 
@@ -57,7 +55,7 @@ export default defineComponent({
 
   methods: {
     ...mapMutations({
-      setToken: "authModule/setToken"
+      setToken: "authModule/setToken",
     }),
     async login() {
       const response = await this.apiService.login({
@@ -67,16 +65,15 @@ export default defineComponent({
         role: this.user.role,
       });
 
-      this.setToken(response.data.access_token)
-      localStorage.setItem("token", response.data.access_token)
-      this.$router.push({ name: "home" })
+      this.setToken(response.data.access_token);
+      localStorage.setItem("token", response.data.access_token);
+      this.$router.push({ name: "home" });
       const token = response.data;
     },
-  
   },
-  mounted(){
-    console.log(this.setToken)
-  }
+  mounted() {
+    console.log(this.setToken);
+  },
 });
 </script>
 

@@ -1,12 +1,17 @@
-*{
-    margin:0; 
-    padding:0; 
-    box-sizing:border-box; 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html{
-
-    overflow: hidden;
-    font-family: 'Spline Sans Mono', monospace;
+html {
+  height: 100vh;
+  overflow: hidden;
+  font-family: "Spline Sans Mono", monospace;
 }
 
+@media only screen and (max-width: 720px) {
+  html {
+    overflow-y: scroll;
+  }
+}

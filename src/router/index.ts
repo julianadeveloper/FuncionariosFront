@@ -2,8 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import FormCreateUser from "../views/CreateView.vue";
 import LateralBar from "../views/HomeView.vue";
 
-
-//logica de autenticação pro rota, nativa do vue-router 
+//logica de autenticação pro rota, nativa do vue-router
 const authGuard = () => (to: any, from: any, next: any) => {
   //esta checando se meu token foi armazenado no localstorage (dps ele fica no state)
   if (localStorage.getItem("token")) {
@@ -46,15 +45,19 @@ export const routes: Array<RouteRecordRaw> = [
     name: "panel",
     beforeEnter: authGuard(),
     component: () =>
-      import(/* webpackChunkName: "CardUser" */ "../components/CardUserAdmin.vue"),
+      import(
+        /* webpackChunkName: "CardUser" */ "../components/CardUserAdmin.vue"
+      ),
   },
   {
     path: "/panel",
     name: "panel",
     beforeEnter: authGuard(),
     component: () =>
-      import(/* webpackChunkName: "CardUser" */ "../components/CardUserAdmin.vue"),
-  }
+      import(
+        /* webpackChunkName: "CardUser" */ "../components/CardUserAdmin.vue"
+      ),
+  },
 ];
 
 const router = createRouter({
@@ -63,14 +66,12 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log('to', to)
-  if(to.path === '/'){
-    if(localStorage.getItem("token"))
-      return next("/home")
+  console.log("to", to);
+  if (to.path === "/") {
+    if (localStorage.getItem("token")) return next("/home");
+  }
 
-    }
-    
-    next()
-})
+  next();
+});
 
 export default router;
