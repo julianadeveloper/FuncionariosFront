@@ -32,12 +32,12 @@ export const routes: Array<RouteRecordRaw> = [
     component: FormCreateUser,
   },
   {
-    path: "/UpdateUser",
-    name: "UpdateUser",
+    path: "/atualizar",
+    name: "UpdateView",
     beforeEnter: authGuard(),
     component: () =>
       import(
-        /* webpackChunkName: "updateUser" */ "../components/UpdateUser.vue"
+        /* webpackChunkName: "updateView" */ "../views/UpdateView.vue"
       ),
   },
   {

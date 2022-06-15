@@ -2,8 +2,8 @@
 <div v-for="(user, i) in users" :key="i" class="card" style="width: 22rem">
     <div class="card-body">
       <h5 class="card-title">Dados do Funcionário</h5>
-      <p>Nome:{{ user.username }}</p>
-      <p>Matricula:{{ user.name }}</p>
+      <p>Nome:{{ user.name }}</p>
+      <p>Matricula:{{ user.username }}</p>
       <!-- <p>Função: {{users.occupation}}</p> -->
       <ButtonAdm :user="user" @delete="users.splice(i, 1)" />
 
@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, ref } from "vue";
 import { ApiService } from "../services/api";
 import ButtonAdm from "./ButtonAdm.vue";
 export default defineComponent({
@@ -28,7 +28,6 @@ export default defineComponent({
 
   watch: {
     search(value) {
-      console.log("opa", value)
       this.listUsers(value)
     }
   },

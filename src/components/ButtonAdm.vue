@@ -1,6 +1,6 @@
 <template>
   <div class="button-adm">
-    <a href="#" class="btn btn-primary btn-sm">Alterar dados</a>
+    <a href="#" class="btn btn-primary btn-sm" @click="$router.push({ name: 'UpdateView' })">Alterar dados</a>
     <a href="#" class="btn btn-danger btn-sm" @click="deleteUser"
       >Excluir Funcionario</a
     >

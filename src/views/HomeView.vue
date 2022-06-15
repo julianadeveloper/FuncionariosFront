@@ -37,7 +37,6 @@ export default defineComponent({
   },
   methods: {
     search(event: any) {
-      console.log('evento ', event);
       this.searchUsername = event
     },
   },
@@ -57,6 +56,7 @@ nav {
   align-items: center;
   width: 100%;
   height: auto;
+  overflow-y: scroll;
 }
 .card-home {
   padding: 1rem;

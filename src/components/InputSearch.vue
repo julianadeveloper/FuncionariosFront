@@ -25,7 +25,6 @@ export default defineComponent({
   },
   methods: {
     async listerUsername() {
-      console.log("chaeou", this.user.username)
       this.$emit("value", this.user.username);
     },
   },
@@ -34,10 +33,11 @@ export default defineComponent({
 <style scoped>
 .input-search {
   display: flex;
-  width: 80%;
+  width: 100%;
   flex-direction: row;
   margin-top: 1.25rem;
   justify-content: center;
+  align-items: center;
 }
 input {
   justify-content: center;
