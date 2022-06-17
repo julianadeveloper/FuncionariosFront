@@ -14,16 +14,21 @@ export class ApiService {
       params: {
         search
       }
+     
     });
     return result.data;
+  }
+
+  async listUserById(id: string){
+    return (await this.api.get(`/users/${id}`)).data
   }
 
   async userCreate(data: any) {
     return this.api.post("/users", data);
   }
 
-  async userUdpdate(data: any) {
-    return this.api.put("/users/:username", data);
+  async userUpdate(id: string, data: any) {
+    return this.api.put(`/users/${id}`, data);
   }
 
   async login(data: any) {

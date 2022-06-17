@@ -1,6 +1,6 @@
 <template>
   <div class="button-adm">
-    <a href="#" class="btn btn-primary btn-sm" @click="$router.push({ name: 'UpdateView' })">Alterar dados</a>
+    <a href="#" class="btn btn-primary btn-sm" @click=" $router.push({name: 'UpdateView', params:{id: user._id}})">Alterar dados</a>
     <a href="#" class="btn btn-danger btn-sm" @click="deleteUser"
       >Excluir Funcionario</a
     >
@@ -21,6 +21,7 @@ export default defineComponent({
     },
   },
   setup() {
+    
     const apiService = new ApiService();
     return {
       apiService,
@@ -28,11 +29,15 @@ export default defineComponent({
   },
   methods: {
     async deleteUser() {
-      await this.apiService.deleteUser([this.user._id]);
+      alert('Deletando usuario')
+  
+  await this.apiService.deleteUser([this.user._id]);
 
       this.$emit("delete", this.user);
     },
-  },
+
+   
+  }
 });
 </script>
 

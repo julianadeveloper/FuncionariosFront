@@ -1,5 +1,4 @@
 import { createStore } from "vuex";
-
 import { State } from "./auth/types";
 
 export default createStore({

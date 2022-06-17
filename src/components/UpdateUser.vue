@@ -1,54 +1,53 @@
 <template>
-  <section class="updateuser">
-    <form class="center form-create">
-      <div class="form-group">
-        <h5>Alterar dados de Usuario</h5>
-        <div class="card-body">
-          <label for="exampleInputEmail1">Número de matricula</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            placeholder="matrícula"
-            v-model="user.username"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Nome do usuário</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputName"
-            placeholder="Nome"
-            v-model="user.name"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1"> Senha</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Senha"
-            v-model="user.password"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Confirmar Senha</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword2"
-            placeholder="Confirmar senha"
-            v-model="user.passwordConfirm"
-          />
-        </div>
-        <button type="submit" class="btn btn-success" @click="userUdpdate()">
-          Salvar
-        </button>
+  <form class="center form-create">
+    <div class="form-group">
+      <h5>Alterar dados de Usuario</h5>
+      <div class="card-body">
+        <label for="exampleInputEmail1">Matricula</label>
+        <p></p>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputEmail1"
+          placeholder="matrícula"
+          v-model="user.username"
+        />
       </div>
-    </form>
-  </section>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Nome do usuário</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputName"
+          placeholder="Nome"
+          v-model="user.name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1"> Senha</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Senha"
+          v-model="user.password"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Confirmar Senha</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword2"
+          placeholder="Confirmar senha"
+          v-model="user.password"
+        />
+      </div>
+      <button type="button" class="btn btn-success" @click="update()">
+        Salvar
+      </button>
+    </div>
+  </form>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
@@ -57,24 +56,32 @@ export default defineComponent({
   name: "UpdateUser",
 
   setup() {
+    const apiService = new ApiService();
     const user = ref({
+      _id: "",
       username: "",
       name: "",
       password: "",
-      passwordConfirm: "",
     });
-
-    const apiService = new ApiService();
     return { user, apiService };
   },
-
   methods: {
-    userUdpdate() {
-      const passwordOk = this.user.password === this.user.passwordConfirm;
+    async update() {
+      console.log(this.user);
+ await this.apiService.userUpdate(this.user._id, this.user);
 
-      this.apiService.userUdpdate(this.user);
+      this.$emit("update", this.user);
     },
+    async openUser() {
+      this.user = await this.apiService.listUserById(this.$route.params.id as string);
+      console.log(this.user)
+    },
+  
   },
+  mounted(){
+    this.openUser()
+  }
+
 });
 </script>
 <style scope>

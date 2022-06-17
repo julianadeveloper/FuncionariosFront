@@ -37,7 +37,7 @@
 <script lang="ts">
 import { ApiService } from "@/services/api";
 import { defineComponent, ref } from "vue";
-import { mapGetters, mapMutations } from "vuex";
+import { mapMutations } from "vuex";
 export default defineComponent({
   name: "LoginUser",
 

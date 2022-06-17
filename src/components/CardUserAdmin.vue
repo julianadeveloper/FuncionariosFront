@@ -19,11 +19,13 @@ import { ApiService } from "../services/api";
 import ButtonAdm from "./ButtonAdm.vue";
 export default defineComponent({
   name: "CardUserAdmin",
+  components: { ButtonAdm },
   props: {
     search: {
       type: String,
       default: "",
     },
+  
   },
 
   watch: {
@@ -35,20 +37,20 @@ export default defineComponent({
   setup() {
     const apiService = new ApiService();
     const users = ref([]);
-    return { users, apiService };
+     return { users, apiService };
   },
   methods: {
     async listUsers(search="") {
+      const response =  await this.apiService.listUsers(this.search)
       this.users = await this.apiService.listUsers(search);
     },
   },
   async mounted(){
     await this.listUsers()
   },
-  components: { ButtonAdm },
 });
 </script>
-<style>
+<style scoped>
 .btn {
   margin: 0.5rem;
 }
@@ -68,7 +70,7 @@ p {
 
 @media only screen and (max-width: 720px) {
   .card {
-    max-width: 50%;
+    max-width: 100%;
   }
 }
 </style>

@@ -21,14 +21,12 @@ import { defineComponent } from "vue";
 import LateralBar from "@/components/LateralBar.vue";
 import CardUserAdminVue from "@/components/CardUserAdmin.vue"; // @ is an alias to /src
 import InputSearch from "@/components/InputSearch.vue";
-// import FormCreateUser from '@/components/FormCreateUser.vue'
 export default defineComponent({
   name: "HomeView",
   components: {
     LateralBar,
     CardUserAdminVue,
     InputSearch,
-    // FormCreateUser
   },
   data() {
     return {
@@ -37,18 +35,13 @@ export default defineComponent({
   },
   methods: {
     search(event: any) {
-      this.searchUsername = event
+      this.searchUsername = event;
     },
   },
 });
 </script>
 
 <style scope>
-section {
-  display: flex;
-  max-width: 100%;
-  text-align: center;
-}
 nav {
   display: flex;
   flex-direction: column;
@@ -61,6 +54,7 @@ nav {
 .card-home {
   padding: 1rem;
   max-width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -83,8 +77,10 @@ nav {
     overflow: scroll;
     position: absolute;
   }
-}
-#card-home {
-  justify-content: row;
+  #card-home {
+    justify-content: row;
+  }
+  
+
 }
 </style>

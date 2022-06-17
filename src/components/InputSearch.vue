@@ -7,6 +7,7 @@
       required
       v-model="user.username"
     />
+
     <button class="btn btn-success" @click="listerUsername">Buscar</button>
   </div>
 </template>
@@ -35,11 +36,12 @@ export default defineComponent({
   display: flex;
   width: 100%;
   flex-direction: row;
-  margin-top: 1.25rem;
   justify-content: center;
   align-items: center;
+  margin-top: 3rem;
 }
 input {
+  
   justify-content: center;
   width: 20rem;
   align-items: center;

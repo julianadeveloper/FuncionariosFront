@@ -32,7 +32,7 @@ export const routes: Array<RouteRecordRaw> = [
     component: FormCreateUser,
   },
   {
-    path: "/atualizar",
+    path: "/atualizar/:id",
     name: "UpdateView",
     beforeEnter: authGuard(),
     component: () =>
@@ -66,7 +66,6 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log("to", to);
   if (to.path === "/") {
     if (localStorage.getItem("token")) return next("/home");
   }

@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <button class="icon-theme">
-      <i class="fa-solid fa-moon-over-sun fa-lg"></i>
+      <i class="fa-solid fa-moon"></i>
     </button>
     <button class="home-icon" @click="$router.push({ name: 'home' })">
       <i class="fa-solid fa-house-user fa-lg"></i>
@@ -22,7 +22,6 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "LateralBar",
-  components: {},
   methods: {
     async logout() {
       localStorage.setItem("token", "");
@@ -37,7 +36,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   width: 10rem;
   height: 100vh;
   background: rgba(17, 16, 16, 0.747);
@@ -66,6 +65,7 @@ button {
     width: 100vw;
     height: 12rem;
     flex-direction: row;
+    align-items: center;
   }
 }
 </style>
