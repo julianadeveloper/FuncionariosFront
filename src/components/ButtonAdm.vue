@@ -1,9 +1,12 @@
 <template>
-  <div class="button-adm">
-    <a href="#" class="btn btn-primary btn-sm" @click=" $router.push({name: 'UpdateView', params:{id: user._id}})">Alterar dados</a>
-    <a href="#" class="btn btn-danger btn-sm" @click="deleteUser"
-      >Excluir Funcionario</a
+  <div class="button-adm" >
+    <a
+      href="#"
+      class="btn btn-primary btn-sm"
+      @click="$router.push({ name: 'UpdateView', params: { id: user._id } })"
+      >Alterar dados</a
     >
+    <a href="#" class="btn btn-danger btn-sm" @click="deleteUser">Excluir</a>
   </div>
 </template>
 
@@ -21,24 +24,26 @@ export default defineComponent({
     },
   },
   setup() {
-    
     const apiService = new ApiService();
     return {
       apiService,
     };
   },
   methods: {
+   
     async deleteUser() {
-      alert('Deletando usuario')
-  
-  await this.apiService.deleteUser([this.user._id]);
+      alert("Deletando usuario");
+
+      await this.apiService.deleteUser([this.user._id]);
 
       this.$emit("delete", this.user);
     },
-
-   
-  }
+  },
 });
 </script>
 
-<style scope></style>
+<style scope>
+.btn {
+  margin: 0 1rem;
+}
+</style>

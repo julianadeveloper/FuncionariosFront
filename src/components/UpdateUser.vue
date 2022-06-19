@@ -94,7 +94,6 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: rgba(17, 16, 16, 0.747);
   padding: 1rem;
   width: 20rem;
   height: auto;

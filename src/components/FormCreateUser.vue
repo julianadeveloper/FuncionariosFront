@@ -42,7 +42,13 @@
           v-model="user.passwordConfirm"
         />
       </div>
-      <button type="button" class="btn btn-success" @click.prevent="register(), $router.push({name: 'home'})">Cadastrar</button>
+      <button
+        type="button"
+        class="btn btn-success"
+        @click.prevent="register(), $router.push({ name: 'home' })"
+      >
+        Cadastrar
+      </button>
     </form>
   </section>
 </template>
@@ -60,27 +66,23 @@ export default defineComponent({
       passwordConfirm: "",
     });
     const apiService = new ApiService();
-    return { user, apiService };
+      return { user, apiService };
   },
 
-  methods:{
-    register(){ 
-      
-     const passwordOk =  this.user.password === this.user.passwordConfirm
+  methods: {
+    register() {
+      const passwordOk = this.user.password === this.user.passwordConfirm;
 
-      this.apiService.userCreate(this.user)
-          
+      this.apiService.userCreate(this.user);
+    },
   },
-
-
-}});
+});
 </script>
 
 <style scope>
 .create-user {
   display: flex;
   overflow: hidden;
-  background: rgb(7, 6, 6);
 }
 .form-create {
   align-items: center;

@@ -66,7 +66,8 @@ export default defineComponent({
       });
 
       this.setToken(response.data.access_token);
-      localStorage.setItem("token", response.data.access_token);
+
+      localStorage.setItem("token", response.data.access_toke);
       this.$router.push({ name: "home" });
       const token = response.data;
     },
@@ -85,11 +86,10 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: rgb(7, 6, 6);
 }
 .formulario-login {
   color: white;
-  background-color: rgba(17, 16, 16, 0.747);
+  background-color: var(--bg-login);
   padding: 1rem;
   width: 20rem;
   height: 20rem;

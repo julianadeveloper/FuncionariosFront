@@ -1,7 +1,9 @@
 <template>
   <header class="header">
-    <button class="icon-theme">
-      <i class="fa-solid fa-moon"></i>
+    <button class="icon-theme" @click="changeTheme">
+          <i class="fa-solid fa-moon"></i>
+
+    {{ textButton }}
     </button>
     <button class="home-icon" @click="$router.push({ name: 'home' })">
       <i class="fa-solid fa-house-user fa-lg"></i>
@@ -22,10 +24,26 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "LateralBar",
+  data() {
+    return { DarkThemeOn: false };
+  },
+  computed: {
+    textButton() {
+      if (this.DarkThemeOn) {
+        return"Dark Mode"
+      } else {
+      return   "Light Mode";
+      }
+    },
+  },
   methods: {
     async logout() {
       localStorage.setItem("token", "");
       this.$router.push({ name: "login" });
+    },
+    changeTheme() {
+      this.DarkThemeOn = !this.DarkThemeOn
+      this.$emit("theme", this.DarkThemeOn);
     },
   },
 });

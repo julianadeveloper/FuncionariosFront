@@ -19,6 +19,7 @@ export default createStore({
       namespaced: true,
       state: (): State => ({
         token: localStorage.getItem("token") || "",
+
       }),
 
       getters: {

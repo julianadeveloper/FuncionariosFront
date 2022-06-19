@@ -1,11 +1,11 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory, RouteRecordRaw, useRoute } from "vue-router";
 import FormCreateUser from "../views/CreateView.vue";
 import LateralBar from "../views/HomeView.vue";
 
 //logica de autenticação pro rota, nativa do vue-router
 const authGuard = () => (to: any, from: any, next: any) => {
   //esta checando se meu token foi armazenado no localstorage (dps ele fica no state)
-  if (localStorage.getItem("token")) {
+  if (localStorage.getItem("token") || "") {
     next();
   } else {
     next("/");

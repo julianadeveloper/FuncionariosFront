@@ -1,7 +1,7 @@
 <template>
   <div id="homeview">
     <section>
-      <LateralBar />
+      <LateralBar @theme="darktheme" :class="{'dark-mode': DarkThemeOn}"/>
     </section>
 
     <nav>
@@ -31,12 +31,16 @@ export default defineComponent({
   data() {
     return {
       searchUsername: "",
+      DarkThemeOn: false
     };
   },
   methods: {
     search(event: any) {
       this.searchUsername = event;
     },
+    darktheme(DarkThemeOn: boolean){
+      this.DarkThemeOn = DarkThemeOn
+    }
   },
 });
 </script>
@@ -63,7 +67,6 @@ nav {
   display: flex;
   width: 100vw;
   height: 100vh;
-  background: rgb(14, 14, 14);
 }
 .input-search {
   justify-content: center;

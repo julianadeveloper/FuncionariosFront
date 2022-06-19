@@ -1,10 +1,6 @@
 <template>
-  <nav>
-
-  </nav>
-  <main class="modo-escuro">
-
-  </main>
+  <nav></nav>
+  <main class="modo-escuro"></main>
   <router-view />
 </template>
 
@@ -12,17 +8,19 @@
 #app {
   width: 100vw;
   height: 100vh;
-  background-color: var(--bg-primary);
+  background: var(--bg-secondary);
 }
 
-main{
-  --bg-primary: #fff;
-  --text-primary: #000;
-}
-main.modo-escuro{
- --bg-secondary: rgb(32, 31, 31);
+/* main.modo-escuro{
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+} */
+:root {
+  --bg-primary: rgb(106, 95, 95);
+  --bg-secondary: rgb(32, 31, 31);
   --text-secondary: rgb(251, 251, 251);
+
+  --bg-login: rgb(14, 13, 13);
+  --bg-home-login: rgb(52, 49, 49);
 }
-
-
 </style>

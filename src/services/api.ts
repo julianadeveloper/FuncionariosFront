@@ -32,7 +32,7 @@ export class ApiService {
   }
 
   async login(data: any) {
-    return this.api.post("/auth/login", data);
+    return this.api.post("/login", data);
   }
 
   async deleteUser(ids: string[]) {

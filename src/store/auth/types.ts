@@ -1,4 +1,3 @@
 export interface State {
-    token: string
+    token: string,
 }
-

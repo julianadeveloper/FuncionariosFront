@@ -5,7 +5,7 @@
       <p>Nome:{{ user.name }}</p>
       <p>Matricula:{{ user.username }}</p>
       <!-- <p>Função: {{users.occupation}}</p> -->
-      <ButtonAdm :user="user" @delete="users.splice(i, 1)" />
+      <ButtonAdm  :user="user" @delete="users.splice(i, 1)"/>
 
       <!-- aqui irei retornar o procedimento q foi feito como get, delet, update... -->
       <p class="card-text column"></p>
