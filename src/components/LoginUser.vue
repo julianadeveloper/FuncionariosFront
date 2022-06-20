@@ -51,7 +51,6 @@ export default defineComponent({
       token: "",
     });
 
-
     return { user, apiService };
   },
 
@@ -60,6 +59,7 @@ export default defineComponent({
     //o metodo setToken esta importando do diretório authModule/setToken a mutation
     ...mapMutations({
       setToken: "authModule/setToken",
+      setRole: "authModule/setRole",
     }),
     async login() {
       const response = await this.apiService.login({
@@ -68,14 +68,20 @@ export default defineComponent({
         password: this.user.password,
         role: this.user.role,
       });
-         
+
       this.setToken(response.data.access_token);
       localStorage.setItem("token", response.data.access_token);
+      this.setRole(response.data.role);
+      localStorage.setItem("role", response.data.role);
       this.$router.push({ name: "home" });
       const token = response.data;
-
-    },
+      // console.log(token.role)
     
+      this.setRole(response.data.role)
+    },
+ 
+
+     
   },
   mounted() {
     console.log(this.setToken);

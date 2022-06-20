@@ -5,8 +5,7 @@
       <p>Nome:{{ user.name }}</p>
       <p>Matricula:{{ user.username }}</p>
       <p>Funções: {{ user.role }}</p>
-      <!--      propriedades do meu botao-->
-      <div v-show="ButtonAdm">
+            <div v-if="isAdmin">
         <ButtonAdm :user="user" @delete="users.splice(i, 1)" />
       </div>
 
@@ -20,6 +19,7 @@
 import { defineComponent, ref } from "vue";
 import { ApiService } from "../services/api";
 import ButtonAdm from "./ButtonAdm.vue";
+import { mapGetters } from "vuex";
 export default defineComponent({
   name: "CardUserAdmin",
   components: { ButtonAdm },
@@ -29,10 +29,9 @@ export default defineComponent({
       default: "",
     },
   },
-  data() {
-    return { ButtonAdm: false };
+  computed: {
+    ...mapGetters({ isAdmin: "authModule/isAdmin" }),
   },
-
   watch: {
     search(value) {
       this.listUsers(value);
@@ -50,8 +49,6 @@ export default defineComponent({
       const response = await this.apiService.listUsers(this.search);
       this.users = await this.apiService.listUsers(search);
     },
-
-    
   },
   async mounted() {
     await this.listUsers();
