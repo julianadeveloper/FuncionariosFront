@@ -54,6 +54,8 @@ export default defineComponent({
   },
 
   methods: {
+    ///mapeando minhas mutations e tudo q existem nelas
+    //o metodo setToken esta importando do diretório authModule/setToken a mutation
     ...mapMutations({
       setToken: "authModule/setToken",
     }),
@@ -64,10 +66,9 @@ export default defineComponent({
         password: this.user.password,
         role: this.user.role,
       });
-
+    
       this.setToken(response.data.access_token);
-
-      localStorage.setItem("token", response.data.access_toke);
+      localStorage.setItem("token", response.data.access_token);
       this.$router.push({ name: "home" });
       const token = response.data;
     },

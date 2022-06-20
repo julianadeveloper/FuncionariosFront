@@ -37,10 +37,16 @@
         <input
           type="password"
           class="form-control"
-          id="exampleInputPassword2"
           placeholder="Confirmar Senha"
           v-model="user.passwordConfirm"
         />
+      </div>
+      <div class="form-group">
+        <label>Tipo de usuário</label>
+        <select   v-model="user.role" id="roles" name="roles">
+          <option value="user" name="roles">Operador</option>
+          <option value="admin" name="roles" >Admin</option>
+        </select>
       </div>
       <button
         type="button"
@@ -64,9 +70,10 @@ export default defineComponent({
       name: "",
       password: "",
       passwordConfirm: "",
+      role: "",
     });
     const apiService = new ApiService();
-      return { user, apiService };
+    return { user, apiService };
   },
 
   methods: {

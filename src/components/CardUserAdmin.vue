@@ -1,11 +1,11 @@
 <template>
-<div v-for="(user, i) in users" :key="i" class="card" style="width: 22rem">
+  <div v-for="(user, i) in users" :key="i" class="card" style="width: 22rem">
     <div class="card-body">
       <h5 class="card-title">Dados do Funcionário</h5>
       <p>Nome:{{ user.name }}</p>
       <p>Matricula:{{ user.username }}</p>
-      <!-- <p>Função: {{users.occupation}}</p> -->
-      <ButtonAdm  :user="user" @delete="users.splice(i, 1)"/>
+        <!--      propriedades do meu botao-->
+      <ButtonAdm :user="user" @delete="users.splice(i, 1)" />
 
       <!-- aqui irei retornar o procedimento q foi feito como get, delet, update... -->
       <p class="card-text column"></p>
@@ -25,28 +25,27 @@ export default defineComponent({
       type: String,
       default: "",
     },
-  
   },
 
   watch: {
     search(value) {
-      this.listUsers(value)
-    }
+      this.listUsers(value);
+    },
   },
 
   setup() {
     const apiService = new ApiService();
     const users = ref([]);
-     return { users, apiService };
+    return { users, apiService };
   },
   methods: {
-    async listUsers(search="") {
-      const response =  await this.apiService.listUsers(this.search)
+    async listUsers(search = "") {
+      const response = await this.apiService.listUsers(this.search);
       this.users = await this.apiService.listUsers(search);
     },
   },
-  async mounted(){
-    await this.listUsers()
+  async mounted() {
+    await this.listUsers();
   },
 });
 </script>

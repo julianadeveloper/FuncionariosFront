@@ -20,7 +20,7 @@
   --bg-secondary: rgb(32, 31, 31);
   --text-secondary: rgb(251, 251, 251);
 
-  --bg-login: rgb(14, 13, 13);
+  --bg-login: rgb(21, 15, 15);
   --bg-home-login: rgb(52, 49, 49);
 }
 </style>

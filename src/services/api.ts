@@ -12,15 +12,14 @@ export class ApiService {
   async listUsers(search = "") {
     const result = await this.api.get("/users", {
       params: {
-        search
-      }
-     
+        search,
+      },
     });
     return result.data;
   }
 
-  async listUserById(id: string){
-    return (await this.api.get(`/users/${id}`)).data
+  async listUserById(id: string) {
+    return (await this.api.get(`/users/${id}`)).data;
   }
 
   async userCreate(data: any) {

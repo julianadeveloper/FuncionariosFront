@@ -1,4 +1,9 @@
-import { createRouter, createWebHistory, RouteRecordRaw, useRoute } from "vue-router";
+import {
+  createRouter,
+  createWebHistory,
+  RouteRecordRaw,
+  useRoute,
+} from "vue-router";
 import FormCreateUser from "../views/CreateView.vue";
 import LateralBar from "../views/HomeView.vue";
 
@@ -25,6 +30,7 @@ export const routes: Array<RouteRecordRaw> = [
     beforeEnter: authGuard(),
     component: LateralBar,
   },
+
   {
     path: "/cadastro",
     name: "CreateView",
@@ -36,9 +42,7 @@ export const routes: Array<RouteRecordRaw> = [
     name: "UpdateView",
     beforeEnter: authGuard(),
     component: () =>
-      import(
-        /* webpackChunkName: "updateView" */ "../views/UpdateView.vue"
-      ),
+      import(/* webpackChunkName: "updateView" */ "../views/UpdateView.vue"),
   },
   {
     path: "/panel",

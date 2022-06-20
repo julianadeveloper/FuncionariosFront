@@ -23,6 +23,13 @@
           v-model="user.name"
         />
       </div>
+        <div class="form-group">
+        <label>Tipo de usuário</label>
+        <select   v-model="user.role" id="roles" name="roles">
+          <option value="user" name="roles">Operador</option>
+          <option value="admin" name="roles" >Admin</option>
+        </select>
+      </div>
       <div class="form-group">
         <label for="exampleInputPassword1"> Senha</label>
         <input
@@ -62,6 +69,7 @@ export default defineComponent({
       username: "",
       name: "",
       password: "",
+      role: '',
     });
     return { user, apiService };
   },
