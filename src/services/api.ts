@@ -27,6 +27,7 @@ export class ApiService {
   }
 
   async userUpdate(id: string, data: any) {
+    
     return this.api.put(`/users/${id}`, data);
   }
 

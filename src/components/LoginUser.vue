@@ -50,6 +50,8 @@ export default defineComponent({
       role: "",
       token: "",
     });
+
+
     return { user, apiService };
   },
 
@@ -66,12 +68,14 @@ export default defineComponent({
         password: this.user.password,
         role: this.user.role,
       });
-    
+         
       this.setToken(response.data.access_token);
       localStorage.setItem("token", response.data.access_token);
       this.$router.push({ name: "home" });
       const token = response.data;
+
     },
+    
   },
   mounted() {
     console.log(this.setToken);

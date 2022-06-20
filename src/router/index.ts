@@ -2,7 +2,6 @@ import {
   createRouter,
   createWebHistory,
   RouteRecordRaw,
-  useRoute,
 } from "vue-router";
 import FormCreateUser from "../views/CreateView.vue";
 import LateralBar from "../views/HomeView.vue";

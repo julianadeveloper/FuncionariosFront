@@ -30,7 +30,7 @@ export default createStore({
         setToken: (state, value) => (state.token = value),
       },
       actions:{
- 
+          
       }
     },
   },

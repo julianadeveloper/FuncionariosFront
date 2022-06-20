@@ -44,7 +44,7 @@
       <div class="form-group">
         <label>Tipo de usuário</label>
         <select   v-model="user.role" id="roles" name="roles">
-          <option value="user" name="roles">Operador</option>
+          <option value="operador" name="roles">Operador</option>
           <option value="admin" name="roles" >Admin</option>
         </select>
       </div>

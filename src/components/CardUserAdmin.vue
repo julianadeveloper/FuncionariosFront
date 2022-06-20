@@ -4,8 +4,11 @@
       <h5 class="card-title">Dados do Funcionário</h5>
       <p>Nome:{{ user.name }}</p>
       <p>Matricula:{{ user.username }}</p>
-        <!--      propriedades do meu botao-->
-      <ButtonAdm :user="user" @delete="users.splice(i, 1)" />
+      <p>Funções: {{ user.role }}</p>
+      <!--      propriedades do meu botao-->
+      <div v-show="ButtonAdm">
+        <ButtonAdm :user="user" @delete="users.splice(i, 1)" />
+      </div>
 
       <!-- aqui irei retornar o procedimento q foi feito como get, delet, update... -->
       <p class="card-text column"></p>
@@ -26,6 +29,9 @@ export default defineComponent({
       default: "",
     },
   },
+  data() {
+    return { ButtonAdm: false };
+  },
 
   watch: {
     search(value) {
@@ -39,10 +45,13 @@ export default defineComponent({
     return { users, apiService };
   },
   methods: {
+    //método de busca do input
     async listUsers(search = "") {
       const response = await this.apiService.listUsers(this.search);
       this.users = await this.apiService.listUsers(search);
     },
+
+    
   },
   async mounted() {
     await this.listUsers();

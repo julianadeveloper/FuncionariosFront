@@ -26,7 +26,7 @@ export default defineComponent({
   setup() {
     const apiService = new ApiService();
     return {
-      apiService,
+      apiService
     };
   },
   methods: {
