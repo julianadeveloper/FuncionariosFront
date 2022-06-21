@@ -1,9 +1,12 @@
 <template>
-  <body class="login">
-    <form class="formulario-login center" @submit.prevent="login()">
+  <div class="container-form">
+    <!--imagem de login lado esquerdo-->
+    <div class="img-login">
+      <img src="../assets/images/login.svg" alt="" />
+    </div>
+    <form class="form-login" @submit.prevent="login()">
       <div class="form-group">
-        <h5>Login</h5>
-        <label for="exampleInputEmail1">Número de matricula</label>
+        <label for="exampleInputEmail1">Matricula</label>
         <input
           type="login"
           class="form-control"
@@ -29,15 +32,16 @@
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
         <label class="form-check-label" for="exampleCheck1">Salvar</label>
       </div>
-      <button type="submit" class="btn btn-primary">Enviar</button>
+      <button type="submit" class="btn btn-white btn-animate">Login</button>
     </form>
-  </body>
+  </div>
 </template>
 
 <script lang="ts">
 import { ApiService } from "@/services/api";
 import { defineComponent, ref } from "vue";
 import { mapMutations } from "vuex";
+
 export default defineComponent({
   name: "LoginUser",
 
@@ -76,12 +80,9 @@ export default defineComponent({
       this.$router.push({ name: "home" });
       const token = response.data;
       // console.log(token.role)
-    
-      this.setRole(response.data.role)
-    },
- 
 
-     
+      this.setRole(response.data.role);
+    },
   },
   mounted() {
     console.log(this.setToken);
@@ -90,23 +91,105 @@ export default defineComponent({
 </script>
 
 <style scope>
-body {
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
+
+.form-control {
+  width: 70% !important;
+}
+.container-form {
+  font-family: "Roboto", sans-serif;
+  overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  background: var(--bg-login-primary);
+  align-items: center;
+  justify-content: space-between;
 }
-.formulario-login {
-  color: white;
-  background-color: var(--bg-login);
-  padding: 1rem;
-  width: 20rem;
-  height: 20rem;
-  border-radius: 10%;
+.img-login {
+  position: relative;
 }
-h5 {
-  text-align: center;
+.form-login {
+  height: auto;
+  width: 43%;
+}
+.form-group {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all 0.2s;
+  position: absolute;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom 1s ease-out;
+  animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .img-login {
+    margin-right: 40%;
+    width: 12rem;
+  }
+  .form-login {
+    width: 50%;
+    height: 100%;
+  }
+  .container-form {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-login-primary);
+    align-items: center;
+  }
 }
 </style>
+6

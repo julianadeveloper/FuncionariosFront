@@ -22,7 +22,6 @@ export default defineComponent({
 </script>
 <style scoped>
 .login{
-
   background: var(--bg-home-login);
 }
 </style>
