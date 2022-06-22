@@ -67,11 +67,12 @@ export default defineComponent({
     }),
     async login() {
       const response = await this.apiService.login({
-        required: true,
-        username: this.user.username,
-        password: this.user.password,
-        role: this.user.role,
-      });
+required: true,
+username: this.user.username,
+password: this.user.password,
+role: this.user.role,
+name: ""
+});
 
       this.setToken(response.data.access_token);
       localStorage.setItem("token", response.data.access_token);

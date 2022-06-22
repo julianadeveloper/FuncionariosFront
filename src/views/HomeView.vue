@@ -37,6 +37,7 @@ export default defineComponent({
   methods: {
     search(event: any) {
       this.searchUsername = event;
+
     },
     darktheme(DarkThemeOn: boolean){
       this.DarkThemeOn = DarkThemeOn

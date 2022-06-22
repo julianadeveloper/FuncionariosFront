@@ -22,16 +22,16 @@ export class ApiService {
     return (await this.api.get(`/users/${id}`)).data;
   }
 
-  async userCreate(data: any) {
+  async userCreate(data: { username: string, name: string, password: string, role: string}){
     return this.api.post("/users", data);
   }
 
-  async userUpdate(id: string, data: any) {
+  async userUpdate(id: string, data: { username: string, name: string, password: string, role: string}) {
     
     return this.api.put(`/users/${id}`, data);
   }
 
-  async login(data: any) {
+  async login( data: { username: string, name: string, password: string, role: string, required: boolean})  {
     return this.api.post("/login", data);
   }
 

@@ -74,6 +74,7 @@ export default defineComponent({
     return { user, apiService };
   },
   methods: {
+  
     async update() {
       console.log(this.user);
  await this.apiService.userUpdate(this.user._id, this.user);
