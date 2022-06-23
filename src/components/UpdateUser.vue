@@ -93,7 +93,7 @@ export default defineComponent({
 
 });
 </script>
-<style scope>
+<style scoped>
 .create-user {
   display: flex;
   overflow: hidden;
