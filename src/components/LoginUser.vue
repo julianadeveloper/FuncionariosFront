@@ -29,10 +29,7 @@
           v-model="user.password"
         />
       </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label" for="exampleCheck1">Salvar</label>
-      </div>
+      
       <button type="submit" class="btn btn-white btn-animate">Login</button>
     </form>
   </div>
@@ -91,7 +88,7 @@ export default defineComponent({
 });
 </script>
 
-<style scope>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
 hr{
    border-left: 0.1rem solid rgba(49, 42, 42, 0.548);

@@ -45,7 +45,7 @@ export default defineComponent({
 });
 </script>
 
-<style scope>
+<style scoped>
 nav {
   display: flex;
   flex-direction: column;
