@@ -42,7 +42,7 @@ export default defineComponent({
 });
 </script>
 
-<style scope>
+<style scoped>
 .btn {
   margin: 0 1rem;
 }

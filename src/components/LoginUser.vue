@@ -4,7 +4,7 @@
     <div class="img-login">
       <img src="../assets/images/login.svg" alt="" />
     </div>
-    <hr/>
+    <hr />
     <form class="form-login" @submit.prevent="login()">
       <div class="form-group">
         <label for="exampleInputEmail1">Matricula</label>
@@ -29,7 +29,7 @@
           v-model="user.password"
         />
       </div>
-      
+
       <button type="submit" class="btn btn-white btn-animate">Login</button>
     </form>
   </div>
@@ -90,11 +90,12 @@ export default defineComponent({
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
-hr{
-   border-left: 0.1rem solid rgba(49, 42, 42, 0.548);
- height:70%;
- left: 50%;
- position: absolute;
+
+hr {
+  border-left: 0.1rem solid rgba(49, 42, 42, 0.548);
+  height: 70%;
+  left: 50%;
+  position: absolute;
 }
 .form-control {
   width: 70% !important;
@@ -147,8 +148,6 @@ hr{
   color: #777;
 }
 
-
-
 .btn-white::after {
   background-color: #fff;
 }
@@ -175,7 +174,10 @@ hr{
   }
 }
 
-@media only screen and (max-width: 720px) {
+  @media only screen and (max-width: 720px) {
+    hr{
+      border-left: none;
+    }
   .img-login {
     margin-right: 40%;
     width: 12rem;
