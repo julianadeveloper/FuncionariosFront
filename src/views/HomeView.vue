@@ -21,6 +21,7 @@ import { defineComponent } from "vue";
 import LateralBar from "@/components/LateralBar.vue";
 import CardUserAdminVue from "@/components/CardUserAdmin.vue"; // @ is an alias to /src
 import InputSearch from "@/components/InputSearch.vue";
+import { SocketModule } from "@/services/socket";
 
 export default defineComponent({
   name: "HomeView",
@@ -33,6 +34,7 @@ export default defineComponent({
     return {
       searchUsername: "",
       DarkThemeOn: false,
+      socketService: SocketModule.connect()
     };
   },
   methods: {
@@ -44,6 +46,8 @@ export default defineComponent({
     },
   },
   mounted() {
+          
+
 //ao montar o ocmponente homeview, ele se conectara ao servidor
 // const socket  = io("ws://localhost:3001")
 //emitindo evento home e dando console. o server recebe e retorna.

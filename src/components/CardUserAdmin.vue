@@ -5,7 +5,7 @@
       <p>Nome:{{ user.name }}</p>
       <p>Matricula:{{ user.username }}</p>
       <p>Funções: {{ user.role }}</p>
-            <div v-if="isAdmin">
+      <div v-if="isAdmin">
         <ButtonAdm :user="user" @delete="users.splice(i, 1)" />
       </div>
 
@@ -20,6 +20,8 @@ import { defineComponent, ref } from "vue";
 import { ApiService } from "../services/api";
 import ButtonAdm from "./ButtonAdm.vue";
 import { mapGetters } from "vuex";
+import { SocketModule } from "@/services/socket";
+import User from "@/interface/User";
 export default defineComponent({
   name: "CardUserAdmin",
   components: { ButtonAdm },
@@ -40,8 +42,8 @@ export default defineComponent({
 
   setup() {
     const apiService = new ApiService();
-    const users = ref([]);
-    return { users, apiService };
+    const users = ref<User[]>([]);
+    return { users, apiService, socketService: SocketModule.connect() };
   },
   methods: {
     //método de busca do input
@@ -52,6 +54,12 @@ export default defineComponent({
   },
   async mounted() {
     await this.listUsers();
+
+    this.socketService.registerListener("cards-users","removed-user", (data: { id: string }) => {
+        const foundIndex = this.users.findIndex((user) => user._id === data.id);
+        if (foundIndex) this.users.splice(foundIndex, 1);
+      }
+    );
   },
 });
 </script>

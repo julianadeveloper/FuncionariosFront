@@ -6,7 +6,9 @@
     </div>
 
     <hr />
+
     <form class="form-login" @submit.prevent="login()">
+
       <div class="form-group">
         <label for="exampleInputEmail1">Matricula</label>
         <input
@@ -43,7 +45,7 @@
 import { ApiService } from "@/services/api";
 import { defineComponent, ref } from "vue";
 import { mapMutations } from "vuex";
-
+import { SocketModule } from '../services/socket'
 export default defineComponent({
   name: "LoginUser",
 
@@ -85,10 +87,15 @@ export default defineComponent({
       // console.log(token.role)
 
       this.setRole(response.data.role);
+      SocketModule.connect()
     },
+    // async enviarWsId(){
+      
+    // }
   },
   mounted() {
     console.log(this.setToken);
+
   },
 });
 </script>
