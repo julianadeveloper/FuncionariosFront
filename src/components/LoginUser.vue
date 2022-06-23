@@ -4,6 +4,7 @@
     <div class="img-login">
       <img src="../assets/images/login.svg" alt="" />
     </div>
+    <hr/>
     <form class="form-login" @submit.prevent="login()">
       <div class="form-group">
         <label for="exampleInputEmail1">Matricula</label>
@@ -92,7 +93,12 @@ export default defineComponent({
 
 <style scope>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
-
+hr{
+   border-left: 0.1rem solid rgba(49, 42, 42, 0.548);
+ height:70%;
+ left: 50%;
+ position: absolute;
+}
 .form-control {
   width: 70% !important;
 }
