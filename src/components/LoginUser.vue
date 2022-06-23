@@ -4,6 +4,8 @@
     <div class="img-login">
       <img src="../assets/images/login.svg" alt="" />
     </div>
+
+    <hr />
     <form class="form-login" @submit.prevent="login()">
       <div class="form-group">
         <label for="exampleInputEmail1">Matricula</label>
@@ -65,15 +67,15 @@ export default defineComponent({
       setToken: "authModule/setToken",
       setRole: "authModule/setRole",
     }),
+
     async login() {
       const response = await this.apiService.login({
-required: true,
-username: this.user.username,
-password: this.user.password,
-role: this.user.role,
-name: ""
-});
-
+        required: true,
+        username: this.user.username,
+        password: this.user.password,
+        role: this.user.role,
+        name: "",
+      });
       this.setToken(response.data.access_token);
       localStorage.setItem("token", response.data.access_token);
       this.setRole(response.data.role);
@@ -144,8 +146,6 @@ name: ""
   background-color: #fff;
   color: #777;
 }
-
-
 
 .btn-white::after {
   background-color: #fff;
