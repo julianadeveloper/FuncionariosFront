@@ -6,6 +6,10 @@
     </div>
     <hr />
     <form class="form-login" @submit.prevent="login()">
+      <div class="title-form">
+        <h2>Vua!da</h2>
+        <span>Seu controle para gestão de funcionários</span>
+      </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Matricula</label>
         <input
@@ -91,13 +95,17 @@ export default defineComponent({
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
 
+.title-form {
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+}
 hr {
   border-left: 0.1rem solid rgba(49, 42, 42, 0.548);
   height: 70%;
   left: 50%;
   position: absolute;
 }
-.form-control {
+.title-form .form-control {
   width: 70% !important;
 }
 .container-form {
@@ -118,7 +126,7 @@ hr {
   width: 43%;
 }
 .form-group {
-  width: 100%;
+  width: 80%;
   align-items: center;
   justify-content: center;
 }
@@ -174,10 +182,10 @@ hr {
   }
 }
 
-  @media only screen and (max-width: 720px) {
-    hr{
-      border-left: none;
-    }
+@media only screen and (max-width: 720px) {
+  hr {
+    border-left: none;
+  }
   .img-login {
     margin-right: 40%;
     width: 12rem;
