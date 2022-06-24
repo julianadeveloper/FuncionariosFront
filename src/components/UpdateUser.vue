@@ -1,5 +1,5 @@
 <template>
-  <form class="center form-create">
+  <form class="form-update">
     <div class="form-group">
       <h5>Alterar dados de Usuario</h5>
       <div class="card-body">
@@ -23,11 +23,11 @@
           v-model="user.name"
         />
       </div>
-        <div class="form-group">
+      <div class="form-group">
         <label>Tipo de usuário</label>
-        <select   v-model="user.role" id="roles" name="roles">
+        <select v-model="user.role" id="roles" name="roles">
           <option value="operador" name="roles">Operador</option>
-          <option value="admin" name="roles" >Admin</option>
+          <option value="admin" name="roles">Admin</option>
         </select>
       </div>
       <div class="form-group">
@@ -69,37 +69,32 @@ export default defineComponent({
       username: "",
       name: "",
       password: "",
-      role: '',
+      role: "",
     });
     return { user, apiService };
   },
   methods: {
-  
     async update() {
       console.log(this.user);
- await this.apiService.userUpdate(this.user._id, this.user);
+      await this.apiService.userUpdate(this.user._id, this.user);
 
       this.$emit("update", this.user);
     },
     async openUser() {
-      this.user = await this.apiService.listUserById(this.$route.params.id as string);
-      console.log(this.user)
+      this.user = await this.apiService.listUserById(
+        this.$route.params.id as string
+      );
+      console.log(this.user);
     },
-  
   },
-  mounted(){
-    this.openUser()
-  }
+  mounted() {
+    this.openUser();
 
+  },
 });
 </script>
-<style scoped>
-.create-user {
-  display: flex;
-  overflow: hidden;
-  background: rgb(7, 6, 6);
-}
-.form-create {
+<style scope>
+.form-update {
   align-items: center;
   justify-content: center;
   color: white;

@@ -32,8 +32,6 @@ export default defineComponent({
   methods: {
    
     async deleteUser() {
-      alert("Deletando usuario");
-
       await this.apiService.deleteUser([this.user._id]);
 
       this.$emit("delete", this.user);

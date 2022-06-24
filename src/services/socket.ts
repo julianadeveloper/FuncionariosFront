@@ -5,6 +5,8 @@ export class SocketModule {
 
   private io: Socket;
   private listeners = new Map<string, any>(); //tentar entender melhor
+
+  
 //constructor do que vai ter na minha classe.
   constructor(uri: string) {
     this.io = io(uri);
@@ -42,6 +44,7 @@ export class SocketModule {
     this.listeners.delete(`${namespace}/${event}`);
   }
 
+ 
   // const socket  = io("ws://localhost:3001")
 
   // socket.emit('home')

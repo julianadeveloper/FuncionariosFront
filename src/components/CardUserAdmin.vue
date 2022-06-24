@@ -50,14 +50,28 @@ export default defineComponent({
     async listUsers(search = "") {
       const response = await this.apiService.listUsers(this.search);
       this.users = await this.apiService.listUsers(search);
+      console.log(response);
     },
   },
   async mounted() {
     await this.listUsers();
 
-    this.socketService.registerListener("cards-users","removed-user", (data: { id: string }) => {
+    this.socketService.registerListener(
+      "cards-users",
+      "removed-user",
+      (data: { id: string }) => {
         const foundIndex = this.users.findIndex((user) => user._id === data.id);
         if (foundIndex) this.users.splice(foundIndex, 1);
+      }
+    );
+
+    this.socketService.registerListener(
+      "up-users",
+      "update",
+      (data: { id: string }) => {
+        this.users = [];
+        this.listUsers();
+
       }
     );
   },

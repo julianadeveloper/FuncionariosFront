@@ -4,20 +4,12 @@
     <div class="img-login">
       <img src="../assets/images/login.svg" alt="" />
     </div>
-<<<<<<< HEAD
-
-    <hr />
-
-    <form class="form-login" @submit.prevent="login()">
-
-=======
     <hr />
     <form class="form-login" @submit.prevent="login()">
       <div class="title-form">
         <h2>Vua!da</h2>
         <span>Seu controle para gestão de funcionários</span>
       </div>
->>>>>>> hotfix/tela-login
       <div class="form-group">
         <label for="exampleInputEmail1">Matricula</label>
         <input

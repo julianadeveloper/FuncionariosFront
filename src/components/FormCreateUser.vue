@@ -1,6 +1,6 @@
 <template>
   <section class="createuser">
-    <form class="center form-create">
+    <form class=" form-create">
       <div class="form-group">
         <h5>Cadastrar Usuario</h5>
         <label for="exampleInputEmail1">Número de matricula</label>
@@ -86,8 +86,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.create-user {
+<style scope>
+.createuser {
   display: flex;
   overflow: hidden;
 }
