@@ -71,7 +71,6 @@ export default defineComponent({
       (data: { id: string }) => {
         this.users = [];
         this.listUsers();
-
       }
     );
   },
