@@ -4,11 +4,20 @@
     <div class="img-login">
       <img src="../assets/images/login.svg" alt="" />
     </div>
+<<<<<<< HEAD
 
     <hr />
 
     <form class="form-login" @submit.prevent="login()">
 
+=======
+    <hr />
+    <form class="form-login" @submit.prevent="login()">
+      <div class="title-form">
+        <h2>Vua!da</h2>
+        <span>Seu controle para gestão de funcionários</span>
+      </div>
+>>>>>>> hotfix/tela-login
       <div class="form-group">
         <label for="exampleInputEmail1">Matricula</label>
         <input
@@ -32,10 +41,7 @@
           v-model="user.password"
         />
       </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label" for="exampleCheck1">Salvar</label>
-      </div>
+
       <button type="submit" class="btn btn-white btn-animate">Login</button>
     </form>
   </div>
@@ -103,7 +109,17 @@ export default defineComponent({
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
 
-.form-control {
+.title-form {
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+}
+hr {
+  border-left: 0.1rem solid rgba(49, 42, 42, 0.548);
+  height: 70%;
+  left: 50%;
+  position: absolute;
+}
+.title-form .form-control {
   width: 70% !important;
 }
 .container-form {
@@ -124,7 +140,7 @@ export default defineComponent({
   width: 43%;
 }
 .form-group {
-  width: 100%;
+  width: 80%;
   align-items: center;
   justify-content: center;
 }
@@ -181,6 +197,9 @@ export default defineComponent({
 }
 
 @media only screen and (max-width: 720px) {
+  hr {
+    border-left: none;
+  }
   .img-login {
     margin-right: 40%;
     width: 12rem;
