@@ -89,7 +89,6 @@ export default defineComponent({
   },
   mounted() {
     this.openUser();
-
   },
 });
 </script>

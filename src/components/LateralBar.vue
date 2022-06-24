@@ -29,10 +29,10 @@ export default defineComponent({
   },
   computed: {
     textButton() {
-      if (this.DarkThemeOn) {
-        return"Dark Mode"
+      if (!this.DarkThemeOn) {
+        return"Dark"
       } else {
-      return   "Light Mode";
+      return   "Light";
       }
     },
   },

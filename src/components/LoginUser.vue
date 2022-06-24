@@ -2,6 +2,7 @@
   <div class="container-form">
     <!--imagem de login lado esquerdo-->
     <div class="img-login">
+      
       <img src="../assets/images/login.svg" alt="" />
     </div>
     <hr />
