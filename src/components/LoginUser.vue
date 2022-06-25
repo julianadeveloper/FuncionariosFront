@@ -2,6 +2,7 @@
   <div class="container-form">
     <!--imagem de login lado esquerdo-->
     <div class="img-login">
+      
       <img src="../assets/images/login.svg" alt="" />
     </div>
     <hr />
@@ -33,7 +34,7 @@
           v-model="user.password"
         />
       </div>
-
+      
       <button type="submit" class="btn btn-white btn-animate">Login</button>
     </form>
   </div>
@@ -49,7 +50,6 @@ export default defineComponent({
 
   setup() {
     const apiService = new ApiService();
-
     const user = ref({
       username: "",
       password: "",
@@ -66,6 +66,7 @@ export default defineComponent({
     ...mapMutations({
       setToken: "authModule/setToken",
       setRole: "authModule/setRole",
+      
     }),
 
     async login() {
@@ -76,6 +77,7 @@ export default defineComponent({
         role: this.user.role,
         name: "",
       });
+    
       this.setToken(response.data.access_token);
       localStorage.setItem("token", response.data.access_token);
       this.setRole(response.data.role);
@@ -86,10 +88,7 @@ export default defineComponent({
 
       this.setRole(response.data.role);
       SocketModule.connect()
-    },
-    // async enviarWsId(){
-      
-    // }
+    }
   },
   mounted() {
     console.log(this.setToken);
@@ -123,6 +122,7 @@ hr {
   background: var(--bg-login-primary);
   align-items: center;
   justify-content: space-between;
+  
 }
 .img-login {
   position: relative;

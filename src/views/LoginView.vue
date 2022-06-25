@@ -1,7 +1,6 @@
 <template>
   <div class="login">
-  
-<LoginUser/>
+    <LoginUser/>
   </div>
 </template>
 
@@ -25,5 +24,6 @@ export default defineComponent({
 .login{
   background: var(--bg-home-login);
 }
+
 </style>
 
