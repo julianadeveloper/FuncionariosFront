@@ -50,7 +50,7 @@
           v-model="user.password"
         />
       </div>
-      <button type="button" class="btn btn-success" @click="update()">
+      <button type="button" class="btn btn-success"  @click.prevent="update(), $router.push({name: 'home'})">
         Salvar
       </button>
     </div>
@@ -94,9 +94,11 @@ export default defineComponent({
 </script>
 <style scope>
 .form-update {
+  box-shadow: 4px 5px 20px;
+
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text-primary);
   padding: 1rem;
   width: 20rem;
   height: auto;

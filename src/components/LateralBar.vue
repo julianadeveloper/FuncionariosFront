@@ -58,6 +58,7 @@ export default defineComponent({
   width: 10rem;
   height: 100vh;
   background: rgba(17, 16, 16, 0.747);
+    box-shadow: 4px 5px 20px;
 }
 
 button {
