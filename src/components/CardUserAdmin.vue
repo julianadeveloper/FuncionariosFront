@@ -9,8 +9,6 @@
         <ButtonAdm :user="user" @delete="users.splice(i, 1)" />
       </div>
 
-      <!-- aqui irei retornar o procedimento q foi feito como get, delet, update... -->
-      <p class="card-text column"></p>
     </div>
   </div>
 </template>
@@ -69,14 +67,26 @@ export default defineComponent({
       "up-users",
       "update",
       (data: { id: string }) => {
-        this.users = [];
-        this.listUsers();
+        this.users = []; //limpando o array
+        this.listUsers(); //listando com os dados alterados q retornam do backend
+      }
+    );
+       this.socketService.registerListener(
+      "new",
+      "new-user",
+      (data: { id: string }) => {
+        this.users = []; //limpando o array
+        this.listUsers(); //listando com os dados alterados q retornam do backend
       }
     );
   },
 });
 </script>
 <style scoped>
+
+.card-body{
+  box-shadow: 5px 5px 20px;
+}
 .btn {
   margin: 0.5rem;
 }
