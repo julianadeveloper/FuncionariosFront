@@ -44,9 +44,6 @@ export default defineComponent({
       this.DarkThemeOn = DarkThemeOn;
     },
   },
-  // mounted() {
-    
-  // },
 });
 </script>
 
