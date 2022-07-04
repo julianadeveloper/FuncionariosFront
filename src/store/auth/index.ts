@@ -5,6 +5,7 @@ export default createStore({
     state: (): State => ({
         token: localStorage.getItem("token") || "",
         role : localStorage.getItem("role") || "",
+        sessionId: localStorage.getItem("sessionId") || "",
 
       }),
 });

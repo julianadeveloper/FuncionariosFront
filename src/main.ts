@@ -10,22 +10,6 @@ import "@/assets/globalStyle.css";
 
 
 
-// const socket  = io("ws://localhost:3001")
-
-// socket.emit('home')
-// console.log('Connected in home');
-
-
-
-// socket.on('connected', ()=>{
-//     console.log(socket.id)
-//     if(socket.id === socket.id){
-//         localStorage.setItem("token", "");
-//             console.log('deslogar')
-//     }
-// })
-
-
 library.add(fas);
 const app = createApp(App);
 

@@ -44,7 +44,6 @@
 import { ApiService } from "@/services/api";
 import { defineComponent, ref } from "vue";
 import { mapMutations } from "vuex";
-import { SocketModule } from '../services/socket'
 export default defineComponent({
   name: "LoginUser",
 
@@ -55,6 +54,7 @@ export default defineComponent({
       password: "",
       role: "",
       token: "",
+      sessionId: "",
     });
 
     return { user, apiService };
@@ -66,6 +66,7 @@ export default defineComponent({
     ...mapMutations({
       setToken: "authModule/setToken",
       setRole: "authModule/setRole",
+      setSessionId: "authModule/setSessionId"
       
     }),
 
@@ -76,22 +77,28 @@ export default defineComponent({
         password: this.user.password,
         role: this.user.role,
         name: "",
+        sessionId: this.user.sessionId,
       });
-    
+      
+      this.setSessionId(response.data.sessionId)
+      localStorage.setItem("sessionId", response.data.sessionId)
+
       this.setToken(response.data.access_token);
       localStorage.setItem("token", response.data.access_token);
-      this.setRole(response.data.role);
-      localStorage.setItem("role", response.data.role);
-      this.$router.push({ name: "home" });
-      const token = response.data;
-      // console.log(token.role)
 
       this.setRole(response.data.role);
-      SocketModule.connect()
+      localStorage.setItem("role", response.data.role);
+      
+      this.$router.push({ name: "home" });
+      const token = response.data;
+      this.setRole(response.data.role);
+      // SocketModule.connect()
     }
   },
   mounted() {
     console.log(this.setToken);
+
+    
 
   },
 });

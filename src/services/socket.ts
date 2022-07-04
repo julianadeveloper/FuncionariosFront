@@ -43,19 +43,5 @@ export class SocketModule {
     this.io.removeListener(event);
     this.listeners.delete(`${namespace}/${event}`);
   }
-
- 
-  // const socket  = io("ws://localhost:3001")
-
-  // socket.emit('home')
-  // console.log('Connected in home');
-
-  // socket.on('connected', ()=>{
-  //     console.log('usuario conectado')
-  //     console.log(socket.id)
-  //     if(socket.id === socket.id){
-  //         localStorage.setItem("token", "");
-  //             console.log('deslogar')
-  //     }
-  // })
+  
 }

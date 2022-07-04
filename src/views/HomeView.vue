@@ -1,5 +1,8 @@
 <template>
   <div id="homeview">
+    <div>
+      <!-- <MyUsers/> -->
+    </div>
     <section>
       <LateralBar @theme="darktheme" :class="{ 'dark-mode': DarkThemeOn }" />
     </section>
@@ -22,13 +25,16 @@ import LateralBar from "@/components/LateralBar.vue";
 import CardUserAdminVue from "@/components/CardUserAdmin.vue"; // @ is an alias to /src
 import InputSearch from "@/components/InputSearch.vue";
 import { SocketModule } from "@/services/socket";
+// import MyUsers from "../components/MyUsers.vue";
+
 export default defineComponent({
   name: "HomeView",
   components: {
     LateralBar,
     CardUserAdminVue,
     InputSearch,
-  },
+    // MyUsers
+},
   data() {
     return {
       searchUsername: "",
@@ -43,7 +49,20 @@ export default defineComponent({
     darktheme(DarkThemeOn: boolean) {
       this.DarkThemeOn = DarkThemeOn;
     },
+
+
+ 
   },
+  
+  mounted(){
+        this.socketService.registerListener(
+      "is-logged",
+      "is-logged",
+      (data: {id: string}) => {
+        console.log('chegou aqui o evento de login vindo do back') 
+            }
+    );
+  }
 });
 </script>
 

@@ -24,6 +24,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "LateralBar",
+
   data() {
     return { DarkThemeOn: false };
   },
@@ -38,7 +39,7 @@ export default defineComponent({
   },
   methods: {
     async logout() {
-      localStorage.setItem("token", "");
+      localStorage.removeItem("token");
       this.$router.push({ name: "login" });
     },
     changeTheme() {

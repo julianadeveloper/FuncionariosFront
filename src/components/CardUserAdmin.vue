@@ -79,6 +79,7 @@ export default defineComponent({
         this.listUsers(); //listando com os dados alterados q retornam do backend
       }
     );
+    
   },
 });
 </script>
