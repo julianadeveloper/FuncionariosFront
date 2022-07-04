@@ -39,7 +39,7 @@ export default defineComponent({
     return {
       searchUsername: "",
       DarkThemeOn: false,
-      socketService: SocketModule.connect(),
+      // socketService: SocketModule.connect(),
     };
   },
   methods: {
@@ -50,19 +50,20 @@ export default defineComponent({
       this.DarkThemeOn = DarkThemeOn;
     },
 
-
- 
-  },
-  
-  mounted(){
+  async logoutUserSession() {
         this.socketService.registerListener(
       "is-logged",
       "is-logged",
-      (data: {id: string}) => {
-        console.log('chegou aqui o evento de login vindo do back') 
-            }
+      (data: string) => {
+        this.logoutUserSession()
+    }
     );
-  }
+      localStorage.removeItem("token");
+      this.$router.push({ name: "login" });
+    }
+ 
+  },
+  
 });
 </script>
 

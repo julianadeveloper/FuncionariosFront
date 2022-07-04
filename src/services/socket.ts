@@ -12,18 +12,19 @@ export class SocketModule {
     this.io = io(uri);
     this.registerDefaultListeners();
   }
-
+  
   public static connect() {
     if (SocketModule.instance) return SocketModule.instance;
 		console.log('vou criar!!!')
     SocketModule.instance = new SocketModule("ws://localhost:3001");
     return SocketModule.instance;
   }
-
+  
   private registerDefaultListeners() {
-    this.io.on("connected", () => {
-      console.log("hehehee pivete");
-    });
+    console.log(this.io)
+    // this.io.on("connected", () => {
+    //   console.log("hehehee pivete");
+    // });
   }
 
   public registerListener(
