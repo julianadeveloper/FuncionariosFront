@@ -20,7 +20,7 @@ export default createStore({
       state: (): State => ({
         token: localStorage.getItem("token") || "",
         role : localStorage.getItem("role") || "",
-        sessionId: localStorage.getItem("sessionId") || "",
+        _id: localStorage.getItem("_id") || "",
 
       }),
 
@@ -28,13 +28,13 @@ export default createStore({
         getToken: (state) => state.token,
         getRole : (state) => state.role,
         isAdmin: (state) => state.role === 'admin',
-        isLogged: (state) => state.sessionId,
+        getId: (state) => state.data._id,
       },
 
       mutations: {
         setToken: (state, value) => (state.token = value),
         setRole: (state, value) => (state.role = value),
-        setSessionId: (state, value) => (state.sessionId = value),
+        setId: (state, value) => (state._id = value),
       },
       actions:{
           

@@ -20,11 +20,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 import LateralBar from "@/components/LateralBar.vue";
 import CardUserAdminVue from "@/components/CardUserAdmin.vue"; // @ is an alias to /src
 import InputSearch from "@/components/InputSearch.vue";
 import { SocketModule } from "@/services/socket";
+import { mapMutations } from "vuex";
 // import MyUsers from "../components/MyUsers.vue";
 
 export default defineComponent({
@@ -34,36 +35,54 @@ export default defineComponent({
     CardUserAdminVue,
     InputSearch,
     // MyUsers
-},
-  data() {
+  },
+  setup() {
     return {
       searchUsername: "",
       DarkThemeOn: false,
-      // socketService: SocketModule.connect(),
+      socketService: SocketModule.connect(),
     };
   },
+
   methods: {
+    // ...mapMutations({
+    //   setId: "authModule/setId",
+    // }),
     search(event: any) {
       this.searchUsername = event;
     },
     darktheme(DarkThemeOn: boolean) {
       this.DarkThemeOn = DarkThemeOn;
     },
-
-  async logoutUserSession() {
-        this.socketService.registerListener(
-      "is-logged",
-      "is-logged",
-      (data: string) => {
-        this.logoutUserSession()
-    }
-    );
-      localStorage.removeItem("token");
-      this.$router.push({ name: "login" });
-    }
- 
+    // async  doubleLoggin() {
+    //   await
+    //   },
   },
-  
+  mounted() {
+    this.socketService.registerListener(
+      "is-logged",
+      "is-logged",
+      (data) => {
+
+        let sessionUser = localStorage.getItem(
+         'sessionLogin'
+        );
+
+        console.log(typeof sessionUser, typeof  data._id, String(sessionUser), data._id)
+        if (String(sessionUser) == String(data._id._id)) {
+          console.log("user tem session");
+          localStorage.removeItem('token')
+          this.$router.push({name: 'login'})
+        } else {
+          console.log("user n tem session");
+          console.log('teste login #####', sessionUser);
+        }
+
+        console.log("o evento de login ta vindo do back ainda!", sessionUser);
+      }
+    );
+    //  this.doubleLoggin()
+  },
 });
 </script>
 
@@ -89,7 +108,7 @@ nav {
   display: flex;
   width: 100vw;
   height: 100vh;
-  background:var(--bg-login-primary);
+  background: var(--bg-login-primary);
 }
 .input-search {
   justify-content: center;

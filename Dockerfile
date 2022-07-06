@@ -4,6 +4,6 @@ WORKDIR /home/front
 
 COPY package*.json ./
 
-COPY .docker/ .docker/
+COPY .docker/ .docker/  
 
 EXPOSE 8080

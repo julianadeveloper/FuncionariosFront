@@ -2,7 +2,6 @@
   <div class="container-form">
     <!--imagem de login lado esquerdo-->
     <div class="img-login">
-      
       <img src="../assets/images/login.svg" alt="" />
     </div>
     <hr />
@@ -34,7 +33,7 @@
           v-model="user.password"
         />
       </div>
-      
+
       <button type="submit" class="btn btn-white btn-animate">Login</button>
     </form>
   </div>
@@ -44,6 +43,7 @@
 import { ApiService } from "@/services/api";
 import { defineComponent, ref } from "vue";
 import { mapMutations } from "vuex";
+import { SocketModule } from "@/services/socket";
 export default defineComponent({
   name: "LoginUser",
 
@@ -54,10 +54,10 @@ export default defineComponent({
       password: "",
       role: "",
       token: "",
-      sessionId: "",
+      _id: "",
     });
 
-    return { user, apiService };
+    return { user, apiService, SocketModule };
   },
 
   methods: {
@@ -66,8 +66,7 @@ export default defineComponent({
     ...mapMutations({
       setToken: "authModule/setToken",
       setRole: "authModule/setRole",
-      setSessionId: "authModule/setSessionId"
-      
+      setId: "authModule/setId",
     }),
 
     async login() {
@@ -76,30 +75,26 @@ export default defineComponent({
         username: this.user.username,
         password: this.user.password,
         role: this.user.role,
-        name: "",
-        sessionId: this.user.sessionId,
+        _id: this.user._id,
       });
-      
-      this.setSessionId(response.data.sessionId)
-      localStorage.setItem("sessionId", response.data.sessionId)
+
+      // this.setId(response.data._id);
+      localStorage.setItem('sessionLogin', response.data._id);
 
       this.setToken(response.data.access_token);
       localStorage.setItem("token", response.data.access_token);
 
       this.setRole(response.data.role);
       localStorage.setItem("role", response.data.role);
-      
+
       this.$router.push({ name: "home" });
       const token = response.data;
       this.setRole(response.data.role);
-      // SocketModule.connect()
-    }
+      SocketModule.connect()
+    },
   },
   mounted() {
     console.log(this.setToken);
-
-    
-
   },
 });
 </script>
@@ -129,7 +124,6 @@ hr {
   background: var(--bg-login-primary);
   align-items: center;
   justify-content: space-between;
-  
 }
 .img-login {
   position: relative;

@@ -40,6 +40,7 @@ export default defineComponent({
   methods: {
     async logout() {
       localStorage.removeItem("token");
+      localStorage.removeItem("sessionId")
       this.$router.push({ name: "login" });
     },
     changeTheme() {

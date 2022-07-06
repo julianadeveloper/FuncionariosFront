@@ -34,7 +34,9 @@ export class ApiService {
   async login(data: any) {
     return this.api.post("/login", data);
   }
-
+async logout(data:any){
+  return this.api.get("/logout", data)
+}
   async deleteUser(ids: string[]) {
     return this.api.delete("/users", { params: { ids: ids.join(",") } });
   }

@@ -1,5 +1,5 @@
 export interface State {
     token: string,
     role: string,
-    sessionId: string,
+    _id: string,
 }

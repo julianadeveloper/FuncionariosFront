@@ -48,7 +48,6 @@ export default defineComponent({
     async listUsers(search = "") {
       const response = await this.apiService.listUsers(this.search);
       this.users = await this.apiService.listUsers(search);
-      console.log(response);
     },
   },
   async mounted() {
