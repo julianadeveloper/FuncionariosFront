@@ -25,8 +25,6 @@ import LateralBar from "@/components/LateralBar.vue";
 import CardUserAdminVue from "@/components/CardUserAdmin.vue"; // @ is an alias to /src
 import InputSearch from "@/components/InputSearch.vue";
 import { SocketModule } from "@/services/socket";
-import { mapMutations } from "vuex";
-// import MyUsers from "../components/MyUsers.vue";
 
 export default defineComponent({
   name: "HomeView",
@@ -34,7 +32,6 @@ export default defineComponent({
     LateralBar,
     CardUserAdminVue,
     InputSearch,
-    // MyUsers
   },
   setup() {
     return {
@@ -45,18 +42,14 @@ export default defineComponent({
   },
 
   methods: {
-    // ...mapMutations({
-    //   setId: "authModule/setId",
-    // }),
+
     search(event: any) {
       this.searchUsername = event;
     },
     darktheme(DarkThemeOn: boolean) {
       this.DarkThemeOn = DarkThemeOn;
     },
-    // async  doubleLoggin() {
-    //   await
-    //   },
+
   },
   mounted() {
     this.socketService.registerListener(
@@ -73,10 +66,11 @@ export default defineComponent({
           console.log("user tem session");
           localStorage.removeItem('token')
           this.$router.push({name: 'login'})
-        } else {
-          console.log("user n tem session");
-          console.log('teste login #####', sessionUser);
-        }
+       }
+       // else {
+        //   console.log("user n tem session");
+        //   console.log('teste login #####', sessionUser);
+        // }
 
         console.log("o evento de login ta vindo do back ainda!", sessionUser);
       }
