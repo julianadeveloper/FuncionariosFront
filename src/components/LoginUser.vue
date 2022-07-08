@@ -101,7 +101,18 @@ export default defineComponent({
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
+.title-form {
+  animation: go-back 1s  ;
+}
 
+@keyframes go-back {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
 .title-form {
   margin-bottom: 2rem;
   padding: 1.25rem;

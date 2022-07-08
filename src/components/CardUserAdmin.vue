@@ -44,7 +44,7 @@ export default defineComponent({
     return { users, apiService, socketService: SocketModule.connect() };
   },
   methods: {
-    //método de busca do input
+    //método de busca do input  
     async listUsers(search = "") {
       const response = await this.apiService.listUsers(this.search);
       this.users = await this.apiService.listUsers(search);

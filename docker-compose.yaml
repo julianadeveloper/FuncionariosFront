@@ -6,8 +6,7 @@ networks:
 
 services:
   front:
-    build: 
-      context: ./
+    build: .
     entrypoint: sh ./.docker/entrypoint.sh
     container_name: app-front
     ports:
@@ -17,7 +16,7 @@ services:
     networks:
       - app-teste
     volumes:
-      - ./:/home/front
+      - .:/home/front
   
     
 

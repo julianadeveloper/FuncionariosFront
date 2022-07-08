@@ -1,12 +1,12 @@
 import { Router } from "vue-router";
 
-export class logout{
+export class logoutService{
 private static instance: Router;
 
 public router: Router;
 
 
-constructor(rout: any){
+constructor(rout: Function){
   this.router = rout();
 }
 

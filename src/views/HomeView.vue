@@ -4,7 +4,7 @@
       <!-- <MyUsers/> -->
     </div>
     <section>
-      <LateralBar @theme="darktheme" :class="{ 'dark-mode': DarkThemeOn }" />
+      <LateralBar @theme="darktheme"/>
     </section>
 
     <nav>
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from "vue";
+import { defineComponent } from "vue";
 import LateralBar from "@/components/LateralBar.vue";
 import CardUserAdminVue from "@/components/CardUserAdmin.vue"; // @ is an alias to /src
 import InputSearch from "@/components/InputSearch.vue";
@@ -67,20 +67,15 @@ export default defineComponent({
           localStorage.removeItem('token')
           this.$router.push({name: 'login'})
        }
-       // else {
-        //   console.log("user n tem session");
-        //   console.log('teste login #####', sessionUser);
-        // }
-
         console.log("o evento de login ta vindo do back ainda!", sessionUser);
       }
     );
-    //  this.doubleLoggin()
   },
 });
 </script>
 
 <style scope>
+
 nav {
   display: flex;
   flex-direction: column;
@@ -102,7 +97,7 @@ nav {
   display: flex;
   width: 100vw;
   height: 100vh;
-  background: var(--bg-login-primary);
+  /* background: var(--bg-login-primary); */
 }
 .input-search {
   justify-content: center;

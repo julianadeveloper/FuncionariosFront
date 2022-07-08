@@ -39,7 +39,7 @@ export class SocketModule {
   }
 
   public removeListener(namespace: string, event: string) {
-    if (!this.listeners.has(`${namespace}/${event}`)) return;
+    if (!this.listeners.has(`${namespace}/${event}`))   return ;
 
     this.io.removeListener(event);
     this.listeners.delete(`${namespace}/${event}`);

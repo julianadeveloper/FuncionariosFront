@@ -1,18 +1,22 @@
 import { createStore } from "vuex";
 import { State } from "./auth/types";
+import { Theme } from "./Theme/types";
+
+
 
 export default createStore({
   state: {
+    
   },
 
   getters: {},
 
-  mutations: {},
+  mutations: {
 
-  actions: {
 
-    
   },
+
+  actions: {},
 
   modules: {
     authModule: {
@@ -39,6 +43,30 @@ export default createStore({
       actions:{
           
       }
+
     },
-  },
+    ThemeModule:{
+      namespaced: true,
+
+      state: (): Theme => ({
+        DarkThemeOn: false,
+      }),
+      
+      
+      getters: {
+        getDarkThemeOn: (state) => state.DarkThemeOn,
+      },
+      mutations: {
+    
+          MudaTema(state){
+            state.DarkThemeOn = true
+          }
+        
+          
+    }
+  }
+  }
+
+    
+    ,
 });
