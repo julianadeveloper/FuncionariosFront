@@ -1,6 +1,6 @@
 <template>
-  <div v-for="(user, i) in users" :key="i" class="card" style="width: 22rem">
-    <div class="card-body">
+  <div v-for="(user, i) in users" :key="i" class="card" > <!--style="width: 22rem"-->
+    <div class="card-container">
       <h5 class="card-title">Dados do Funcionário</h5>
       <p>Nome:{{ user.name }}</p>
       <p>Matricula:{{ user.username }}</p>
@@ -34,6 +34,7 @@ export default defineComponent({
   },
   watch: {
     search(value) {
+      console.log('watch')
       this.listUsers(value);
     },
   },
@@ -48,6 +49,8 @@ export default defineComponent({
     async listUsers(search = "") {
       const response = await this.apiService.listUsers(this.search);
       this.users = await this.apiService.listUsers(search);
+      console.log('response:', response)
+      return response;
     },
   },
   async mounted() {
@@ -84,7 +87,7 @@ export default defineComponent({
 </script>
 <style scoped>
 
-.card-body{
+.card-container{
   box-shadow: 5px 5px 20px;
 }
 .btn {
@@ -97,7 +100,7 @@ export default defineComponent({
 }
 .card {
   max-width: 100%;
-  background-color: rgb(61, 70, 78);
+  background-color: rgb(179, 189, 197);
   margin: 0.5rem;
 }
 p {

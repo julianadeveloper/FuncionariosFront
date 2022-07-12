@@ -17,6 +17,7 @@ services:
       - app-teste
     volumes:
       - .:/home/front
+    
   
     
 

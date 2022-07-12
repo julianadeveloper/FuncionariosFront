@@ -9,7 +9,7 @@
       <i class="fa-solid fa-house-user fa-lg"></i>
     </button>
 
-    <button class="user-icon" @click="$router.push({ name: 'CreateView' })">
+    <button class="user-icon" @click="$router.push({ name: 'CreateView' })"  v-if="isAdmin">
       <i class="fa-solid fa-user-group fa-lg"></i>
     </button>
 
@@ -21,12 +21,15 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapGetters } from "vuex";
 export default defineComponent({
   name: "LateralBar",
   data() {
     return { DarkThemeOn: false };
   },
   computed: {
+        ...mapGetters({ isAdmin: "authModule/isAdmin" }),
+
     textButton() {
       if (!this.DarkThemeOn) {
         return "Dark";

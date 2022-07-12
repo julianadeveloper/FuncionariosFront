@@ -59,7 +59,7 @@ export default createStore({
       mutations: {
     
           MudaTema(state){
-            state.DarkThemeOn = true
+            state.DarkThemeOn = !state.DarkThemeOn
           }
         
           

@@ -4,7 +4,7 @@
       <!-- <MyUsers/> -->
     </div>
     <section>
-      <LateralBar @theme="darktheme"/>
+      <LateralBar @theme="darktheme" />
     </section>
 
     <nav>
@@ -33,49 +33,49 @@ export default defineComponent({
     CardUserAdminVue,
     InputSearch,
   },
-  setup() {
+  setup(){
+return{
+        DarkThemeOn: false,
+      socketService: SocketModule.connect(),
+}
+  },
+  data() {
     return {
       searchUsername: "",
-      DarkThemeOn: false,
-      socketService: SocketModule.connect(),
+
     };
   },
 
   methods: {
-
     search(event: any) {
       this.searchUsername = event;
-    },
-    darktheme(DarkThemeOn: boolean) {
+      
+    
+},
+      darktheme(DarkThemeOn: boolean) {
       this.DarkThemeOn = DarkThemeOn;
     },
-
   },
-  mounted() {
-    this.socketService.registerListener(
-      "is-logged",
-      "is-logged",
-      (data) => {
+  async mounted() {
+    await this.socketService.registerListener("is-logged", "is-logged", (data) => {
+      let sessionUser = localStorage.getItem("sessionLogin");
 
-        let sessionUser = localStorage.getItem(
-         'sessionLogin'
-        );
-
-        console.log(typeof sessionUser, typeof  data._id, String(sessionUser), data._id)
-        if (String(sessionUser) == String(data._id._id)) {
-          console.log("user tem session");
-          localStorage.removeItem('token')
-          this.$router.push({name: 'login'})
-       }
-        console.log("o evento de login ta vindo do back ainda!", sessionUser);
+      // console.log(
+      //   typeof sessionUser,
+      //   typeof data._id,
+      //   String(sessionUser),
+      //   data._id
+      // );
+      if (String(sessionUser) == String(data._id._id)) {
+        localStorage.removeItem("token");
+        this.$router.push({ name: "login" });
       }
-    );
+    });
   },
 });
 </script>
 
 <style scope>
-
 nav {
   display: flex;
   flex-direction: column;

@@ -14,18 +14,21 @@ export default defineComponent({
   setDarkthemeOn: "ThemeModule/setDarkThemeOn"
 }),
 
-created() {
-  console.log('store 2', store)
-},
+// created() {
+//   console.log('store 123', store)
+// },
 
-setup() {
-  const store = useStore(key);
-  console.log(store)
-    // return { DarkThemeOn: store.state.DarkThemeOn };
-  },
-  methods:{
+// setup() {
+//   const store = useStore(key);
+//   console.log(store)
+//     // return { DarkThemeOn: store.state.DarkThemeOn };
+//   },
+//   methods:{
     
-  }
+//     MudaTema(){
+//             this.$store.commit({type: this.MudaTema})
+//           }
+//   }
 })
 </script>
 
