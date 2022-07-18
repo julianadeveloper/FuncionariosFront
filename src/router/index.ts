@@ -6,7 +6,6 @@ import {
 } from "vue-router";
 import FormCreateUser from "../views/CreateView.vue";
 import LateralBar from "../views/HomeView.vue";
-import DashboardView from "..views/DashboardView.vue";
 
 //logica de autenticação pro rota, nativa do vue-router
 const authGuard = () => (to: RouteLocation, from: RouteLocation, next:any) => {
@@ -45,13 +44,11 @@ export const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "updateView" */ "../views/UpdateView.vue"),
   },
   {
-    path: "/panel",
-    name: "panel",
+    path: "/Dashboard",
+    name: "DashBoardView",
     beforeEnter: authGuard(),
     component: () =>
-      import(
-        /* webpackChunkName: "CardUser" */ "../components/CardUserAdmin.vue"
-      ),
+      import(/* webpackChunkName: "Dashboard" */ "../views/DashBoardView.vue"),
   },
 ];
 
@@ -62,7 +59,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.path === "/") {
-    if (localStorage.getItem("token")) return next("/home");
+    if (localStorage.getItem("token")) return next("/dashboard");
   }
 
   next();

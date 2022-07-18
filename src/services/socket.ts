@@ -4,7 +4,7 @@ export class SocketModule {
   private static instance: SocketModule;
 
   private io: Socket;
-  private listeners = new Map<string, any>(); //tentar entender melhor
+  private listeners = new Map<string, any>();
 
   
 //constructor do que vai ter na minha classe.

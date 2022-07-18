@@ -100,7 +100,7 @@ export default defineComponent({
 }
 .card {
   max-width: 100%;
-  background-color: rgb(179, 189, 197);
+  background: rgb(227, 222, 222);
   margin: 0.5rem;
 }
 p {

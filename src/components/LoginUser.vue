@@ -87,7 +87,7 @@ export default defineComponent({
       this.setRole(response.data.role);
       localStorage.setItem("role", response.data.role);
 
-      this.$router.push({ name: "home" });
+      this.$router.push({ name: "DashBoardView" });
       const token = response.data;
       this.setRole(response.data.role);
       SocketModule.connect()

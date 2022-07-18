@@ -5,13 +5,10 @@
 
       {{ textButton }}
     </button>
-    <button class="home-icon" @click="$router.push({ name: 'home' })">
+    <button class="home-icon" @click="$router.push({ name: 'DashBoardView' })">
       <i class="fa-solid fa-house-user fa-lg"></i>
     </button>
 
-    <button class="user-icon" @click="$router.push({ name: 'CreateView' })"  v-if="isAdmin">
-      <i class="fa-solid fa-user-group fa-lg"></i>
-    </button>
 
     <button class="logout-icon" @click="logout">
       <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
@@ -21,14 +18,13 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapGetters } from "vuex";
 export default defineComponent({
   name: "LateralBar",
   data() {
     return { DarkThemeOn: false };
   },
   computed: {
-        ...mapGetters({ isAdmin: "authModule/isAdmin" }),
+       
 
     textButton() {
       if (!this.DarkThemeOn) {
@@ -40,8 +36,9 @@ export default defineComponent({
   },
   methods: {
     async logout() {
-      localStorage.removeItem("token");
-      localStorage.removeItem("sessionId");
+      localStorage.removeItem("token")
+      localStorage.removeItem("sessionLogin")
+      localStorage.removeItem("role");
       this.$router.push({ name: "login" });
     },
     changeTheme() {
