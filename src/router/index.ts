@@ -19,8 +19,8 @@ const authGuard = () => (to: RouteLocation, from: RouteLocation, next:any) => {
 
 export const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    name: "login",
+    path: '/:pathMatch(.*)*',
+    name: 'user-redirect',
     component: () =>
       import(/* webpackChunkName: "loginVue" */ "../views/LoginView.vue"),
   },

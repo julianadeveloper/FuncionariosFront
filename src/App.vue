@@ -1,4 +1,4 @@
-<template>
+<template id="homeview">
   <router-view />
 </template>
 <script lang="ts">
@@ -34,6 +34,12 @@ export default defineComponent({
 
 
 <style>
+#homeview {
+  display: flex;
+  max-width: 100vw;
+  height: 100vh;
+   background: var(--bg-login-primary);
+}
 #app {
   width: 100vw;
   height: 100vh;

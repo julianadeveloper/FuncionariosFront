@@ -87,24 +87,24 @@ export default defineComponent({
 </script>
 <style scoped>
 
-.card-container{
-  box-shadow: 5px 5px 20px;
-}
+
 .btn {
   margin: 0.5rem;
 }
 .card-title,
 .card-text {
-  color: white;
+  color: var(--text-primary);
   text-align: center;
 }
 .card {
   max-width: 100%;
   background: rgb(227, 222, 222);
   margin: 0.5rem;
+  color: var(--text-primary);
+
 }
 p {
-  color: white;
+  color: var(--text-primary);
 }
 
 @media only screen and (max-width: 720px) {

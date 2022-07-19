@@ -25,6 +25,7 @@ import LateralBar from "@/components/LateralBar.vue";
 import CardUserAdminVue from "@/components/CardUserAdmin.vue"; // @ is an alias to /src
 import InputSearch from "@/components/InputSearch.vue";
 import { SocketModule } from "@/services/socket";
+import { ApiService } from "@/services/api";
 
 export default defineComponent({
   name: "HomeView",
@@ -35,6 +36,7 @@ export default defineComponent({
   },
   setup(){
 return{
+  apiService: new ApiService(),
         DarkThemeOn: false,
       socketService: SocketModule.connect(),
 }
@@ -49,14 +51,15 @@ return{
   methods: {
     search(event: any) {
       this.searchUsername = event;
-      
-    
+
+
 },
       darktheme(DarkThemeOn: boolean) {
       this.DarkThemeOn = DarkThemeOn;
     },
   },
-  // async mounted() {
+ async mounted() {
+   await this.apiService.listUsers()
   //   await this.socketService.registerListener("is-logged", "is-logged", (data) => {
   //     let sessionUser = localStorage.getItem("sessionLogin");
 
@@ -72,6 +75,7 @@ return{
   //     }
   //   });
   // },
+}
 });
 </script>
 
@@ -92,12 +96,13 @@ nav {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  color: black;
 }
 #homeview {
   display: flex;
   width: 100vw;
   height: 100vh;
-  /* background: var(--bg-login-primary); */
+  background: var(--bg-login-primary);
 }
 .input-search {
   justify-content: center;
