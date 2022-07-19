@@ -13,6 +13,6 @@ import "vue-toastification/dist/index.css";
 
 library.add(fas);
 const app = createApp(App);
-
+app.use(Toast);
 app.use(store);
 app.use(router).mount("#app");

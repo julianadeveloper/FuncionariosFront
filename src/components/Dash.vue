@@ -7,7 +7,6 @@
       >
     </div>
     <div class="body-menu" v-if="isAdmin">
-
       <a class="btn-dashboard" @click="$router.push({ name: 'CreateView' })"
         >Cadastrar usuarios</a
       >
@@ -18,12 +17,32 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
+import { useToast } from "vue-toastification";
+
 export default defineComponent({
   name: "DashboardComponent",
+setup(){
+   const toast = useToast();
 
+      // Use it!
+      toast("I'm a toast!");
+
+      // or with options
+      toast.success("My toast content", {
+        timeout: 2000
+      })
+            return { toast }
+
+},
   computed: {
     ...mapGetters({ isAdmin: "authModule/isAdmin" }),
   },
+ methods: {
+      myMethod() {
+
+        // Since you returned `toast` from setup(), you can access it now
+        this.toast.info("I'm an info toast!");
+          }    }
 });
 </script>
 
