@@ -44,10 +44,13 @@ import { ApiService } from "@/services/api";
 import { defineComponent, ref } from "vue";
 import { mapMutations } from "vuex";
 import { SocketModule } from "@/services/socket";
+import { useToast } from "vue-toastification";
+
 export default defineComponent({
   name: "LoginUser",
 
   setup() {
+  
     const apiService = new ApiService();
     const user = ref({
       username: "",
@@ -57,7 +60,7 @@ export default defineComponent({
       _id: "",
     });
 
-    return { user, apiService, SocketModule };
+    return { user, apiService, SocketModule};
   },
 
   methods: {
@@ -77,9 +80,10 @@ export default defineComponent({
         role: this.user.role,
         _id: this.user._id,
       });
+              
 
       // this.setId(response.data._id);
-      localStorage.setItem('sessionLogin', response.data._id);
+      localStorage.setItem("sessionLogin", response.data._id);
 
       this.setToken(response.data.access_token);
       localStorage.setItem("token", response.data.access_token);
@@ -90,7 +94,8 @@ export default defineComponent({
       this.$router.push({ name: "DashBoardView" });
       const token = response.data;
       this.setRole(response.data.role);
-      SocketModule.connect()
+
+      SocketModule.connect();
     },
   },
   mounted() {
@@ -102,7 +107,7 @@ export default defineComponent({
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
 .title-form {
-  animation: go-back 1s  ;
+  animation: go-back 1s;
 }
 
 @keyframes go-back {

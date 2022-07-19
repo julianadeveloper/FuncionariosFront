@@ -87,7 +87,9 @@ export default defineComponent({
 </script>
 <style scoped>
 
-
+.card-container{
+  box-shadow: 5px 5px 20px;
+}
 .btn {
   margin: 0.5rem;
 }

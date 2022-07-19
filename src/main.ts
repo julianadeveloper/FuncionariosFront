@@ -7,7 +7,8 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import "@/assets/globalStyle.css";
-
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
 
 
 library.add(fas);
