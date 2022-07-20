@@ -57,7 +57,8 @@ export default defineComponent({
   justify-content: center;
   width: 10rem;
   height: 100vh;
-  background: rgba(17, 16, 16, 0.747);
+  /* background: rgba(17, 16, 16, 0.747); */
+  background: #5159bb;
   box-shadow: 4px 5px 20px;
 }
 

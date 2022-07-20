@@ -44,13 +44,13 @@ import { ApiService } from "@/services/api";
 import { defineComponent, ref } from "vue";
 import { mapMutations } from "vuex";
 import { SocketModule } from "@/services/socket";
-import { useToast } from "vue-toastification";
+import { POSITION, useToast } from "vue-toastification";
 
 export default defineComponent({
   name: "LoginUser",
 
   setup() {
-  
+    
     const apiService = new ApiService();
     const user = ref({
       username: "",
@@ -59,11 +59,21 @@ export default defineComponent({
       token: "",
       _id: "",
     });
+ 
 
     return { user, apiService, SocketModule};
   },
 
   methods: {
+    chamaToast(){
+           const toast = useToast();
+   
+         // or with options
+         toast.success("Você está logado", {
+           position: POSITION.BOTTOM_RIGHT,
+           timeout: 2000
+         })
+    },
     ///mapeando minhas mutations e tudo q existem nelas
     //o metodo setToken esta importando do diretório authModule/setToken a mutation
     ...mapMutations({
@@ -71,8 +81,8 @@ export default defineComponent({
       setRole: "authModule/setRole",
       setId: "authModule/setId",
     }),
-
     async login() {
+      try{
       const response = await this.apiService.login({
         required: true,
         username: this.user.username,
@@ -94,10 +104,14 @@ export default defineComponent({
       this.$router.push({ name: "DashBoardView" });
       const token = response.data;
       this.setRole(response.data.role);
-
+    this.chamaToast()
       SocketModule.connect();
-    },
-  },
+    }
+    catch(error){
+        alert('dados incorretos!')
+      }
+  }},
+  
   mounted() {
     console.log(this.setToken);
   },

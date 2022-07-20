@@ -1,14 +1,21 @@
 <template>
-  <div v-for="(user, i) in users" :key="i" class="card" > <!--style="width: 22rem"-->
-    <div class="card-container">
-      <h5 class="card-title">Dados do Funcionário</h5>
-      <p>Nome:{{ user.name }}</p>
-      <p>Matricula:{{ user.username }}</p>
-      <p>Funções: {{ user.role }}</p>
-      <div v-if="isAdmin">
-        <ButtonAdm :user="user" @delete="users.splice(i, 1)" />
-      </div>
+  <div v-for="(user, i) in users" :key="i" class="card">
+    <div class="card-content" :user="user" @delete="users.splice(i, 1)">
+      <i class="icon-user fa-solid fa-user fa-2xl"></i>
+      <div class="">
+        <MyModal v-if="modal && user._id === userSelect" :user="user"  @closemymodal="close">
+        </MyModal>
 
+        <p>Nome:{{ user.name }}</p>
+        <p>Matricula:{{ user.username }}</p>
+        <p>Funções: {{ user.role }}</p>
+      </div>
+      <div v-if="isAdmin">
+        <ButtonAdm
+          @openmymodal="modalIsOpen"
+          :user="user"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -20,9 +27,10 @@ import ButtonAdm from "./ButtonAdm.vue";
 import { mapGetters } from "vuex";
 import { SocketModule } from "@/services/socket";
 import User from "@/interface/User";
+import MyModal from "@/components/MyModal.vue";
 export default defineComponent({
   name: "CardUserAdmin",
-  components: { ButtonAdm },
+  components: { ButtonAdm, MyModal },
   props: {
     search: {
       type: String,
@@ -34,9 +42,12 @@ export default defineComponent({
   },
   watch: {
     search(value) {
-      console.log('watch')
+      console.log("watch");
       this.listUsers(value);
     },
+  },
+  data() {
+    return { modal: false, userSelect: "" };
   },
 
   setup() {
@@ -45,12 +56,21 @@ export default defineComponent({
     return { users, apiService, socketService: SocketModule.connect() };
   },
   methods: {
-    //método de busca do input  
+    //método de busca do input
     async listUsers(search = "") {
       const response = await this.apiService.listUsers(this.search);
       this.users = await this.apiService.listUsers(search);
-      console.log('response:', response)
+      console.log("response:", response);
       return response;
+    },
+    modalIsOpen(params: string) {
+      this.userSelect = params;
+      this.modal = !this.modal;
+    },
+
+    close(params: string) {
+      this.userSelect = params;
+      this.modal = !this.modal;
     },
   },
   async mounted() {
@@ -64,7 +84,6 @@ export default defineComponent({
         if (foundIndex) this.users.splice(foundIndex, 1);
       }
     );
-
     this.socketService.registerListener(
       "up-users",
       "update",
@@ -73,7 +92,7 @@ export default defineComponent({
         this.listUsers(); //listando com os dados alterados q retornam do backend
       }
     );
-       this.socketService.registerListener(
+    this.socketService.registerListener(
       "new",
       "new-user",
       (data: { id: string }) => {
@@ -81,32 +100,41 @@ export default defineComponent({
         this.listUsers(); //listando com os dados alterados q retornam do backend
       }
     );
-    
   },
 });
 </script>
 <style scoped>
-
-.card-container{
-  box-shadow: 5px 5px 20px;
-}
 .btn {
   margin: 0.5rem;
 }
-.card-title,
+.icon-user {
+  color: #5159bb;
+  display: flex;
+  margin: 1rem;
+  align-items: center;
+  justify-content: center;
+}
 .card-text {
   color: var(--text-primary);
   text-align: center;
 }
 .card {
-  max-width: 100%;
-  background: rgb(227, 222, 222);
-  margin: 0.5rem;
+  position: relative;
+  padding: 1.5rem;
+  margin: 1rem;
   color: var(--text-primary);
-
 }
 p {
   color: var(--text-primary);
+}
+myModal{
+  position: absolute;
+  overflow: hidden;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
 @media only screen and (max-width: 720px) {

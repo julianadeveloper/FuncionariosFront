@@ -15,34 +15,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { mapGetters } from "vuex";
-import { useToast } from "vue-toastification";
+import { ApiService } from "@/services/api";
 
 export default defineComponent({
   name: "DashboardComponent",
 setup(){
-   const toast = useToast();
+  const apiService = new ApiService();
+  const user = ref({
+    username: "",
+  });
+  
 
-      // Use it!
-      toast("I'm a toast!");
-
-      // or with options
-      toast.success("My toast content", {
-        timeout: 2000
-      })
-            return { toast }
+    return { user, apiService };
 
 },
   computed: {
     ...mapGetters({ isAdmin: "authModule/isAdmin" }),
   },
- methods: {
-      myMethod() {
-
-        // Since you returned `toast` from setup(), you can access it now
-        this.toast.info("I'm an info toast!");
-          }    }
 });
 </script>
 

@@ -8,7 +8,7 @@
       v-model="user.username"
     />
 
-    <button class="btn btn-success" @click="listerUsername">Buscar</button>
+    <button class="btn button is-info is-outlined" @click="listerUsername">Buscar</button>
   </div>
 </template>
 <script lang="ts">

@@ -50,6 +50,13 @@ export const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "Dashboard" */ "../views/DashBoardView.vue"),
   },
+  {
+    path: "/modal",
+    name: "modal",
+    beforeEnter: authGuard(),
+    component: () =>
+    import(/* webpackChunkName: "Dashboard" */ "../components/MyModal.vue"),
+  },
 ];
 
 const router = createRouter({

@@ -1,12 +1,17 @@
 <template>
-  <div class="button-adm" >
+  <div class="btn">
     <a
       href="#"
-      class="btn btn-primary btn-sm"
+      class="btn button is-info is-outlined"
       @click="$router.push({ name: 'UpdateView', params: { id: user._id } })"
       >Alterar dados</a
     >
-    <a href="#" class="btn btn-danger btn-sm" @click="deleteUser">Excluir</a>
+    <a
+      href="#"
+      class="btn button is-danger is-outlined"
+      @click="openModal"
+      >Excluir</a
+    >
   </div>
 </template>
 
@@ -23,27 +28,26 @@ export default defineComponent({
       required: true,
     },
   },
+
   setup() {
     const apiService = new ApiService();
     return {
-      apiService
+      apiService,
     };
   },
   methods: {
-   
-    async deleteUser() {
-      alert("Deletando usuario");
-
-      await this.apiService.deleteUser([this.user._id]);
-
-      this.$emit("delete", this.user);
-    },
+    openModal(){
+    this.$emit("openmymodal", this.user._id)
+    }
+      //   this.$emit("delete", this.user);
+    // abreAlert() {!this.$data.modalOpen},
+    // async deleteUser() {
+      
+    //   await this.apiService.deleteUser([this.user._id]);
+      //   this.$emit("delete", this.user);
+    // },
   },
 });
 </script>
 
-<style scoped>
-.btn {
-  margin: 0 1rem;
-}
-</style>
+<style scoped></style>

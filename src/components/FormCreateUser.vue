@@ -1,62 +1,72 @@
 <template>
-  <section class="createuser">
-    <form class=" form-create">
+ <div class="form-body">
+    <form class="form-update">
       <div class="form-group">
-        <h5>Cadastrar Usuario</h5>
-        <label for="exampleInputEmail1">Número de matricula</label>
-        <input
-          type="text"
-          class="form-control"
-          id="exampleInputEmail1"
-          placeholder="Numero de matrícula"
-          v-model="user.username"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Nome do usuário</label>
-        <input
-          type="text"
-          class="form-control"
-          id="exampleInputUser"
-          placeholder="Nome"
-          v-model="user.name"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1"> Senha</label>
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          placeholder="Senha"
-          v-model="user.password"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Confirmar Senha</label>
-        <input
-          type="password"
-          class="form-control"
-          placeholder="Confirmar Senha"
-          v-model="user.passwordConfirm"
-        />
-      </div>
-      <div class="form-group">
-        <label>Tipo de usuário</label>
-        <select   v-model="user.role" id="roles" name="roles">
-          <option value="operador" name="roles">Operador</option>
-          <option value="admin" name="roles" >Admin</option>
-        </select>
-      </div>
-      <button
+        <div class="form-group">
+          <label for="exampleInputEmail1">Matricula</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            placeholder="matrícula"
+            v-model="user.username"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nome do usuário</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputName"
+            placeholder="Nome"
+            v-model="user.name"
+          />
+        </div>
+        <div class="form-group">
+          <label>Tipo de usuário</label>
+          <select
+            class="form-control form-control-sm"
+            v-model="user.role"
+            id="roles"
+            name="roles"
+          >
+            <option value="operador" name="roles">funcionário</option>
+            <option value="admin" name="roles">Admin</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1"> Senha</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Senha"
+            v-model="user.password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Confirmar Senha</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword2"
+            placeholder="Confirmar senha"
+            v-model="user.password"
+          />
+        </div>
+         <button
         type="button"
         class="btn btn-success"
         @click.prevent="register(), $router.push({ name: 'home' })"
       >
         Cadastrar
       </button>
+      </div>
     </form>
-  </section>
+  </div>
+
+
+ 
 </template>
 
 <script lang="ts">
