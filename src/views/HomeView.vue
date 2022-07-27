@@ -60,21 +60,7 @@ return{
   },
  async mounted() {
    await this.apiService.listUsers()
-  //   await this.socketService.registerListener("is-logged", "is-logged", (data) => {
-  //     let sessionUser = localStorage.getItem("sessionLogin");
 
-  //     // console.log(
-  //     //   typeof sessionUser,
-  //     //   typeof data._id,
-  //     //   String(sessionUser),
-  //     //   data._id
-  //     // );
-  //     if (String(sessionUser) == String(data._id._id)) {
-  //       localStorage.removeItem("token");
-  //       this.$router.push({ name: "login" });
-  //     }
-  //   });
-  // },
 }
 });
 </script>
@@ -89,6 +75,7 @@ nav {
   height: auto;
   overflow-y: scroll;
 }
+
 .card-home {
   padding: 1rem;
   max-width: 100%;

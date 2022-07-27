@@ -62,6 +62,7 @@ return{
 </script>
 
 <style scope>
+
 nav {
   display: flex;
   flex-direction: column;

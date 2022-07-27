@@ -15,7 +15,9 @@ export class SocketModule {
   
   public static connect() {
     if (SocketModule.instance) return SocketModule.instance;
-		console.log('vou criar!!!')
+
+
+		console.log('criei a conexao com meu backend!!!')
     SocketModule.instance = new SocketModule("ws://localhost:3001");
     return SocketModule.instance;
   }
@@ -32,6 +34,8 @@ export class SocketModule {
     event: string,
     cb: (...args: any) => void
   ) {
+
+    
     if (this.listeners.has(`${namespace}/${event}`)) return;
 
     this.io.on(event, cb);

@@ -1,18 +1,16 @@
 <template>
-  <nav class="nav-modal">
-    <div> 
+  <div class="modal-background">
+    <div class="modal-content"> 
       <div >
         <a class="btn button is-info is-outlined" @click="deleteUser"
           >Confirmar</a
         >
-      </div>
-      <div>
         <a class="btn button is-info is-outlined" @click="closeModal"
-          >Cancelar</a
+          >X</a
         >
       </div>
     </div>
-  </nav>
+ </div>
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
@@ -48,9 +46,11 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-.nav-modal{
-  width: 200px;
-  height: 200px;
-  background-color: rgb(238, 209, 204);
+.modal-background{
+  position: absolute;
+  display: block;
+}
+.btn{
+  margin: 1rem;
 }
 </style>

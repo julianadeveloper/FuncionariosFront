@@ -31,7 +31,7 @@ export default createStore({
       getters: {
         getToken: (state) => state.token,
         getRole : (state) => state.role,
-        isAdmin: (state) => state.role === 'admin',
+        isAdmin: (state) => state.role === 'admin',  
         getId: (state) => state.data._id,
       },
 

@@ -1,5 +1,5 @@
 <template>
- <div class="form-body">
+  <div class="form-body">
     <form class="form-update">
       <div class="form-group">
         <div class="form-group">
@@ -54,19 +54,12 @@
             v-model="user.password"
           />
         </div>
-         <button
-        type="button"
-        class="btn btn-success"
-        @click.prevent="register(), $router.push({ name: 'home' })"
-      >
-        Cadastrar
-      </button>
+        <button type="button" class="btn btn-success" @click.prevent="register">
+          Cadastrar
+        </button>
       </div>
     </form>
   </div>
-
-
- 
 </template>
 
 <script lang="ts">
@@ -87,10 +80,10 @@ export default defineComponent({
   },
 
   methods: {
-    register() {
+  async  register() {
       const passwordOk = this.user.password === this.user.passwordConfirm;
-
-      this.apiService.userCreate(this.user);
+     await this.apiService.userCreate(this.user);
+      this.$router.push({ name: "home" });
     },
   },
 });

@@ -3,7 +3,7 @@
     <div class="card-content" :user="user" @delete="users.splice(i, 1)">
       <i class="icon-user fa-solid fa-user fa-2xl"></i>
       <div class="">
-        <MyModal v-if="modal && user._id === userSelect" :user="user"  @closemymodal="close">
+        <MyModal class="modal" v-if="modal && user._id === userSelect" :user="user"  @closemymodal="close">
         </MyModal>
 
         <p>Nome:{{ user.name }}</p>
@@ -72,6 +72,7 @@ export default defineComponent({
       this.userSelect = params;
       this.modal = !this.modal;
     },
+
   },
   async mounted() {
     await this.listUsers();
@@ -82,6 +83,7 @@ export default defineComponent({
       (data: { id: string }) => {
         const foundIndex = this.users.findIndex((user) => user._id === data.id);
         if (foundIndex) this.users.splice(foundIndex, 1);
+        this.listUsers(); 
       }
     );
     this.socketService.registerListener(
@@ -104,6 +106,13 @@ export default defineComponent({
 });
 </script>
 <style scoped>
+.modal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
 .btn {
   margin: 0.5rem;
 }
@@ -119,26 +128,18 @@ export default defineComponent({
   text-align: center;
 }
 .card {
-  position: relative;
   padding: 1.5rem;
   margin: 1rem;
   color: var(--text-primary);
+  max-height: 50%;
 }
 p {
   color: var(--text-primary);
 }
-myModal{
-  position: absolute;
-  overflow: hidden;
-  flex-direction: row;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
 
 @media only screen and (max-width: 720px) {
   .card {
+    height: 100vh;
     max-width: 100%;
   }
 }
