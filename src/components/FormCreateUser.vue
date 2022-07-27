@@ -65,6 +65,7 @@
 <script lang="ts">
 import { ApiService } from "../services/api";
 import { defineComponent, ref } from "vue";
+import { POSITION, useToast } from "vue-toastification";
 export default defineComponent({
   name: "FormCreateUser",
   setup() {
@@ -80,10 +81,22 @@ export default defineComponent({
   },
 
   methods: {
+
+     chamaToast() {
+      const toast = useToast();
+
+      // or with options
+      toast.success(`O usuário ${this.user.username} foi cadastrado!`, {
+        position: POSITION.BOTTOM_RIGHT,
+        timeout: 2000,
+      });
+    },
+    
   async  register() {
       const passwordOk = this.user.password === this.user.passwordConfirm;
      await this.apiService.userCreate(this.user);
       this.$router.push({ name: "home" });
+      this.chamaToast()
     },
   },
 });

@@ -18,6 +18,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { POSITION, useToast } from "vue-toastification";
 export default defineComponent({
   name: "LateralBar",
   data() {
@@ -35,16 +36,27 @@ export default defineComponent({
     },
   },
   methods: {
+        chamaToast(){
+           const toast = useToast();
+   
+         // or with options
+         toast.warning("Você fez logout", {
+           position: POSITION.BOTTOM_RIGHT,
+           timeout: 2000
+         })
+    },
     async logout() {
       localStorage.removeItem("token")
       localStorage.removeItem("sessionLogin")
       localStorage.removeItem("role");
       this.$router.push({ name: "login" });
+      this.chamaToast()
     },
     changeTheme() {
       this.DarkThemeOn = !this.DarkThemeOn;
       this.$emit("theme", this.DarkThemeOn);
     },
+    
   },
 });
 </script>

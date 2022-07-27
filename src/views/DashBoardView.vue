@@ -8,7 +8,7 @@
     </section>
 
     <nav>
-    <DashboardComponentVue/>
+      <DashboardComponentVue />
     </nav>
   </div>
 </template>
@@ -18,51 +18,70 @@ import { defineComponent } from "vue";
 import LateralBar from "@/components/LateralBar.vue";
 import { SocketModule } from "@/services/socket";
 import DashboardComponentVue from "@/components/Dash.vue";
+import { POSITION, useToast } from "vue-toastification";
 
 export default defineComponent({
   name: "DashboardView",
   components: {
     LateralBar,
-    DashboardComponentVue
-},
-  setup(){
-return{
-        DarkThemeOn: false,
+    DashboardComponentVue,
+  },
+  setup() {
+    return {
+      DarkThemeOn: false,
       socketService: SocketModule.connect(),
-}
+    };
   },
   data() {
     return {
       searchUsername: "",
-
     };
   },
 
   methods: {
     search(event: any) {
       this.searchUsername = event;
-      
-    
-},
-      darktheme(DarkThemeOn: boolean) {
+    },
+    darktheme(DarkThemeOn: boolean) {
       this.DarkThemeOn = DarkThemeOn;
+    },
+    chamaToast() {
+      const toast = useToast();
+
+      // or with options
+      toast.warning("Você foi deslogado devido a  um acesso simultâneo", {
+        position: POSITION.BOTTOM_RIGHT,
+        timeout: 2000,
+      });
+    },
+     async logout() {
+      localStorage.removeItem("token")
+      localStorage.removeItem("sessionLogin")
+      localStorage.removeItem("role");
+      this.$router.push({ name: "login" });
+      this.chamaToast()
     },
   },
   async mounted() {
-    await this.socketService.registerListener("is-logged", "is-logged", (data) => {
-      let sessionUser = localStorage.getItem("sessionLogin");
+    await this.socketService.registerListener(
+      "is-logged",
+      "is-logged",
+      (data) => {
+        let sessionUser = localStorage.getItem("sessionLogin");
+        if (String(sessionUser) == String(data._id._id)) {
 
-      if (String(sessionUser) == String(data._id._id)) {
-        localStorage.removeItem("token");
-        this.$router.push({ name: "login" });
+          setTimeout(() => {
+           this.logout()
+          }, 3000);
+          clearTimeout(3001);
+        }
       }
-    });
+    );
   },
 });
 </script>
 
 <style scope>
-
 nav {
   display: flex;
   flex-direction: column;

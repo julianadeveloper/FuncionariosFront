@@ -16,6 +16,7 @@
 import { defineComponent, PropType } from "vue";
 import User from "../interface/User";
 import { ApiService } from "@/services/api";
+import { POSITION, useToast } from "vue-toastification";
 
 export default defineComponent({
   name: "MyModal",
@@ -32,15 +33,28 @@ export default defineComponent({
     };
   },
   methods: {
+
+
     closeModal() {
       this.$emit("closemymodal", this.user._id);
       //  this.$router.push({name: 'home'})
     },
+         chamaToast() {
+      const toast = useToast();
+
+      // or with options
+      toast.warning("Usuário excluído com sucesso.", {
+        position: POSITION.BOTTOM_RIGHT,
+        timeout: 2000,
+      });
+
+    },
 
     async deleteUser() {
       await this.apiService.deleteUser([this.user._id]);
-
+    this.chamaToast()
       this.$emit("delete", this.user);
+
     },
   },
 });

@@ -28,6 +28,7 @@ import { mapGetters } from "vuex";
 import { SocketModule } from "@/services/socket";
 import User from "@/interface/User";
 import MyModal from "@/components/MyModal.vue";
+import { POSITION, useToast } from "vue-toastification";
 export default defineComponent({
   name: "CardUserAdmin",
   components: { ButtonAdm, MyModal },
@@ -72,6 +73,7 @@ export default defineComponent({
       this.userSelect = params;
       this.modal = !this.modal;
     },
+     
 
   },
   async mounted() {
@@ -84,6 +86,7 @@ export default defineComponent({
         const foundIndex = this.users.findIndex((user) => user._id === data.id);
         if (foundIndex) this.users.splice(foundIndex, 1);
         this.listUsers(); 
+        
       }
     );
     this.socketService.registerListener(
