@@ -1,13 +1,11 @@
 <template>
   <div id="homeview">
-    <div>
-      <!-- <MyUsers/> -->
-    </div>
+
     <section>
       <LateralBar @theme="darktheme" />
     </section>
 
-    <nav>
+    <section id="navigation">
       <div class="input-search">
         <InputSearch @value="search" />
       </div>
@@ -15,7 +13,7 @@
       <div class="card-home">
         <CardUserAdminVue :search="searchUsername" />
       </div>
-    </nav>
+    </section>
   </div>
 </template>
 
@@ -66,7 +64,7 @@ return{
 </script>
 
 <style scope>
-nav {
+#navigation {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -85,11 +83,10 @@ nav {
   flex-wrap: wrap;
   color: black;
 }
-#homeview {
-  display: flex;
+#homeview {display: flex;
+    width: 100vw;
   width: 100vw;
-  height: 100vh;
-  background: var(--bg-login-primary);
+  height: 100vh;  height: 100vh;
 }
 .input-search {
   justify-content: center;

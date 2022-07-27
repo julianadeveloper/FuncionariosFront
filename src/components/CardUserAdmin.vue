@@ -124,22 +124,18 @@ export default defineComponent({
   justify-content: center;
 }
 .card-text {
-  color: var(--text-primary);
   text-align: center;
 }
 .card {
   padding: 1.5rem;
   margin: 1rem;
-  color: var(--text-primary);
   max-height: 50%;
 }
-p {
-  color: var(--text-primary);
-}
+
 
 @media only screen and (max-width: 720px) {
   .card {
-    height: 100vh;
+    height: 50%;
     max-width: 100%;
   }
 }

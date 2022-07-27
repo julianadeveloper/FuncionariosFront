@@ -42,7 +42,7 @@ setup(){
 
 #body-section-dashboard {
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   justify-content: center;
   align-items: center;
@@ -55,9 +55,12 @@ setup(){
   background: rgb(227, 222, 222);
   padding: 1rem;
   margin: 0.25rem;
+  scroll-behavior: smooth;
+  
 }
 .btn-dashboard {
   background-color: transparent;
   color: black;
+
 }
 </style>

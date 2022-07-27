@@ -133,6 +133,7 @@ export default defineComponent({
   }
 }
 .title-form {
+  color: black;
   margin-bottom: 2rem;
   padding: 1.25rem;
 }

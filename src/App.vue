@@ -1,52 +1,38 @@
-<template id="homeview">
-  <router-view />
+<template>
+  <main class="dark-mode"><router-view /></main>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapState, useStore } from "vuex";
-import store from "./store";
-import { key } from "./store/Theme";
-
+import { mapState } from "vuex";
 
 export default defineComponent({
+  ...mapState({
+    setDarkthemeOn: "ThemeModule/setDarkThemeOn",
+  }),
 
-...mapState({
-  setDarkthemeOn: "ThemeModule/setDarkThemeOn"
-}),
+  // setup() {
+  //   const store = useStore(key);
+  //   console.log(store)
+  //     // return { DarkThemeOn: store.state.DarkThemeOn };
+  //   },
+  //   methods:{
 
-// created() {
-//   console.log('store 123', store)
-// },
-
-// setup() {
-//   const store = useStore(key);
-//   console.log(store)
-//     // return { DarkThemeOn: store.state.DarkThemeOn };
-//   },
-//   methods:{
-    
-//     MudaTema(){
-//             this.$store.commit({type: this.MudaTema})
-//           }
-//   }
-})
+  //     MudaTema(){
+  //             this.$store.commit({type: this.MudaTema})
+  //           }
+  //   }
+});
 </script>
 
-
 <style>
-#homeview {
-  display: flex;
+main{
+    display: flex;
   max-width: 100vw;
   height: 100vh;
-   background: var(--bg-login-primary);
+    background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
-#app {
-  width: 100vw;
-  height: 100vh;
-  background: var(--bg-primary);
-}
-
-#app.dark-mode{
+main.dark-mode {
   background-color: var(--bg-secondary);
   color: var(--text-secondary);
 }
@@ -59,4 +45,5 @@ export default defineComponent({
   --bg-login-primary: rgb(241, 241, 241);
   --bg-home-login: rgb(52, 49, 49);
 }
+
 </style>
