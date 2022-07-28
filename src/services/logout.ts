@@ -1,18 +1,16 @@
 import { Router } from "vue-router";
 
-export class logoutService{
-private static instance: Router;
+export class logoutService {
+  private router: Router;
 
-public router: Router;
+  constructor(rout: any) {
+    this.router = rout;
+  }
 
-
-constructor(rout: Function){
-  this.router = rout();
-}
-
-public logoutUser() {
+  async logoutUser() {
     localStorage.removeItem("token");
-    localStorage.removeItem("sessionId")
-    this.router.push({ name: "login" });
+    localStorage.removeItem("sessionLogin");
+    localStorage.removeItem("role");
+    await  this.router.push({ name: "login" });
   }
 }

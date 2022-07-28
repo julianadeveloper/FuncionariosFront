@@ -10,19 +10,20 @@
     </button>
 
 
-    <button class="logout-icon" @click="logout">
+    <button class="logout-icon" @click.prevent="logout">
       <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
     </button>
   </header>
 </template>
 
 <script lang="ts">
+import { logoutService } from "@/services/logout";
 import { defineComponent } from "vue";
 import { POSITION, useToast } from "vue-toastification";
 export default defineComponent({
   name: "LateralBar",
   data() {
-    return { DarkThemeOn: false };
+    return { DarkThemeOn: false,   logoutService: new logoutService(this.$router)};
   },
   computed: {
        
@@ -45,11 +46,8 @@ export default defineComponent({
            timeout: 2000
          })
     },
-    async logout() {
-      localStorage.removeItem("token")
-      localStorage.removeItem("sessionLogin")
-      localStorage.removeItem("role");
-      this.$router.push({ name: "login" });
+   async  logout() {
+      await this.logoutService.logoutUser()
       this.chamaToast()
     },
     changeTheme() {

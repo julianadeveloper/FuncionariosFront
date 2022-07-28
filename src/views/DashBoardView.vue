@@ -19,6 +19,7 @@ import LateralBar from "@/components/LateralBar.vue";
 import { SocketModule } from "@/services/socket";
 import DashboardComponentVue from "@/components/Dash.vue";
 import { POSITION, useToast } from "vue-toastification";
+import { logoutService } from "@/services/logout";
 
 export default defineComponent({
   name: "DashboardView",
@@ -35,6 +36,7 @@ export default defineComponent({
   data() {
     return {
       searchUsername: "",
+      logoutService: new logoutService(this.$router)
     };
   },
 
@@ -54,11 +56,8 @@ export default defineComponent({
         timeout: 2000,
       });
     },
-     async logout() {
-      localStorage.removeItem("token")
-      localStorage.removeItem("sessionLogin")
-      localStorage.removeItem("role");
-      this.$router.push({ name: "login" });
+    async  logout() {
+       await this.logoutService.logoutUser()
       this.chamaToast()
     },
   },

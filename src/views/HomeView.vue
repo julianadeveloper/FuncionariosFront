@@ -1,6 +1,5 @@
 <template>
   <div id="homeview">
-
     <section>
       <LateralBar @theme="darktheme" />
     </section>
@@ -24,6 +23,7 @@ import CardUserAdminVue from "@/components/CardUserAdmin.vue"; // @ is an alias 
 import InputSearch from "@/components/InputSearch.vue";
 import { SocketModule } from "@/services/socket";
 import { ApiService } from "@/services/api";
+import User from "@/interface/User";
 
 export default defineComponent({
   name: "HomeView",
@@ -32,34 +32,30 @@ export default defineComponent({
     CardUserAdminVue,
     InputSearch,
   },
-  setup(){
-return{
-  apiService: new ApiService(),
-        DarkThemeOn: false,
+  setup() {
+    return {
+      apiService: new ApiService(),
+      DarkThemeOn: false,
       socketService: SocketModule.connect(),
-}
+    };
   },
   data() {
     return {
       searchUsername: "",
-
     };
   },
 
   methods: {
     search(event: any) {
       this.searchUsername = event;
-
-
-},
-      darktheme(DarkThemeOn: boolean) {
+    },
+    darktheme(DarkThemeOn: boolean) {
       this.DarkThemeOn = DarkThemeOn;
     },
   },
- async mounted() {
-   await this.apiService.listUsers()
-
-}
+  async mounted() {
+    await this.apiService.listUsers();
+  },
 });
 </script>
 
@@ -83,10 +79,12 @@ return{
   flex-wrap: wrap;
   color: black;
 }
-#homeview {display: flex;
-    width: 100vw;
+#homeview {
+  display: flex;
   width: 100vw;
-  height: 100vh;  height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  height: 100vh;
 }
 .input-search {
   justify-content: center;
