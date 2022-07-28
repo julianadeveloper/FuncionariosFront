@@ -1,7 +1,10 @@
 <template>
   <div v-for="(user, i) in users" :key="i" class="card">
     <div class="card-content" :user="user" @delete="users.splice(i, 1)">
-      <i class="icon-user fa-solid fa-user fa-2xl"></i>
+   
+   
+   
+   <i class="icon-user fa-solid fa-user fa-2xl"></i>
       <div class="">
         <MyModal
           class="modal"
@@ -15,10 +18,19 @@
         <p>Matricula:{{ user.username }}</p>
         <p>Funções: {{ user.role }}</p>
       </div>
+
+      
       <div v-if="isAdmin">
         <ButtonAdm @openmymodal="modalIsOpen" :user="user" />
       </div>
+
+
+
     </div>
+
+
+
+
   </div>
 </template>
 
@@ -138,8 +150,17 @@ export default defineComponent({
 
 @media only screen and (max-width: 720px) {
   .card {
-    height: 50%;
-    max-width: 100%;
+    height: 100%;
+    max-width: 75%;
   }
+
+    .card-content{
+    background-color: transparent;
+    /* padding: 1.5rem; */
+    padding: 0;
+    height: auto;
+    height: 400px;
 }
+}
+
 </style>
