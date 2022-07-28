@@ -22,7 +22,7 @@
             v-model="user.name"
           />
         </div>
-        <div class="form-group">
+        <div class="form-group " >
           <label>Tipo de usuário</label>
           <select
             class="form-control form-control-sm"
@@ -30,7 +30,7 @@
             id="roles"
             name="roles"
           >
-            <option value="operador" name="roles">funcionário</option>
+            <option value="operador" name="roles">Funcionário</option>
             <option value="admin" name="roles">Admin</option>
           </select>
         </div>

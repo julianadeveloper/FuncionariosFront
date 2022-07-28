@@ -10,30 +10,38 @@
         <div class="vuaida">
           <img src="../assets/images/logo.svg" />
         </div>
-        <span>Seu controle para gestão de funcionários</span>
+        <span class="subtitle">Controle de acesso de funcionários</span>
       </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Matricula</label>
-        <input
-          type="login"
-          class="form-control"
-          id="exampleInputEmail1"
-          placeholder="Numero de matrícula"
-          required
-          v-model="user.username"
-        />
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Senha</label>
 
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          placeholder="Senha"
-          required
-          v-model="user.password"
-        />
+      <div class="form-group">
+        <label class="label" for="exampleInputEmail1">Matricula</label>
+        <div class="control has-icons-left has-icons-right">
+          <input
+            type="text"
+            id="exampleInputEmail1"
+            placeholder="Numero de matrícula"
+            required
+            v-model="user.username"
+            class="input is-success"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+        </div>
+  <label class="label" for="exampleInputEmail2">Senha</label>
+        <div class="control has-icons-left has-icons-right">
+          <input
+            type="password"
+            id="exampleInputEmail2"
+            placeholder="Senha"
+            required
+            v-model="user.password"
+            class="input is-success"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </div>
       </div>
 
       <button type="submit" class="btn btn-white btn-animate">Login</button>
@@ -240,7 +248,10 @@ hr {
   hr {
     border-left: none;
   }
-  .img-login {
+.subtitle{
+position: relative;
+}
+.img-login {
     margin-right: 40%;
     width: 12rem;
   }
@@ -259,4 +270,4 @@ hr {
   }
 }
 </style>
-6
+
