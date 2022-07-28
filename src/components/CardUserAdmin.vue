@@ -3,7 +3,12 @@
     <div class="card-content" :user="user" @delete="users.splice(i, 1)">
       <i class="icon-user fa-solid fa-user fa-2xl"></i>
       <div class="">
-        <MyModal class="modal" v-if="modal && user._id === userSelect" :user="user"  @closemymodal="close">
+        <MyModal
+          class="modal"
+          v-if="modal && user._id === userSelect"
+          :user="user"
+          @closemymodal="close"
+        >
         </MyModal>
 
         <p>Nome:{{ user.name }}</p>
@@ -11,10 +16,7 @@
         <p>Funções: {{ user.role }}</p>
       </div>
       <div v-if="isAdmin">
-        <ButtonAdm
-          @openmymodal="modalIsOpen"
-          :user="user"
-        />
+        <ButtonAdm @openmymodal="modalIsOpen" :user="user" />
       </div>
     </div>
   </div>
@@ -28,7 +30,6 @@ import { mapGetters } from "vuex";
 import { SocketModule } from "@/services/socket";
 import User from "@/interface/User";
 import MyModal from "@/components/MyModal.vue";
-import { POSITION, useToast } from "vue-toastification";
 export default defineComponent({
   name: "CardUserAdmin",
   components: { ButtonAdm, MyModal },
@@ -48,20 +49,22 @@ export default defineComponent({
     },
   },
   data() {
-    return { modal: false, userSelect: "" };
-  },
-
-  setup() {
     const apiService = new ApiService();
     const users = ref<User[]>([]);
-    return { users, apiService, socketService: SocketModule.connect() };
+    return {
+      users,
+      apiService,
+      socketService: SocketModule.connect(),
+      modal: false,
+      userSelect: "",
+    };
   },
+
   methods: {
     //método de busca do input
     async listUsers(search = "") {
       const response = await this.apiService.listUsers(this.search);
       this.users = await this.apiService.listUsers(search);
-      console.log("response:", response);
       return response;
     },
     modalIsOpen(params: string) {
@@ -73,20 +76,19 @@ export default defineComponent({
       this.userSelect = params;
       this.modal = !this.modal;
     },
-     
-
   },
   async mounted() {
+    this.users = [];
     await this.listUsers();
 
     this.socketService.registerListener(
       "cards-users",
       "removed-user",
       (data: { id: string }) => {
-        const foundIndex = this.users.findIndex((user) => user._id === data.id);
-        if (foundIndex) this.users.splice(foundIndex, 1);
-        this.listUsers(); 
-        
+        // const foundIndex = this.users.findIndex((user) => user._id === data.id);
+        // if (foundIndex) this.users.splice(foundIndex, 1);
+        this.users = [];
+        this.listUsers();
       }
     );
     this.socketService.registerListener(
@@ -109,12 +111,11 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-.modal{
+.modal {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-
 }
 .btn {
   margin: 0.5rem;
@@ -134,7 +135,6 @@ export default defineComponent({
   margin: 1rem;
   max-height: 50%;
 }
-
 
 @media only screen and (max-width: 720px) {
   .card {

@@ -68,7 +68,7 @@ import { defineComponent, ref } from "vue";
 import { POSITION, useToast } from "vue-toastification";
 export default defineComponent({
   name: "FormCreateUser",
-  setup() {
+  data() {
     const user = ref({
       username: "",
       name: "",

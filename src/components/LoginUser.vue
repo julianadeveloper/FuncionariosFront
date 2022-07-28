@@ -2,12 +2,14 @@
   <div class="container-form">
     <!--imagem de login lado esquerdo-->
     <div class="img-login">
-      <img src="../assets/images/login.svg" alt="" />
+      <img src="../assets/images/login.svg" alt="login" />
     </div>
     <hr />
     <form class="form-login" @submit.prevent="login()">
       <div class="title-form">
-        <h2>Vua!da</h2>
+        <div class="vuaida">
+          <img src="../assets/images/logo.svg" />
+        </div>
         <span>Seu controle para gestão de funcionários</span>
       </div>
       <div class="form-group">
@@ -50,7 +52,6 @@ export default defineComponent({
   name: "LoginUser",
 
   setup() {
-    
     const apiService = new ApiService();
     const user = ref({
       username: "",
@@ -59,20 +60,19 @@ export default defineComponent({
       token: "",
       _id: "",
     });
- 
 
-    return { user, apiService, SocketModule};
+    return { user, apiService, SocketModule };
   },
 
   methods: {
-    chamaToast(){
-           const toast = useToast();
-   
-         // or with options
-         toast.success("Você está logado", {
-           position: POSITION.BOTTOM_RIGHT,
-           timeout: 2000
-         })
+    chamaToast() {
+      const toast = useToast();
+
+      // or with options
+      toast.success("Você está logado", {
+        position: POSITION.BOTTOM_RIGHT,
+        timeout: 2000,
+      });
     },
     ///mapeando minhas mutations e tudo q existem nelas
     //o metodo setToken esta importando do diretório authModule/setToken a mutation
@@ -82,44 +82,60 @@ export default defineComponent({
       setId: "authModule/setId",
     }),
     async login() {
-      try{
-      const response = await this.apiService.login({
-        required: true,
-        username: this.user.username,
-        password: this.user.password,
-        role: this.user.role,
-        _id: this.user._id,
-      });
-              
+      try {
+        const response = await this.apiService.login({
+          required: true,
+          username: this.user.username,
+          password: this.user.password,
+          role: this.user.role,
+          _id: this.user._id,
+        });
 
-      // this.setId(response.data._id);
-      localStorage.setItem("sessionLogin", response.data._id);
+        // this.setId(response.data._id);
+        localStorage.setItem("sessionLogin", response.data._id);
 
-      this.setToken(response.data.access_token);
-      localStorage.setItem("token", response.data.access_token);
+        this.setToken(response.data.access_token);
+        localStorage.setItem("token", response.data.access_token);
 
-      this.setRole(response.data.role);
-      localStorage.setItem("role", response.data.role);
+        this.setRole(response.data.role);
+        localStorage.setItem("role", response.data.role);
 
-      this.$router.push({ name: "DashBoardView" });
-      const token = response.data;
-      this.setRole(response.data.role);
-    this.chamaToast()
-      SocketModule.connect();
-    }
-    catch(error){
-        alert('dados incorretos!')
+        this.$router.push({ name: "DashBoardView" });
+        const token = response.data;
+        this.setRole(response.data.role);
+        this.chamaToast();
+        SocketModule.connect();
+      } catch (error) {
+        const toast = useToast();
+
+        // or with options
+        toast.error("Dados incorretos", {
+          position: POSITION.TOP_CENTER,
+          timeout: 2000,
+        });
       }
-  }},
-  
-  mounted() {
-    console.log(this.setToken);
+    },
   },
 });
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
+span {
+  position: absolute;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  color: #393939;
+}
+.vuaida {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
 .title-form {
   animation: go-back 1s;
 }

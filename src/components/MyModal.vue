@@ -13,7 +13,7 @@
  </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, onMounted, PropType } from "vue";
 import User from "../interface/User";
 import { ApiService } from "@/services/api";
 import { POSITION, useToast } from "vue-toastification";
@@ -26,7 +26,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
+  data() {
     const apiService = new ApiService();
     return {
       apiService,
@@ -52,10 +52,10 @@ export default defineComponent({
 
     async deleteUser() {
       await this.apiService.deleteUser([this.user._id]);
+      this.$emit("delete",this.user._id);
     this.chamaToast()
-      this.$emit("delete", this.user);
-
-    },
+    this.$router.push({name: 'home'})
+      },
   },
 });
 </script>

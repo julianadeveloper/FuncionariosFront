@@ -23,7 +23,6 @@ import CardUserAdminVue from "@/components/CardUserAdmin.vue"; // @ is an alias 
 import InputSearch from "@/components/InputSearch.vue";
 import { SocketModule } from "@/services/socket";
 import { ApiService } from "@/services/api";
-import User from "@/interface/User";
 
 export default defineComponent({
   name: "HomeView",
@@ -32,16 +31,13 @@ export default defineComponent({
     CardUserAdminVue,
     InputSearch,
   },
-  setup() {
+  data() {
     return {
       apiService: new ApiService(),
       DarkThemeOn: false,
       socketService: SocketModule.connect(),
-    };
-  },
-  data() {
-    return {
       searchUsername: "",
+
     };
   },
 
