@@ -150,7 +150,7 @@ export default defineComponent({
 
 @media only screen and (max-width: 720px) {
   .card {
-    height: 100%;
+    height: auto;
     max-width: 75%;
   }
 
@@ -159,7 +159,6 @@ export default defineComponent({
     /* padding: 1.5rem; */
     padding: 0;
     height: auto;
-    height: 400px;
 }
 }
 
