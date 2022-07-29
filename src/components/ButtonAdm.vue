@@ -53,4 +53,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.btn{
+  margin: 1rem
+}
 </style>

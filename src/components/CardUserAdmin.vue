@@ -1,11 +1,7 @@
 <template>
   <div v-for="(user, i) in users" :key="i" class="card">
     <div class="card-content" :user="user" @delete="users.splice(i, 1)">
-   
-   
-   
-   <i class="icon-user fa-solid fa-user fa-2xl"></i>
-      <div class="">
+      <i class="icon-user fa-solid fa-user fa-2xl"></i>
         <MyModal
           class="modal"
           v-if="modal && user._id === userSelect"
@@ -17,19 +13,11 @@
         <p>Nome:{{ user.name }}</p>
         <p>Matricula:{{ user.username }}</p>
         <p>Funções: {{ user.role }}</p>
-      </div>
 
-      
-      <div v-if="isAdmin">
+      <div>
         <ButtonAdm @openmymodal="modalIsOpen" :user="user" />
-      </div>
-
-
-
     </div>
-
-
-
+      </div>
 
   </div>
 </template>
@@ -122,16 +110,15 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
+<style >
+
 .modal {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
-.btn {
-  margin: 0.5rem;
-}
+
 .icon-user {
   color: #5159bb;
   display: flex;
@@ -149,17 +136,11 @@ export default defineComponent({
 }
 
 @media only screen and (max-width: 720px) {
-  .card {
-    height: auto;
-    max-width: 75%;
-  }
-
-    .card-content{
+  .card-content {
     background-color: transparent;
     /* padding: 1.5rem; */
-    padding: 0;
-    height: auto;
-}
-}
+    height: 25%;
+  }
 
+}
 </style>

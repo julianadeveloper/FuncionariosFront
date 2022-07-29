@@ -88,19 +88,15 @@ nav {
   align-items: center;
   width: 100%;
   height: auto;
-  overflow-y: scroll;
 }
 
 #homeview {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  /* background: var(--bg-login-primary); */
+  width: 100%;
+  height: 100vh;  /* background: var(--bg-login-primary); */
 }
 
 @media only screen and (max-width: 720px) {
   #homeview {
-    display: flex;
     flex-wrap: wrap;
     overflow: scroll;
     position: absolute;

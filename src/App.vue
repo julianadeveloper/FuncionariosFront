@@ -24,13 +24,14 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style >
 main{
-    display: flex;
   max-width: 100vw;
   height: 100vh;
     background-color: var(--bg-primary);
   color: var(--text-primary);
+  overflow: hidden;
+  
 }
 main.dark-mode {
   background-color: var(--bg-secondary);

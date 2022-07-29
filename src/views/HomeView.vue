@@ -37,7 +37,6 @@ export default defineComponent({
       DarkThemeOn: false,
       socketService: SocketModule.connect(),
       searchUsername: "",
-
     };
   },
 
@@ -55,19 +54,10 @@ export default defineComponent({
 });
 </script>
 
-<style scope>
-#navigation {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: auto;
-  overflow-y: scroll;
-}
-
+<style>
 .card-home {
-  padding: 1rem;
+  align-items: center;
+  justify-content: center;
   max-width: 100%;
   height: 100%;
   display: flex;
@@ -76,11 +66,11 @@ export default defineComponent({
   color: black;
 }
 #homeview {
-  display: flex;
-  width: 100vw;
-  width: 100vw;
-  height: 100vh;
-  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  width: 100%;
+  height: 100%;
 }
 .input-search {
   justify-content: center;
@@ -92,7 +82,6 @@ export default defineComponent({
     display: flex;
     flex-wrap: wrap;
     overflow: scroll;
-    position: absolute;
   }
   #card-home {
     justify-content: row;
