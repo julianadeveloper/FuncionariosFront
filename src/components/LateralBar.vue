@@ -1,8 +1,39 @@
 <template>
   <header class="header">
-    <!-- <MenuDropDown/> -->
     <img id="logo" src="../assets/images/logo.svg" alt="logo-vuaida" />
+  
 
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdow-content">
+          <a
+            href="#"
+            class="dropdown-item home-icon"
+            @click="$router.push({ name: 'DashBoardView' })"
+          >
+            Home
+            <!-- <i class="fa-solid fa-house-user fa-lg"></i> -->
+          </a>
+        </div>
+      </div>
+
+    <a class="icon-theme" @click="changeTheme">
+      <i class="fa-solid fa-moon"></i>
+
+      {{ textButton }}
+    </a>
+
+    <button class="home-icon" @click="$router.push({ name: 'DashBoardView' })">
+      Home
+      <i class="fa-solid fa-house-user fa-lg"></i>
+    </button>
+
+    <button class="logout-icon" @click.prevent="logout">
+      Sair
+      <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
+    </button>
   </header>
 </template>
 
@@ -10,10 +41,8 @@
 import { logoutService } from "@/services/logout";
 import { defineComponent } from "vue";
 import { POSITION, useToast } from "vue-toastification";
-// import MenuDropDown from "./MenuDropDown.vue";
 export default defineComponent({
   name: "LateralBar",
-  //  components: { MenuDropDown },
   data() {
     return {
       DarkThemeOn: false,
@@ -30,9 +59,9 @@ export default defineComponent({
     },
   },
   methods: {
- 
     chamaToast() {
       const toast = useToast();
+
       // or with options
       toast.warning("Você fez logout", {
         position: POSITION.BOTTOM_RIGHT,
