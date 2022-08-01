@@ -52,6 +52,8 @@ export default defineComponent({
 
     async deleteUser() {
       await this.apiService.deleteUser([this.user._id]);
+      this.$emit("closemymodal", this.user._id);
+    
       this.$emit("delete",this.user._id);
     this.chamaToast()
     this.$router.push({name: 'home'})

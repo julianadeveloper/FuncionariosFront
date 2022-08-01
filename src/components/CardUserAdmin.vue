@@ -14,7 +14,7 @@
         <p>Matricula:{{ user.username }}</p>
         <p>Funções: {{ user.role }}</p>
 
-      <div>
+      <div v-if="isAdmin">
         <ButtonAdm @openmymodal="modalIsOpen" :user="user" />
     </div>
       </div>
