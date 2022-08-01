@@ -17,6 +17,7 @@ import { defineComponent, onMounted, PropType } from "vue";
 import User from "../interface/User";
 import { ApiService } from "@/services/api";
 import { POSITION, useToast } from "vue-toastification";
+import { SocketModule } from "@/services/socket";
 
 export default defineComponent({
   name: "MyModal",
@@ -30,6 +31,8 @@ export default defineComponent({
     const apiService = new ApiService();
     return {
       apiService,
+      socketService: SocketModule.connect(),
+
     };
   },
   methods: {
