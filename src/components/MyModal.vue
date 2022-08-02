@@ -17,7 +17,6 @@ import { defineComponent, onMounted, PropType } from "vue";
 import User from "../interface/User";
 import { ApiService } from "@/services/api";
 import { POSITION, useToast } from "vue-toastification";
-import { SocketModule } from "@/services/socket";
 
 export default defineComponent({
   name: "MyModal",
@@ -31,8 +30,6 @@ export default defineComponent({
     const apiService = new ApiService();
     return {
       apiService,
-      socketService: SocketModule.connect(),
-
     };
   },
   methods: {
@@ -54,12 +51,10 @@ export default defineComponent({
     },
 
     async deleteUser() {
-      await this.apiService.deleteUser([this.user._id]);
-      this.$emit("closemymodal", this.user._id);
-    
       this.$emit("delete",this.user._id);
     this.chamaToast()
     this.$router.push({name: 'home'})
+      await this.apiService.deleteUser([this.user._id]);  
       },
   },
 });

@@ -67,7 +67,7 @@ span {
 #body-section-dashboard {
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
   align-items: center;
 }

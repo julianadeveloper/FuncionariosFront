@@ -84,7 +84,6 @@ export default defineComponent({
 
      chamaToast() {
       const toast = useToast();
-
       // or with options
       toast.success(`O usuário ${this.user.username} foi cadastrado!`, {
         position: POSITION.BOTTOM_RIGHT,
@@ -93,10 +92,20 @@ export default defineComponent({
     },
     
   async  register() {
+    try{
       const passwordOk = this.user.password === this.user.passwordConfirm;
      await this.apiService.userCreate(this.user);
       this.$router.push({ name: "home" });
       this.chamaToast()
+
+    }catch(error){
+      const toast = useToast();
+
+          toast.warning(`O usuário ${this.user.username} já existe, Insira outro numero de matricula.!`, {
+        position: POSITION.BOTTOM_RIGHT,
+        timeout: 2000,
+      });
+    }
     },
   },
 });
