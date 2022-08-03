@@ -96,7 +96,7 @@ export default defineComponent({
         // if (foundIndex) this.users.splice(foundIndex, 1);
         //  this.users = [];
         this.listUsers();
-        console.log("teste2", data.id);
+        console.log("usuario excluído:", data.id);
       }
     );
     this.socketService.registerListener(
