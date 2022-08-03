@@ -8,12 +8,18 @@
       v-model="user.username"
     />
 
-    <button class="btn button is-info is-outlined" @click="listerUsername">Buscar</button>
+    <button class="btn button is-info is-outlined" @click="listerUsername">
+      Buscar
+    </button>
+    <button class="btn button is-info is-outlined" @click="clearInput">
+      Limpar
+    </button>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { ApiService } from "@/services/api";
+import User from "@/interface/User";
 export default defineComponent({
   name: "InputSearch",
 
@@ -28,6 +34,12 @@ export default defineComponent({
     async listerUsername() {
       this.$emit("value", this.user.username);
     },
+
+   async  clearInput() {
+        this.user.username = ''
+      this.$emit("value")
+
+},
   },
 });
 </script>
@@ -41,7 +53,6 @@ export default defineComponent({
   margin-top: 3rem;
 }
 input {
-  
   justify-content: center;
   width: 20rem;
   align-items: center;

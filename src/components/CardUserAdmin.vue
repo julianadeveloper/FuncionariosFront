@@ -1,24 +1,25 @@
 <template>
   <div v-for="(user, i) in users" :key="i" class="card">
-    <div class="card-content" :user="user" @delete="users.splice(i, 1)">
+    <div class="card-content" :user="user">
       <i class="icon-user fa-solid fa-user fa-2xl"></i>
-        <MyModal
-          class="modal"
-          v-if="modal && user._id === userSelect"
-          :user="user"
-          @closemymodal="close"
-        >
-        </MyModal>
+      <MyModal
+        class="modal"
+        v-if="modal && user._id === userSelect"
+        :user="user"
+        @closemymodal="close"
+        @delete="updateComponent"
+      >
+      </MyModal>
 
-        <p>Nome:{{ user.name }}</p>
-        <p>Matricula:{{ user.username }}</p>
-        <p>Funções: {{ user.role }}</p>
+      <p>Nome:{{ user.name }}</p>
+      <p>Matricula:{{ user.username }}</p>
+      <p>Funções: {{ user.role }}</p>
+      <p>Email: {{ user.email }}</p>
 
       <div v-if="isAdmin">
         <ButtonAdm @openmymodal="modalIsOpen" :user="user" />
-    </div>
       </div>
-
+    </div>
   </div>
 </template>
 
@@ -61,6 +62,10 @@ export default defineComponent({
   },
 
   methods: {
+    async updateComponent(users: User[]) {
+      this.users = [];
+      await this.listUsers();
+    },
     //método de busca do input
     async listUsers(search = "") {
       const response = await this.apiService.listUsers(this.search);
@@ -85,10 +90,13 @@ export default defineComponent({
       "cards-users",
       "removed-user",
       (data: { id: string }) => {
-        // const foundIndex = this.users.findIndex((user) => user._id === data.id);
+        // const foundIndex = this.users.findIndex(
+        //   (user) => user._id
+        // );
         // if (foundIndex) this.users.splice(foundIndex, 1);
-        this.users = [];
+        //  this.users = [];
         this.listUsers();
+        console.log("teste2", data.id);
       }
     );
     this.socketService.registerListener(
@@ -110,8 +118,7 @@ export default defineComponent({
   },
 });
 </script>
-<style >
-
+<style scoped>
 .modal {
   display: flex;
   align-items: center;
@@ -141,6 +148,5 @@ export default defineComponent({
     /* padding: 1.5rem; */
     height: 25%;
   }
-
 }
 </style>

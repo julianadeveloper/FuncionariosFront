@@ -9,6 +9,10 @@ export class ApiService {
     },
   });
 
+  async listAllUsers(){
+    return this.api.get('/users')
+  }
+
   async listUsers(search = "") {
     const result = await this.api.get("/users", {
       params: {

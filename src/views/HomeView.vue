@@ -6,7 +6,7 @@
 
     <section id="navigation">
       <div class="input-search">
-        <InputSearch @value="search" />
+        <InputSearch @value="search"  />
       </div>
 
       <div class="card-home">
@@ -41,7 +41,7 @@ export default defineComponent({
   },
 
   methods: {
-    search(event: any) {
+    search(event: string) {
       this.searchUsername = event;
     },
     darktheme(DarkThemeOn: boolean) {
@@ -51,6 +51,7 @@ export default defineComponent({
   async mounted() {
     await this.apiService.listUsers();
   },
+  
 });
 </script>
 

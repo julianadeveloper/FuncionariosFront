@@ -22,6 +22,18 @@
             v-model="user.name"
           />
         </div>
+           <div class="form-group">
+          <label for="email">Email do usuário</label>
+          <input
+          required
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="email"
+            type="email"
+            v-model="user.email"
+          />
+        </div>
         <div class="form-group " >
           <label>Tipo de usuário</label>
           <select
@@ -75,6 +87,7 @@ export default defineComponent({
       password: "",
       passwordConfirm: "",
       role: "",
+      email: ""
     });
     const apiService = new ApiService();
     return { user, apiService };
@@ -111,7 +124,14 @@ export default defineComponent({
 });
 </script>
 
-<style scope>
+<!-- <style scope>
+.form-update {
+  color: #777;
+  padding: 1rem;
+  width: 20rem;
+  height: auto;
+  /* border-radius: 10%; */
+}
 .createuser {
   display: flex;
   overflow: hidden;
@@ -125,5 +145,77 @@ export default defineComponent({
   width: 20rem;
   height: auto;
   border-radius: 10%;
+}
+</style> -->
+<style scoped>
+.form-body {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 50vw;
+  height: auto;
+  background-color: rgb(209, 211, 214);
+}
+.form-update {
+  color: #777;
+  padding: 1rem;
+  width: 20rem;
+  height: auto;
+  /* border-radius: 10%; */
+  text-align: center;
+}
+.form-group {
+  width: 100%;
+}
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all 0.2s;
+  position: absolute;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom 1s ease-out;
+  animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 </style>

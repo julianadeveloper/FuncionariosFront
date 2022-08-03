@@ -1,11 +1,6 @@
 <template>
   <header class="header">
     <img id="logo" src="../assets/images/logo.svg" alt="logo-vuaida" />
-  
-
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdow-content">
           <a
@@ -82,10 +77,11 @@ export default defineComponent({
 
 <style scoped>
 .header {
+
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100vw;
   height: 6rem;
   /* background: rgba(17, 16, 16, 0.747); */

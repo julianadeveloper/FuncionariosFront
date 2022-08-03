@@ -23,6 +23,16 @@
             v-model="user.name"
           />
         </div>
+           <div class="form-group">
+          <label for="exampleInputEmail1">Email do usuário</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputName"
+            placeholder="email"
+            v-model="user.email"
+          />
+        </div>
         <div class="form-group">
           <label>Tipo de usuário</label>
           <select
@@ -82,6 +92,7 @@ export default defineComponent({
       name: "",
       password: "",
       role: "",
+      email: '',
     });
     return { user, apiService };
   },
