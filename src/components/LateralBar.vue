@@ -1,38 +1,46 @@
 <template>
   <header class="header">
     <img id="logo" src="../assets/images/logo.svg" alt="logo-vuaida" />
-    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-      <div class="dropdow-content">
-        <a
-          href="#"
-          class="dropdown-item home-icon"
-          @click="$router.push({ name: 'DashBoardView' })"
-        >
-          Home
-          <!-- <i class="fa-solid fa-house-user fa-lg"></i> -->
-        </a>
+   <div>
+        <button class="dropdown-trigger" @click="openDropDown">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+          <span class="icon is-small"> </span>
+        </button>
+
+        <div v-if="DropDown">
+          <div class="dropdown-content">
+            <a class="icon-theme dropdown-item" @click="changeTheme">
+              <!-- <i class="fa-solid fa-moon texto-botao"></i> -->
+
+              {{ textButton }}
+            </a>
+
+            <button
+              class="home-icon dropdown-item"
+              @click="$router.push({ name: 'DashBoardView' })"
+            >
+              <!-- <i class="fa-solid fa-house-user fa-lg"></i> -->
+              Home
+            </button>
+            <button
+              class="home-icon dropdown-item"
+              @click="$router.push({ name: 'CreateView' })"
+            >
+              <!-- <i class="fa-solid fa-house-user fa-lg"></i> -->
+              Cadastrar
+            </button>
+            <button class="logout-icon dropdown-item" @click.prevent="logout">
+              Sair
+              <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <a class="icon-theme" @click="changeTheme">
-      <i class="fa-solid fa-moon"></i>
-
-      {{ textButton }}
-    </a>
-
-    <button class="home-icon" @click="$router.push({ name: 'DashBoardView' })">
-      Home
-      <i class="fa-solid fa-house-user fa-lg"></i>
-    </button>
-
-    <button class="logout-icon" @click.prevent="logout">
-      Sair
-      <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
-
-    </button>
           <div>
         <UserProfile/>
       </div>
+
   </header>
 </template>
 
@@ -46,6 +54,7 @@ export default defineComponent({
   components: { UserProfile },
   data() {
     return {
+      DropDown: false,
       DarkThemeOn: false,
       logoutService: new logoutService(this.$router),
     };
@@ -53,9 +62,9 @@ export default defineComponent({
   computed: {
     textButton() {
       if (!this.DarkThemeOn) {
-        return "Dark";
+        return "Tema Dark";
       } else {
-        return "Light";
+        return "Tema Light";
       }
     },
   },
