@@ -1,18 +1,18 @@
 <template>
   <header class="header">
     <img id="logo" src="../assets/images/logo.svg" alt="logo-vuaida" />
-      <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdow-content">
-          <a
-            href="#"
-            class="dropdown-item home-icon"
-            @click="$router.push({ name: 'DashBoardView' })"
-          >
-            Home
-            <!-- <i class="fa-solid fa-house-user fa-lg"></i> -->
-          </a>
-        </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+      <div class="dropdow-content">
+        <a
+          href="#"
+          class="dropdown-item home-icon"
+          @click="$router.push({ name: 'DashBoardView' })"
+        >
+          Home
+          <!-- <i class="fa-solid fa-house-user fa-lg"></i> -->
+        </a>
       </div>
+    </div>
 
     <a class="icon-theme" @click="changeTheme">
       <i class="fa-solid fa-moon"></i>
@@ -28,7 +28,11 @@
     <button class="logout-icon" @click.prevent="logout">
       Sair
       <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
+
     </button>
+          <div>
+        <UserProfile/>
+      </div>
   </header>
 </template>
 
@@ -36,8 +40,10 @@
 import { logoutService } from "@/services/logout";
 import { defineComponent } from "vue";
 import { POSITION, useToast } from "vue-toastification";
+import  UserProfile  from '../components/UserProfile.vue'
 export default defineComponent({
   name: "LateralBar",
+  components: { UserProfile },
   data() {
     return {
       DarkThemeOn: false,
@@ -77,13 +83,12 @@ export default defineComponent({
 
 <style scoped>
 .header {
-
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   width: 100vw;
   height: 6rem;
+  padding: 1rem;
   /* background: rgba(17, 16, 16, 0.747); */
   background: #ebebee;
   /* box-shadow: 4px 5px 20px; */

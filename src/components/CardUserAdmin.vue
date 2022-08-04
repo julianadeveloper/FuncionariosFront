@@ -91,7 +91,7 @@ export default defineComponent({
       "removed-user",
       (data: { id: string }) => {
         // const foundIndex = this.users.findIndex(
-        //   (user) => user._id
+        //   (user) => user._id === data._id
         // );
         // if (foundIndex) this.users.splice(foundIndex, 1);
         //  this.users = [];

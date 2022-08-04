@@ -62,6 +62,7 @@ export default defineComponent({
     },
   },
   async mounted() {
+
     await this.socketService.registerListener(
       "is-logged",
       "is-logged",
