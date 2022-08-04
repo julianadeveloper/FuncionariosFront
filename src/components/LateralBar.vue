@@ -1,13 +1,14 @@
 <template>
   <header class="header">
     <img id="logo" src="../assets/images/logo.svg" alt="logo-vuaida" />
-   <div>
-        <button class="dropdown-trigger" @click="openDropDown">
+    <div>
+
+        <button @click="openDropDown">
           <i class="fas fa-angle-down" aria-hidden="true"></i>
           <span class="icon is-small"> </span>
         </button>
 
-        <div v-if="DropDown">
+        <div class="dropdown" v-if="DropDown">
           <div class="dropdown-content">
             <a class="icon-theme dropdown-item" @click="changeTheme">
               <!-- <i class="fa-solid fa-moon texto-botao"></i> -->
@@ -33,14 +34,15 @@
               Sair
               <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
             </button>
-          </div>
+
         </div>
       </div>
 
-          <div>
-        <UserProfile/>
-      </div>
+    </div>
+    <div>
+      <UserProfile />
 
+    </div>
   </header>
 </template>
 
@@ -48,7 +50,7 @@
 import { logoutService } from "@/services/logout";
 import { defineComponent } from "vue";
 import { POSITION, useToast } from "vue-toastification";
-import  UserProfile  from '../components/UserProfile.vue'
+import UserProfile from "../components/UserProfile.vue";
 export default defineComponent({
   name: "LateralBar",
   components: { UserProfile },
@@ -86,7 +88,7 @@ export default defineComponent({
       this.DarkThemeOn = !this.DarkThemeOn;
       this.$emit("theme", this.DarkThemeOn);
     },
-        openDropDown() {
+    openDropDown() {
       this.DropDown = !this.DropDown;
       console.log("dropdown", this.DropDown);
     },
@@ -95,7 +97,11 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.dropdown {
+  position: absolute;
+}
 .header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -119,14 +125,14 @@ button {
 ::before {
   color: rgb(210, 205, 205);
 }
-.icon-theme,
+/* .icon-theme,
 .home-icon,
 .user-icon,
 .logout-icon {
   align-items: center;
   justify-content: center;
   margin: auto;
-}
+} */
 @media screen and (max-width: 720px) {
   .header {
     display: flex;
