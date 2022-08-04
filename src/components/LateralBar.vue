@@ -1,47 +1,44 @@
 <template>
   <header class="header">
     <img id="logo" src="../assets/images/logo.svg" alt="logo-vuaida" />
+
     <div>
+  
+      <div>
+            <button @click="openDropDown">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </button>
+      </div>
+        <UserProfile />
 
-        <button @click="openDropDown">
-          <i class="fas fa-angle-down" aria-hidden="true"></i>
-          <span class="icon is-small"> </span>
-        </button>
+      <div class="dropdown" v-if="DropDown">
+        <div class="dropdown-content">
+          <a class="icon-theme dropdown-item" @click="changeTheme">
+            <!-- <i class="fa-solid fa-moon texto-botao"></i> -->
 
-        <div class="dropdown" v-if="DropDown">
-          <div class="dropdown-content">
-            <a class="icon-theme dropdown-item" @click="changeTheme">
-              <!-- <i class="fa-solid fa-moon texto-botao"></i> -->
+            {{ textButton }}
+          </a>
 
-              {{ textButton }}
-            </a>
-
-            <button
-              class="home-icon dropdown-item"
-              @click="$router.push({ name: 'DashBoardView' })"
-            >
-              <!-- <i class="fa-solid fa-house-user fa-lg"></i> -->
-              Home
-            </button>
-            <button
-              class="home-icon dropdown-item"
-              @click="$router.push({ name: 'CreateView' })"
-            >
-              <!-- <i class="fa-solid fa-house-user fa-lg"></i> -->
-              Cadastrar
-            </button>
-            <button class="logout-icon dropdown-item" @click.prevent="logout">
-              Sair
-              <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
-            </button>
-
+          <button
+            class="home-icon dropdown-item"
+            @click="$router.push({ name: 'DashBoardView' })"
+          >
+            <!-- <i class="fa-solid fa-house-user fa-lg"></i> -->
+            Home
+          </button>
+          <button
+            class="home-icon dropdown-item"
+            @click="$router.push({ name: 'CreateView' })"
+          >
+            <!-- <i class="fa-solid fa-house-user fa-lg"></i> -->
+            Cadastrar
+          </button>
+          <button class="logout-icon dropdown-item" @click.prevent="logout">
+            Sair
+            <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
+          </button>
         </div>
       </div>
-
-    </div>
-    <div>
-      <UserProfile />
-
     </div>
   </header>
 </template>
@@ -97,10 +94,16 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.profile {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+}
 .dropdown {
   position: absolute;
 }
 .header {
+  color: black;
   position: relative;
   display: flex;
   align-items: center;
@@ -108,9 +111,7 @@ export default defineComponent({
   width: 100vw;
   height: 6rem;
   padding: 1rem;
-  /* background: rgba(17, 16, 16, 0.747); */
   background: #ebebee;
-  /* box-shadow: 4px 5px 20px; */
 }
 #logo {
   max-width: 100px;
@@ -125,14 +126,6 @@ button {
 ::before {
   color: rgb(210, 205, 205);
 }
-/* .icon-theme,
-.home-icon,
-.user-icon,
-.logout-icon {
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-} */
 @media screen and (max-width: 720px) {
   .header {
     display: flex;
