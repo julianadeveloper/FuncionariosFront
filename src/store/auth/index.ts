@@ -1,4 +1,5 @@
 import { createStore} from "vuex";
+import store from "..";
 import { State } from "./types";
 
 export default createStore({
@@ -6,6 +7,9 @@ export default createStore({
         token: localStorage.getItem("token") || "",
         role : localStorage.getItem("role") || "",
         _id: localStorage.getItem('sessionLogin') || "",
+        name: ''
+        //localStorage.getItem("name") || "",
+
 
       }),
 });

@@ -28,7 +28,7 @@
             <i class="fas fa-user"></i>
           </span>
         </div>
-  <label class="label" for="exampleInputEmail2">Senha</label>
+        <label class="label" for="exampleInputEmail2">Senha</label>
         <div class="control has-icons-left has-icons-right">
           <input
             type="password"
@@ -55,6 +55,7 @@ import { defineComponent, ref } from "vue";
 import { mapMutations } from "vuex";
 import { SocketModule } from "@/services/socket";
 import { POSITION, useToast } from "vue-toastification";
+import auth from "@/store/auth";
 
 export default defineComponent({
   name: "LoginUser",
@@ -62,6 +63,7 @@ export default defineComponent({
   setup() {
     const apiService = new ApiService();
     const user = ref({
+      name: "",
       username: "",
       password: "",
       role: "",
@@ -88,6 +90,7 @@ export default defineComponent({
       setToken: "authModule/setToken",
       setRole: "authModule/setRole",
       setId: "authModule/setId",
+      setName: "authModule/setName",
     }),
     async login() {
       try {
@@ -97,9 +100,11 @@ export default defineComponent({
           password: this.user.password,
           role: this.user.role,
           _id: this.user._id,
+          name: this.user.name,
         });
 
-        // this.setId(response.data._id);
+        this.setName(response.data.name);
+        
         localStorage.setItem("sessionLogin", response.data._id);
 
         this.setToken(response.data.access_token);
@@ -248,10 +253,10 @@ hr {
   hr {
     border-left: none;
   }
-.subtitle{
-position: relative;
-}
-.img-login {
+  .subtitle {
+    position: relative;
+  }
+  .img-login {
     margin-right: 40%;
     width: 12rem;
   }
@@ -270,4 +275,3 @@ position: relative;
   }
 }
 </style>
-

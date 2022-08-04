@@ -2,9 +2,9 @@
   <div class="container">
     <div class="role">
       <div class="name">
-        <span>{{user.name}}</span>
+        <span>{{getName}}</span>
       </div>
-      <span>{{user.role}}</span>
+      <span>{{getRole}}</span>
     </div>
     <div class="user">
       <span> <i class="icon-user fa-solid fa-user fa-xl"></i> </span>
@@ -12,39 +12,32 @@
   </div>
 </template>
 <script lang="ts">
-import User from "@/interface/User";
 import { ApiService } from "@/services/api";
 import { defineComponent, ref } from "vue";
-
+import { mapGetters, mapState, storeKey, useStore } from "vuex";
 export default defineComponent({
   name: "UserProfile",
-
+  computed: {
+ 
+ ...mapGetters({ getName: "authModule/getName", getRole: "authModule/getRole" }),
+  },
   data() {
+    
     const apiService = new ApiService();
     const user = ref({
-      name: "",
+      name: '',
       role: "",
-      id: ''
+      id: "",
     });
-    return { user, apiService };
+    return { user, apiService};
   },
 
-  // methods:{
-  //   testando(user: User){
-    
-      
-  //   }
-  // },
-  // mounted(){
-  // const data =   this.apiService.teste(this.user.role, this.user.name)
-  //   console.log(data)
-  // }
 });
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
 
-.name{
+.name {
   font-size: 1.1rem;
 }
 .container {
@@ -54,7 +47,6 @@ export default defineComponent({
   align-items: center;
   color: rgb(52, 49, 49);
   font-weight: 600;
-
 }
 .role {
   font-size: 14px;

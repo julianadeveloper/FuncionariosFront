@@ -5,7 +5,7 @@
       class="form-control"
       placeholder="Buscar Usuario"
       required
-      v-model="user.username"
+      v-model="user.name"
     />
 
     <button class="btn button is-info is-outlined" @click="listerUsername">
@@ -26,17 +26,17 @@ export default defineComponent({
   setup() {
     const apiService = new ApiService();
     const user = ref({
-      username: "",
+      name: "",
     });
     return { user, apiService };
   },
   methods: {
     async listerUsername() {
-      this.$emit("value", this.user.username);
+      this.$emit("value", this.user.name);
     },
 
    async  clearInput() {
-        this.user.username = ''
+        this.user.name = ''
       this.$emit("value")
 
 },

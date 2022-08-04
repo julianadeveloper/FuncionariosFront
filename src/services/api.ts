@@ -43,8 +43,4 @@ export class ApiService {
     return this.api.delete("/users", { params: { ids: ids.join(",") } });
   }
 
-  // async teste(data: any, id: string){
-  //     console.log(data)
-  //   return (await this.api.get(`/users/${id}`), data)
-  // }
-}////
+}
