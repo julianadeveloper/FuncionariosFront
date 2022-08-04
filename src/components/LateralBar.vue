@@ -77,6 +77,10 @@ export default defineComponent({
       this.DarkThemeOn = !this.DarkThemeOn;
       this.$emit("theme", this.DarkThemeOn);
     },
+        openDropDown() {
+      this.DropDown = !this.DropDown;
+      console.log("dropdown", this.DropDown);
+    },
   },
 });
 </script>
