@@ -23,7 +23,7 @@
             v-model="user.name"
           />
         </div>
-           <div class="form-group">
+        <div class="form-group">
           <label for="exampleInputEmail1">Email do usuário</label>
           <input
             type="email"
@@ -62,7 +62,7 @@
             class="form-control"
             id="exampleInputPassword2"
             placeholder="Confirmar senha"
-            v-model="user.password"
+            v-model="user.passwordConfirm"
           />
         </div>
         <button
@@ -92,23 +92,49 @@ export default defineComponent({
       name: "",
       password: "",
       role: "",
-      email: '',
+      email: "",
+      passwordConfirm: "",
     });
     return { user, apiService };
   },
   methods: {
     async update() {
-      await this.apiService.userUpdate(this.user._id, this.user);
-      this.$emit("update", this.user);
-      this.chamaToast();
-      this.$router.push({ name: "home" });
+      try {
+        const passwordOk = this.user.password === this.user.passwordConfirm;
+
+        if (!passwordOk || "") {
+          this.chamaToastPass();
+        } else {
+          await this.apiService.userUpdate(this.user._id, this.user);
+          this.$emit("update", this.user);
+          this.chamaToast();
+          this.$router.push({ name: "home" });
+        }
+      } catch (error) {
+        this.chamaToastError();
+      }
     },
 
     chamaToast() {
-      const toast = useToast();
+      const toastSucess = useToast();
 
+      toastSucess.info("Dados alterados com sucesso", {
+        position: POSITION.BOTTOM_RIGHT,
+        timeout: 2000,
+      });
+    },
+    chamaToastError() {
+      const toastError = useToast();
       // or with options
-      toast.info("Dados alterados com sucesso", {
+      toastError.error("Dados incorretos! Reveja as alterações", {
+        position: POSITION.BOTTOM_RIGHT,
+        timeout: 2000,
+      });
+    },
+    chamaToastPass() {
+      const toastPass = useToast();
+      // or with options
+      toastPass.error("As senhas não coincidem!", {
         position: POSITION.BOTTOM_RIGHT,
         timeout: 2000,
       });

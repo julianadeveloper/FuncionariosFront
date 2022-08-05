@@ -22,10 +22,10 @@
             v-model="user.name"
           />
         </div>
-           <div class="form-group">
+        <div class="form-group">
           <label for="email">Email do usuário</label>
           <input
-          required
+            required
             class="form-control"
             id="email"
             name="email"
@@ -34,7 +34,7 @@
             v-model="user.email"
           />
         </div>
-        <div class="form-group " >
+        <div class="form-group">
           <label>Tipo de usuário</label>
           <select
             class="form-control form-control-sm"
@@ -63,10 +63,10 @@
             class="form-control"
             id="exampleInputPassword2"
             placeholder="Confirmar senha"
-            v-model="user.password"
+            v-model="user.passwordConfirm"
           />
         </div>
-        <button type="button" class="btn btn-success" @click.prevent="register">
+        <button type="button" class="btn" @click.prevent="register">
           Cadastrar
         </button>
       </div>
@@ -87,38 +87,59 @@ export default defineComponent({
       password: "",
       passwordConfirm: "",
       role: "",
-      email: ""
+      email: "",
     });
     const apiService = new ApiService();
     return { user, apiService };
   },
 
   methods: {
-
-     chamaToast() {
+    chamaToastSucess() {
       const toast = useToast();
+
       // or with options
       toast.success(`O usuário ${this.user.username} foi cadastrado!`, {
         position: POSITION.BOTTOM_RIGHT,
         timeout: 2000,
       });
     },
-    
-  async  register() {
-    try{
-      const passwordOk = this.user.password === this.user.passwordConfirm;
-     await this.apiService.userCreate(this.user);
-      this.$router.push({ name: "home" });
-      this.chamaToast()
-
-    }catch(error){
+    toastPassword() {
       const toast = useToast();
 
-          toast.warning(`O usuário ${this.user.username} já existe, Insira outro numero de matricula.!`, {
-        position: POSITION.BOTTOM_RIGHT,
+      // or with options
+      toast.error("As senhas não coincidem!", {
+        position: POSITION.TOP_CENTER,
         timeout: 2000,
       });
-    }
+    },
+
+    async register() {
+      const passwordOk = this.user.password === this.user.passwordConfirm;
+      try {
+        if (!passwordOk || "") this.toastPassword();
+        else {
+          await this.apiService.userCreate(this.user);
+          this.$router.push({ name: "home" });
+          this.chamaToastSucess();
+        }
+      } catch (error) {
+        const validateUser = this.user;
+        const passwords = this.user.password && this.user.passwordConfirm;
+        if (
+          validateUser.username ||
+          validateUser.email ||
+          validateUser.name ||
+          validateUser.role ||
+          passwords.length > 0
+        ) {
+          const toastMatricula = useToast();
+
+          toastMatricula.error("Você precisa preencher todos os dados!", {
+            position: POSITION.BOTTOM_RIGHT,
+            timeout: 2000,
+          });
+        }
+      }
     },
   },
 });

@@ -55,7 +55,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
 .navbar{
   margin: 0px;
   padding: 0px;
@@ -70,6 +70,7 @@ export default defineComponent({
   flex-wrap: wrap;
   color: black;
 }
+
 #homeview {
   overflow-x: hidden;
   overflow-y: scroll;

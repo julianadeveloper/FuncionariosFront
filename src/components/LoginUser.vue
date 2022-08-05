@@ -104,7 +104,7 @@ export default defineComponent({
         });
 
         this.setName(response.data.name);
-        
+
         localStorage.setItem("sessionLogin", response.data._id);
 
         this.setToken(response.data.access_token);
@@ -259,13 +259,15 @@ hr {
   .img-login {
     margin-right: 40%;
     width: 12rem;
+   display: none;
   }
   .form-login {
     width: 50%;
     height: 100%;
   }
   .container-form {
-    overflow: hidden;
+    -webkit-display: flex;
+    -moz-display: flex;
     display: flex;
     flex-direction: column;
     width: 100vw;
