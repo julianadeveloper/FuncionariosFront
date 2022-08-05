@@ -143,7 +143,7 @@ export default defineComponent({
       this.user = await this.apiService.listUserById(
         this.$route.params.id as string
       );
-      console.log(this.user);
+      // console.log(this.user);
     },
   },
   mounted() {

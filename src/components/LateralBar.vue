@@ -81,7 +81,7 @@ export default defineComponent({
     },
     openDropDown() {
       this.DropDown = !this.DropDown;
-      console.log("dropdown", this.DropDown);
+      // console.log("dropdown", this.DropDown);
     },
   },
 });

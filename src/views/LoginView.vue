@@ -15,9 +15,9 @@ export default defineComponent({
     LoginUser
   },
 
-  mounted(){
-    console.log(useStore())
-  }
+  // mounted(){
+  //   console.log(useStore())
+  // }
 });
 </script>
 <style scoped>

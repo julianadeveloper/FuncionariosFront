@@ -17,7 +17,7 @@ export class SocketModule {
     if (SocketModule.instance) return SocketModule.instance;
 
 
-		console.log('criei a conexao com meu backend!!!')
+		// console.log('criei a conexao com meu backend!!!')
     SocketModule.instance = new SocketModule("ws://localhost:3001");
     return SocketModule.instance;
   }

@@ -45,7 +45,7 @@ export default defineComponent({
   },
   watch: {
     search(value) {
-      console.log("watch");
+      // console.log("watch");
       this.listUsers(value);
     },
   },
@@ -96,7 +96,7 @@ export default defineComponent({
         // if (foundIndex) this.users.splice(foundIndex, 1);
         //  this.users = [];
         this.listUsers();
-        console.log("usuario excluído:", data.id);
+        // console.log("usuario excluído:", data.id);
       }
     );
     this.socketService.registerListener(
