@@ -1,6 +1,6 @@
 <template>
   <div id="homeview">
-    <section>
+    <section class="navbar">
       <LateralBar @theme="darktheme" />
     </section>
 
@@ -56,6 +56,10 @@ export default defineComponent({
 </script>
 
 <style>
+.navbar{
+  margin: 0px;
+  padding: 0px;
+}
 .card-home {
   align-items: center;
   justify-content: center;

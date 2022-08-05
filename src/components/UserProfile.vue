@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+       <button @click="openDropDown">
+          <i class="fas fa-angle-down" aria-hidden="true"> </i>
+        </button>
     <div class="role">
       <div class="name">
         <span>{{getName}}</span>
@@ -31,12 +34,22 @@ export default defineComponent({
     });
     return { user, apiService};
   },
+  methods:{
+    openDropDown(){
+      this.$emit('open')
+    }
+  }
 
 });
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
-
+button {
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: transparent;
+  outline: none;
+}
 .name {
   font-size: 1.1rem;
 }

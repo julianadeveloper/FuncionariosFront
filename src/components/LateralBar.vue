@@ -2,15 +2,9 @@
   <header class="header">
     <img id="logo" src="../assets/images/logo.svg" alt="logo-vuaida" />
 
-    <div>
-  
-      <div>
-            <button @click="openDropDown">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </button>
-      </div>
-        <UserProfile />
-
+    <div >
+      <UserProfile @open="openDropDown" />
+     
       <div class="dropdown" v-if="DropDown">
         <div class="dropdown-content">
           <a class="icon-theme dropdown-item" @click="changeTheme">
@@ -94,10 +88,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.profile {
-  display: flex;
-  position: relative;
-  flex-direction: row;
+.container-user{
+  margin: 10px;
 }
 .dropdown {
   position: absolute;
@@ -117,15 +109,8 @@ export default defineComponent({
   max-width: 100px;
   height: auto;
 }
-button {
-  cursor: pointer;
-  border: 1px solid transparent;
-  background-color: transparent;
-  outline: none;
-}
-::before {
-  color: rgb(210, 205, 205);
-}
+
+
 @media screen and (max-width: 720px) {
   .header {
     display: flex;

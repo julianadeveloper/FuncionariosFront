@@ -26,6 +26,7 @@ export default defineComponent({
 
 <style >
 main{
+  
   max-width: 100vw;
   height: 100vh;
     background-color: var(--bg-primary);

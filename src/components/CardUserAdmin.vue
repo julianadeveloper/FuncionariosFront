@@ -137,6 +137,7 @@ export default defineComponent({
   text-align: center;
 }
 .card {
+
   padding: 1.5rem;
   margin: 1rem;
   max-height: 50%;
@@ -144,6 +145,7 @@ export default defineComponent({
 
 @media only screen and (max-width: 720px) {
   .card-content {
+
     background-color: transparent;
     /* padding: 1.5rem; */
     height: 25%;
