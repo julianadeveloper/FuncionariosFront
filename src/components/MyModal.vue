@@ -45,16 +45,26 @@ export default defineComponent({
         timeout: 2000,
       });
     },
+    chamaToastError() {
+      const toast = useToast();
+
+      // or with options
+      toast.error("Você não pode deletar a si mesmo.", {
+        position: POSITION.BOTTOM_RIGHT,
+        timeout: 2000,
+      });
+    },
 
     async deleteUser() {
       if (localStorage.getItem("sessionLogin") === this.user._id) {
-        alert("Você não pode excluir seu próprio perfil");
+        this.chamaToastError();
+      } else {
+        this.$emit("delete", this.user._id);
+        this.chamaToast();
+        this.$router.push({ name: "home" });
+        this.closeModal();
+        await this.apiService.deleteUser([this.user._id]);
       }
-      this.$emit("delete", this.user._id);
-      this.chamaToast();
-      this.$router.push({ name: "home" });
-      this.closeModal();
-      await this.apiService.deleteUser([this.user._id]);
     },
   },
 });
