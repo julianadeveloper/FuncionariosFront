@@ -104,7 +104,6 @@ export default defineComponent({
         });
 
         this.setName(response.data.name);
-
         localStorage.setItem("sessionLogin", response.data._id);
 
         this.setToken(response.data.access_token);

@@ -11,10 +11,11 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent,  PropType } from "vue";
+import { defineComponent, PropType } from "vue";
 import User from "../interface/User";
 import { ApiService } from "@/services/api";
 import { POSITION, useToast } from "vue-toastification";
+import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "MyModal",
@@ -46,12 +47,14 @@ export default defineComponent({
     },
 
     async deleteUser() {
-      this.$emit("delete",this.user._id);
+      if (localStorage.getItem("sessionLogin") === this.user._id) {
+        alert("Você não pode excluir seu próprio perfil");
+      }
+      this.$emit("delete", this.user._id);
       this.chamaToast();
-      // this.$router.push({name: 'home'})
-      this.closeModal()
+      this.$router.push({ name: "home" });
+      this.closeModal();
       await this.apiService.deleteUser([this.user._id]);
-      
     },
   },
 });

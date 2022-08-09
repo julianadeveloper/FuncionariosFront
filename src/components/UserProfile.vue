@@ -17,7 +17,7 @@
 <script lang="ts">
 import { ApiService } from "@/services/api";
 import { defineComponent, ref } from "vue";
-import { mapGetters, mapState, storeKey, useStore } from "vuex";
+import { mapGetters} from "vuex";
 export default defineComponent({
   name: "UserProfile",
   computed: {
