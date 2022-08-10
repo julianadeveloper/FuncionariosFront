@@ -99,16 +99,16 @@ export default defineComponent({
   },
   methods: {
     async update() {
+      const passwordOk = this.user.password == this.user.passwordConfirm;
+      const passvazia = "";
       try {
-        const passwordOk = this.user.password === this.user.passwordConfirm;
-
-        if (!passwordOk || "") {
-          this.chamaToastPass();
-        } else {
+        if (passwordOk || passvazia) {
           await this.apiService.userUpdate(this.user._id, this.user);
           this.$emit("update", this.user);
           this.chamaToast();
           this.$router.push({ name: "home" });
+        } else {
+          this.chamaToastPass();
         }
       } catch (error) {
         this.chamaToastError();
