@@ -66,7 +66,7 @@ export default defineComponent({
       const toast = useToast();
 
       // or with options
-      toast.warning("Você fez logout", {
+      toast.success("Você fez logout", {
         position: POSITION.BOTTOM_RIGHT,
         timeout: 2000,
       });

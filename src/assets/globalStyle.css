@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -5,16 +7,14 @@
 }
 
 html {
+  font-family: "Poppins", sans-serif;
 
   height: 100%;
   overflow: hidden;
-  font-family: "Spline Sans Mono", monospace;
 }
 
 @media only screen and (max-width: 720px) {
   html {
-    
     overflow-x: scroll;
   }
 }
-
