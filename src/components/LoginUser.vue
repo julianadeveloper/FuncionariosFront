@@ -133,20 +133,23 @@ export default defineComponent({
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
+label{
+  margin: 1rem;
+}
 span {
   position: absolute;
   font-weight: 900;
   font-size: 16px;
   line-height: 24px;
-  /* identical to box height */
   display: flex;
   align-items: center;
   color: #393939;
 }
 .vuaida {
+  
   width: 200px;
-  height: 200px;
   position: relative;
+  margin: 1rem;
 }
 .title-form {
   animation: go-back 1s;
@@ -249,6 +252,7 @@ hr {
 }
 
 @media only screen and (max-width: 720px) {
+ 
   hr {
     border-left: none;
   }
