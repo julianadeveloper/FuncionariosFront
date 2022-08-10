@@ -162,7 +162,7 @@ span {
 }
 .title-form {
   color: black;
-  margin-bottom: 2rem;
+  margin-bottom: 0.25rem;
   padding: 1.25rem;
 }
 hr {

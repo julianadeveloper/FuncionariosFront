@@ -24,15 +24,13 @@ export default defineComponent({
 });
 </script>
 
-<style >
-main{
-  
+<style>
+main {
   max-width: 100vw;
   height: 100vh;
-    background-color: var(--bg-primary);
+  background-color: var(--bg-primary);
   color: var(--text-primary);
   overflow: hidden;
-  
 }
 main.dark-mode {
   background-color: var(--bg-secondary);
@@ -47,5 +45,4 @@ main.dark-mode {
   --bg-login-primary: rgb(241, 241, 241);
   --bg-home-login: rgb(52, 49, 49);
 }
-
 </style>
