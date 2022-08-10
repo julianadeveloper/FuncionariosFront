@@ -1,26 +1,32 @@
 <template>
-  <main class="dark-mode"><router-view /></main>
+  <main
+    :class="{
+      'dark-mode': DarkthemeOn,
+    }"
+  >
+    <router-view />
+  </main>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 export default defineComponent({
-  ...mapState({
-    setDarkthemeOn: "ThemeModule/setDarkThemeOn",
-  }),
-
+  computed: {
+    ...mapGetters({
+      DarkthemeOn: "ThemeModule/getDarkThemeOn",
+    }),
+  },
   // setup() {
   //   const store = useStore(key);
   //   console.log(store)
   //     // return { DarkThemeOn: store.state.DarkThemeOn };
   //   },
-  //   methods:{
-
-  //     MudaTema(){
-  //             this.$store.commit({type: this.MudaTema})
-  //           }
-  //   }
+  methods: {
+    changeClassTheme() {
+      this.DarkthemeOn = !this.DarkthemeOn;
+    },
+  },
 });
 </script>
 
@@ -37,7 +43,7 @@ main.dark-mode {
   color: var(--text-secondary);
 }
 :root {
-  --bg-primary: rgb(219, 186, 186);
+  --bg-primary: #ebebee;
   --bg-secondary: rgb(32, 31, 31);
   --text-secondary: rgb(251, 251, 251);
   --text-primary: rgb(28, 27, 27);

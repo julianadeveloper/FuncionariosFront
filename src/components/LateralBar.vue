@@ -2,9 +2,9 @@
   <header class="header">
     <img id="logo" src="../assets/images/logo.svg" alt="logo-vuaida" />
 
-    <div >
+    <div>
       <UserProfile @open="openDropDown" />
-     
+
       <div class="dropdown" v-if="DropDown">
         <div class="dropdown-content">
           <a class="icon-theme dropdown-item" @click="changeTheme">
@@ -41,6 +41,7 @@
 import { logoutService } from "@/services/logout";
 import { defineComponent } from "vue";
 import { POSITION, useToast } from "vue-toastification";
+import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
 import UserProfile from "../components/UserProfile.vue";
 export default defineComponent({
   name: "LateralBar",
@@ -48,11 +49,12 @@ export default defineComponent({
   data() {
     return {
       DropDown: false,
-      DarkThemeOn: false,
       logoutService: new logoutService(this.$router),
     };
   },
   computed: {
+    ...mapGetters({ DarkThemeOn: "ThemeModule/getDarkThemeOn" }),
+
     textButton() {
       if (!this.DarkThemeOn) {
         return "Tema Dark";
@@ -62,6 +64,7 @@ export default defineComponent({
     },
   },
   methods: {
+    ...mapMutations({ MudaTema: "ThemeModule/MudaTema" }),
     chamaToast() {
       const toast = useToast();
 
@@ -76,8 +79,8 @@ export default defineComponent({
       this.chamaToast();
     },
     changeTheme() {
-      this.DarkThemeOn = !this.DarkThemeOn;
-      this.$emit("theme", this.DarkThemeOn);
+      this.MudaTema();
+      console.log(this.DarkThemeOn);
     },
     openDropDown() {
       this.DropDown = !this.DropDown;
@@ -88,7 +91,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.container-user{
+.container-user {
   margin: 10px;
 }
 .dropdown {
@@ -109,7 +112,6 @@ export default defineComponent({
   max-width: 100px;
   height: auto;
 }
-
 
 @media screen and (max-width: 720px) {
   .header {

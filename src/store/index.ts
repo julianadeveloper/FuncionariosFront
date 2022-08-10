@@ -18,9 +18,8 @@ export default createStore({
         token: localStorage.getItem("token") || "",
         role: localStorage.getItem("role") || "",
         _id: localStorage.getItem("_id") || "",
-        name: ''
+        name: "",
         //:localStorage.getItem("name") || "",
-
       }),
 
       getters: {
@@ -50,10 +49,11 @@ export default createStore({
         getDarkThemeOn: (state) => state.DarkThemeOn,
       },
       mutations: {
-        MudaTema(state) {
-          state.DarkThemeOn = !state.DarkThemeOn;
-        },
+        MudaTema: (state, context) => (state.DarkThemeOn = !state.DarkThemeOn),
       },
+      // actions: {
+      //   MudaTema: (context ) => context.commit('MudaTema')
+      // },
     },
   },
 });
