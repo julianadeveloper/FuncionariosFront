@@ -5,46 +5,81 @@
       <img src="../assets/images/login.svg" alt="login" />
     </div>
     <hr />
-    <form class="form-login" @submit.prevent="login()">
+    <form class="form-login">
       <div class="title-form">
         <div class="vuaida">
           <img src="../assets/images/logo.svg" />
         </div>
-        <span class="subtitle">Controle de acesso de funcionários</span>
+        <span class="subtitle2">Controle de acesso de funcionários</span>
       </div>
 
       <div class="form-group">
-        <label class="label" for="exampleInputEmail1">Matricula</label>
-        <div class="control has-icons-left has-icons-right">
-          <input
-            type="text"
-            id="exampleInputEmail1"
-            placeholder="Numero de matrícula"
-            required
-            v-model="user.username"
-            class="input is-success"
-          />
-          <span class="icon is-small is-left">
-            <i class="fas fa-user"></i>
-          </span>
+        <label class="label" for="exampleInputEmail1">
+          <i class="fas fa-user"></i>
+          Matrícula
+        </label>
+        <div class="field">
+          <div class="control">
+            <input
+              type="text"
+              id="exampleInputEmail1"
+              placeholder="Numero de matrícula"
+              required
+              v-model="user.username"
+              class="input is-link"
+            />
+          </div>
         </div>
-        <label class="label" for="exampleInputEmail2">Senha</label>
-        <div class="control has-icons-left has-icons-right">
-          <input
-            type="password"
-            id="exampleInputEmail2"
-            placeholder="Senha"
-            required
-            v-model="user.password"
-            class="input is-success"
-          />
-          <span class="icon is-small is-left">
-            <i class="fas fa-lock"></i>
-          </span>
+        <label class="label" for="exampleInputEmail2">
+          <i class="fas fa-lock"></i>
+
+          Senha</label
+        >
+
+        <div class="field has-icons-left has-icons-right">
+          <div class="control">
+            <input
+              v-if="showPassword"
+              type="text"
+              id="exampleInputEmail2"
+              placeholder="Senha"
+              required
+              v-model="user.password"
+              class="input is-link"
+            />
+            <input
+              v-else
+              type="password"
+              id="exampleInputEmail2"
+              placeholder="Senha"
+              required
+              v-model="user.password"
+              class="input is-link"
+            />
+            <div class="btn-show-pass">
+              <button class="btn btn-animate" @click.prevent="togglePassword">
+                <span class="icon is-small is-left">
+                  <i
+                    class="fas"
+                    :class="{
+                      'fa-eye-slash': showPassword,
+                      'fa-eye': !showPassword,
+                    }"
+                  ></i>
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <button type="submit" class="btn btn-white btn-animate">Login</button>
+      <button
+        type="button"
+        class="btn btn-white btn-animate"
+        @click.prevent="login()"
+      >
+        Login
+      </button>
     </form>
   </div>
 </template>
@@ -59,7 +94,9 @@ import auth from "@/store/auth";
 
 export default defineComponent({
   name: "LoginUser",
-
+  data() {
+    return { showPassword: false };
+  },
   setup() {
     const apiService = new ApiService();
     const user = ref({
@@ -73,8 +110,20 @@ export default defineComponent({
 
     return { user, apiService, SocketModule };
   },
+  ccomputed: {
+    togglePassword() {
+      if (this.showPassword) {
+        return "Hide";
+      } else {
+        return "Show";
+      }
+    },
+  },
 
   methods: {
+    togglePassword() {
+      this.showPassword = !this.showPassword;
+    },
     chamaToast() {
       const toast = useToast();
 
@@ -103,6 +152,9 @@ export default defineComponent({
           name: this.user.name,
         });
 
+
+
+         this.setId(response.data._id) 
         this.setName(response.data.name);
         localStorage.setItem("sessionLogin", response.data._id);
 
@@ -133,20 +185,26 @@ export default defineComponent({
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Spline+Sans+Mono:wght@500&display=swap");
-label{
+.control {
+  display: flex;
+}
+label {
+  padding: 0.25rem;
   margin: 1rem;
+}
+input {
+  max-width: 100%;
+  width: 80%;
 }
 span {
   position: absolute;
   font-weight: 900;
   font-size: 16px;
-  line-height: 24px;
   display: flex;
   align-items: center;
-  color: #393939;
+  color: #040404;
 }
 .vuaida {
-  
   width: 200px;
   position: relative;
   margin: 1rem;
@@ -211,7 +269,7 @@ hr {
 }
 
 .btn:hover {
-  transform: translateY(-3px);
+  transform: translateY(3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -221,8 +279,8 @@ hr {
 }
 
 .btn-white {
-  background-color: #fff;
-  color: #777;
+  background-color: rgb(139, 59, 243);
+  color: rgb(246, 246, 246);
 }
 
 .btn-white::after {
@@ -252,17 +310,16 @@ hr {
 }
 
 @media only screen and (max-width: 720px) {
- 
   hr {
     border-left: none;
   }
-  .subtitle {
+  .subtitle2 {
     position: relative;
   }
   .img-login {
     margin-right: 40%;
     width: 12rem;
-   display: none;
+    display: none;
   }
   .form-login {
     width: 50%;

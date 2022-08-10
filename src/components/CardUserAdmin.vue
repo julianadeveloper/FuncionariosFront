@@ -119,6 +119,9 @@ export default defineComponent({
 });
 </script>
 <style scoped>
+.buttons-div{
+  margin: 0;
+}
 .modal {
   display: flex;
   align-items: center;
@@ -127,28 +130,29 @@ export default defineComponent({
 }
 
 .icon-user {
-  color: #5159bb;
-  display: flex;
-  margin: 1rem;
   align-items: center;
   justify-content: center;
+  color: #5159bb;
+  display: flex;
+  margin: 2rem;
 }
 .card-text {
+  line-height: 1.6;
   text-align: center;
 }
 .card {
-
-  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 1rem;
-  max-height: 50%;
+  max-height: 100%;
 }
 
 @media only screen and (max-width: 720px) {
   .card-content {
-
     background-color: transparent;
     /* padding: 1.5rem; */
-    height: 25%;
+    height: 100%;
   }
 }
 </style>

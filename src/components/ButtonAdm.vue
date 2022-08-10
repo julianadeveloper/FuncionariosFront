@@ -2,16 +2,14 @@
   <div class="btn">
     <div class="container-buttons">
       <a
-
         class="btn button is-info is-outlined"
         @click="$router.push({ name: 'UpdateView', params: { id: user._id } })"
       >
         <i class="fa-solid fa-pen-to-square"></i>
       </a>
 
-
       <a class="btn button is-danger is-outlined" @click="openModal">
-      <i class="fa-regular fa-trash-can"></i>
+        <i class="fa-regular fa-trash-can"></i>
       </a>
     </div>
   </div>
@@ -53,7 +51,11 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.btn{
-  margin: 1rem
+.card-content {
+  padding: 1rem;
+
+}
+.btn {
+  margin: 1rem;
 }
 </style>

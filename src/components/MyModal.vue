@@ -40,7 +40,7 @@ export default defineComponent({
       const toast = useToast();
 
       // or with options
-      toast.warning("Usuário excluído com sucesso.", {
+      toast.error("Usuário excluído com sucesso.", {
         position: POSITION.BOTTOM_RIGHT,
         timeout: 2000,
       });
