@@ -7,7 +7,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import LoginUser from '@/components/LoginUser.vue';
-import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'LoginView',

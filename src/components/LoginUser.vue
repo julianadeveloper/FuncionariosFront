@@ -256,6 +256,7 @@ hr {
   width: 80%;
   align-items: center;
   justify-content: center;
+  
 }
 .btn:link,
 .btn:visited {

@@ -44,6 +44,10 @@ export default defineComponent({
 });
 </script>
 <style scoped>
+.button.is-info.is-outlined {
+    border-color: #cbcbcb;
+    color: #e9e9e9;
+}
 .input-search {
   display: flex;
   width: 100%;

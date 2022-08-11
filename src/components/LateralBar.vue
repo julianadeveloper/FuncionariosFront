@@ -104,7 +104,7 @@ export default defineComponent({
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  height: 6rem;
+  height: 4rem;
   padding: 1rem;
   background: #ebebee;
 }
@@ -117,9 +117,10 @@ export default defineComponent({
   .header {
     display: flex;
     width: 100vw;
-    height: 12rem;
+    height: 8rem;
     flex-direction: row;
     align-items: center;
+    font-size: 0.5rem;
   }
 }
 </style>
