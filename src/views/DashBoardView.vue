@@ -62,7 +62,19 @@ export default defineComponent({
     },
   },
   async mounted() {
+  await this.socketService.registerListener(
+    "cards-users",
+    "removed-user",
+    (id: {id: string}) =>{
 
+      if(localStorage.getItem("sessionLogin") === String(id.id)){
+      console.log('voce sera deslogado')
+        localStorage.removeItem("token")
+        this.$router.push("/login")
+
+      }
+    }
+  )
     await this.socketService.registerListener(
       "is-logged",
       "is-logged",

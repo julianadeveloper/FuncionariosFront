@@ -12,10 +12,8 @@ export class SocketModule {
     this.io = io(uri);
     this.registerDefaultListeners();
   }
-  
   public static connect() {
     if (SocketModule.instance) return SocketModule.instance;
-
 
 		// console.log('criei a conexao com meu backend!!!')
     SocketModule.instance = new SocketModule("ws://localhost:3001");
@@ -47,6 +45,7 @@ export class SocketModule {
 
     this.io.removeListener(event);
     this.listeners.delete(`${namespace}/${event}`);
+    
   }
   
 }

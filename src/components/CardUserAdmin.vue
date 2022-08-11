@@ -85,7 +85,7 @@ export default defineComponent({
   async mounted() {
     this.users = [];
     await this.listUsers();
-
+  
     this.socketService.registerListener(
       "cards-users",
       "removed-user",
@@ -119,7 +119,7 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-.buttons-container{
+.buttons-container {
   padding: 0;
   margin: 0;
   height: 100px;
@@ -148,9 +148,9 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
 }
-  .card-content {
-    height: 100%;
-  }
+.card-content {
+  height: 100%;
+}
 
 @media only screen and (max-width: 720px) {
   .card-content {

@@ -17,11 +17,6 @@ export default defineComponent({
       DarkthemeOn: "ThemeModule/getDarkThemeOn",
     }),
   },
-  // setup() {
-  //   const store = useStore(key);
-  //   console.log(store)
-  //     // return { DarkThemeOn: store.state.DarkThemeOn };
-  //   },
   methods: {
     changeClassTheme() {
       this.DarkthemeOn = !this.DarkthemeOn;
@@ -43,8 +38,8 @@ main.dark-mode {
   color: var(--text-secondary);
 }
 :root {
-  --bg-primary: #ebebee;
-  --bg-secondary: rgb(32, 31, 31);
+  --bg-primary: #c7c7d3;
+  --bg-secondary:  rgb(42 44 64);
   --text-secondary: rgb(251, 251, 251);
   --text-primary: rgb(28, 27, 27);
   --bg-login-dark: rgb(21, 15, 15);
