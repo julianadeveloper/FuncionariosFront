@@ -41,7 +41,7 @@ export default defineComponent({
 
       // or with options
       toast.error("Usuário excluído com sucesso.", {
-        position: POSITION.BOTTOM_RIGHT,
+        position: POSITION.TOP_CENTER,
         timeout: 2000,
       });
     },
@@ -50,7 +50,7 @@ export default defineComponent({
 
       // or with options
       toast.error("Você não pode deletar a si mesmo.", {
-        position: POSITION.BOTTOM_RIGHT,
+        position: POSITION.TOP_CENTER,
         timeout: 2000,
       });
     },

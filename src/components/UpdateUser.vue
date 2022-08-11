@@ -176,7 +176,7 @@ export default defineComponent({
       const toastSucess = useToast();
 
       toastSucess.info("Dados alterados com sucesso", {
-        position: POSITION.BOTTOM_RIGHT,
+        position: POSITION.TOP_CENTER,
         timeout: 2000,
       });
     },
@@ -184,7 +184,7 @@ export default defineComponent({
       const toastError = useToast();
       // or with options
       toastError.error("Dados incorretos! Reveja as alterações", {
-        position: POSITION.BOTTOM_RIGHT,
+        position: POSITION.TOP_CENTER,
         timeout: 2000,
       });
     },
@@ -192,7 +192,7 @@ export default defineComponent({
       const toastPass = useToast();
       // or with options
       toastPass.error("As senhas não coincidem!", {
-        position: POSITION.BOTTOM_RIGHT,
+        position: POSITION.TOP_CENTER,
         timeout: 2000,
       });
     },

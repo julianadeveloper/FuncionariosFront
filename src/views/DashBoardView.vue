@@ -52,7 +52,7 @@ export default defineComponent({
 
       // or with options
       toast.warning("Você foi deslogado devido a  um acesso simultâneo", {
-        position: POSITION.BOTTOM_RIGHT,
+        position: POSITION.TOP_CENTER,
         timeout: 2000,
       });
     },

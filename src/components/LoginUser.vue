@@ -128,7 +128,7 @@ export default defineComponent({
 
       // or with options
       toast.success("Você está logado", {
-        position: POSITION.BOTTOM_RIGHT,
+        position: POSITION.TOP_CENTER,
         timeout: 2000,
       });
     },

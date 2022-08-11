@@ -151,7 +151,7 @@ export default defineComponent({
 
       // or with options
       toast.success(`O usuário ${this.user.username} foi cadastrado!`, {
-        position: POSITION.BOTTOM_RIGHT,
+        position: POSITION.TOP_CENTER,
         timeout: 2000,
       });
     },
@@ -187,7 +187,7 @@ export default defineComponent({
           const toastMatricula = useToast();
 
           toastMatricula.error("Você precisa preencher todos os dados!", {
-            position: POSITION.BOTTOM_RIGHT,
+            position: POSITION.TOP_CENTER,
             timeout: 2000,
           });
         }
