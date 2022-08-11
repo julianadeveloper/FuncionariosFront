@@ -47,24 +47,75 @@
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1" class="label"> Senha</label>
-          <input
+          <div class="field has-icons-left has-icons-right">
+            <div class="control">
+              <input
+                v-if="showPassword"
+                type="text"
+                id="exampleInputEmail2"
+                placeholder="Senha"
+                required
+                v-model="user.password"
+                class="input is-link"
+              />
+              <input
+                v-else
+                type="password"
+                id="exampleInputEmail2"
+                placeholder="Senha"
+                required
+                v-model="user.password"
+                class="input is-link"
+              />
+
+              <div>
+                <div class="form-group">
+                  <label class="label" for="exampleInputPassword1"
+                    >Confirmar Senha</label
+                  >
+                  <input
+                    v-if="showPasswordConfirm"
+                    type="text"
+                    class="form-control"
+                    id="exampleInputPassword2"
+                    placeholder="Confirmar senha"
+                    v-model="user.passwordConfirm"
+                  />
+                  <input
+                    v-else
+                    type="password"
+                    id="exampleInputEmail2"
+                    placeholder="Senha"
+                    required
+                    v-model="user.passwordConfirm"
+                    class="input is-link"
+                  />
+                </div>
+              </div>
+              <div class="btn-show-pass">
+                <button class="btn btn-animate" @click.prevent="togglePassword">
+                  <span class="icon is-small is-left">
+                    <i
+                      class="fas"
+                      :class="{
+                        'fa-eye-slash': showPassword,
+                        'fa-eye': !showPassword,
+                      }"
+                    ></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- <input
             type="password"
             class="form-control"
             id="exampleInputPassword1"
             placeholder="Senha"
             v-model="user.password"
-          />
+          /> -->
         </div>
-        <div class="form-group">
-          <label class="label" for="exampleInputPassword1">Confirmar Senha</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword2"
-            placeholder="Confirmar senha"
-            v-model="user.passwordConfirm"
-          />
-        </div>
+
         <button
           type="button"
           class="btn btn-white btn-animate"
@@ -83,7 +134,9 @@ import { POSITION, useToast } from "vue-toastification";
 
 export default defineComponent({
   name: "UpdateUser",
-
+  data() {
+    return { showPassword: false, showPasswordConfirm: false };
+  },
   setup() {
     const apiService = new ApiService();
     const user = ref({
@@ -98,6 +151,10 @@ export default defineComponent({
     return { user, apiService };
   },
   methods: {
+    togglePassword() {
+      this.showPassword = !this.showPassword;
+      this.showPasswordConfirm = this.showPassword;
+    },
     async update() {
       const passwordOk = this.user.password == this.user.passwordConfirm;
       const passvazia = "";
@@ -152,16 +209,16 @@ export default defineComponent({
 });
 </script>
 <style scoped>
+
 .form-body {
   align-items: center;
   justify-content: center;
   display: flex;
   width: 50vw;
-  height: auto;
+  height: 80vh;
   background-color: rgb(209, 211, 214);
 }
 .form-update {
-  
   color: #777;
   width: 20rem;
   height: auto;
@@ -169,6 +226,7 @@ export default defineComponent({
   text-align: center;
 }
 .form-group {
+  margin: 0;
   width: 100%;
 }
 .btn:link,

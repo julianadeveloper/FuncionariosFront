@@ -47,24 +47,67 @@
           </select>
         </div>
         <div class="form-group">
-          <label class="label" for="exampleInputPassword1"> Senha</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Senha"
-            v-model="user.password"
-          />
-        </div>
-        <div class="form-group">
-          <label class="label" for="exampleInputPassword1">Confirmar Senha</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword2"
-            placeholder="Confirmar senha"
-            v-model="user.passwordConfirm"
-          />
+          <label for="exampleInputPassword1" class="label"> Senha</label>
+          <div class="field has-icons-left has-icons-right">
+            <div class="control">
+              <input
+                v-if="showPassword"
+                type="text"
+                id="exampleInputEmail2"
+                placeholder="Senha"
+                required
+                v-model="user.password"
+                class="input is-link"
+              />
+              <input
+                v-else
+                type="password"
+                id="exampleInputEmail2"
+                placeholder="Senha"
+                required
+                v-model="user.password"
+                class="input is-link"
+              />
+
+              <div>
+                <div class="form-group">
+                  <label class="label" for="exampleInputPassword1"
+                    >Confirmar Senha</label
+                  >
+                  <input
+                    v-if="showPasswordConfirm"
+                    type="text"
+                    class="form-control"
+                    id="exampleInputPassword2"
+                    placeholder="Confirmar senha"
+                    v-model="user.passwordConfirm"
+                  />
+                  <input
+                    v-else
+                    type="password"
+                    id="exampleInputEmail2"
+                    placeholder="Senha"
+                    required
+                    v-model="user.passwordConfirm"
+                    class="input is-link"
+                  />
+                </div>
+              </div>
+              <div class="btn-show-pass">
+                <button class="btn btn-animate" @click.prevent="togglePassword">
+                  <span class="icon is-small is-left">
+                    <i
+                      class="fas"
+                      :class="{
+                        'fa-eye-slash': showPassword,
+                        'fa-eye': !showPassword,
+                      }"
+                    ></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
         <button type="button" class="btn btn-create" @click.prevent="register">
           Cadastrar
@@ -90,10 +133,19 @@ export default defineComponent({
       email: "",
     });
     const apiService = new ApiService();
-    return { user, apiService };
+    return {
+      user,
+      apiService,
+      showPassword: false,
+      showPasswordConfirm: false,
+    };
   },
 
   methods: {
+    togglePassword() {
+      this.showPassword = !this.showPassword;
+      this.showPasswordConfirm = this.showPassword;
+    },
     chamaToastSucess() {
       const toast = useToast();
 
@@ -187,6 +239,7 @@ export default defineComponent({
   margin: 10px;
 }
 .form-group {
+  margin: 0;
   width: 100%;
   height: 100%;
 }
