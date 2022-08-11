@@ -16,7 +16,7 @@
       <p>Funções: {{ user.role }}</p>
       <p>Email: {{ user.email }}</p>
 
-      <div v-if="isAdmin">
+      <div class="buttons-container" v-if="isAdmin">
         <ButtonAdm @openmymodal="modalIsOpen" :user="user" />
       </div>
     </div>
@@ -119,8 +119,10 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-.buttons-div{
+.buttons-container{
+  padding: 0;
   margin: 0;
+  height: 100px;
 }
 .modal {
   display: flex;
@@ -141,12 +143,14 @@ export default defineComponent({
   text-align: center;
 }
 .card {
+  margin: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1rem;
-  max-height: 100%;
 }
+  .card-content {
+    height: 100%;
+  }
 
 @media only screen and (max-width: 720px) {
   .card-content {

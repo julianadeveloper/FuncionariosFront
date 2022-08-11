@@ -3,7 +3,7 @@
     <form class="form-update">
       <div class="form-group">
         <div class="form-group">
-          <label for="exampleInputEmail1">Matricula</label>
+          <label class="label" for="exampleInputEmail1">Matricula</label>
           <input
             type="text"
             class="form-control"
@@ -13,7 +13,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">Nome do usuário</label>
+          <label class="label" for="exampleInputEmail1">Nome do usuário</label>
           <input
             type="text"
             class="form-control"
@@ -23,7 +23,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="email">Email do usuário</label>
+          <label class="label" for="email">Email do usuário</label>
           <input
             required
             class="form-control"
@@ -35,7 +35,7 @@
           />
         </div>
         <div class="form-group">
-          <label>Tipo de usuário</label>
+          <label class="label">Tipo de usuário</label>
           <select
             class="form-control form-control-sm"
             v-model="user.role"
@@ -47,7 +47,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1"> Senha</label>
+          <label class="label" for="exampleInputPassword1"> Senha</label>
           <input
             type="password"
             class="form-control"
@@ -57,7 +57,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Confirmar Senha</label>
+          <label class="label" for="exampleInputPassword1">Confirmar Senha</label>
           <input
             type="password"
             class="form-control"
@@ -66,7 +66,7 @@
             v-model="user.passwordConfirm"
           />
         </div>
-        <button type="button" class="btn" @click.prevent="register">
+        <button type="button" class="btn btn-create" @click.prevent="register">
           Cadastrar
         </button>
       </div>
@@ -182,11 +182,13 @@ export default defineComponent({
   padding: 1rem;
   width: 20rem;
   height: auto;
-  /* border-radius: 10%; */
+  border-radius: 10%;
   text-align: center;
+  margin: 10px;
 }
 .form-group {
   width: 100%;
+  height: 100%;
 }
 .btn:link,
 .btn:visited {
@@ -209,9 +211,10 @@ export default defineComponent({
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
-  background-color: #fff;
-  color: #777;
+.btn-create {
+  font-weight: 600;
+  background-color: rgba(48, 72, 205, 0.793);
+  color: rgb(255, 255, 255);
 }
 
 .btn-white::after {

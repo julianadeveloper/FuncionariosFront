@@ -1,5 +1,4 @@
 import { createStore} from "vuex";
-import store from "..";
 import { State } from "./types";
 
 export default createStore({

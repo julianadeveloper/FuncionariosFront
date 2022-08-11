@@ -82,7 +82,19 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
 }
+#homeview::-webkit-scrollbar {
+  width: 10px;               /* width of the entire scrollbar */
+}
 
+#homeview::-webkit-scrollbar-track {
+  background: rgba(89, 87, 87, 0.981);        /* color of the tracking area */
+}
+
+#homeview::-webkit-scrollbar-thumb {
+  background-color: rgba(22, 22, 31, 0.926);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid rgb(30, 30, 30);  /* creates padding around scroll thumb */
+}
 @media only screen and (max-width: 720px) {
   #homeview {
     display: flex;

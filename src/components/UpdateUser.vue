@@ -4,7 +4,7 @@
       <div class="form-group">
         <h5>Alterar dados de Usuario</h5>
         <div class="form-group">
-          <label for="exampleInputEmail1">Matricula</label>
+          <label class="label" for="exampleInputEmail1">Matricula</label>
           <input
             type="text"
             class="form-control"
@@ -14,7 +14,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">Nome do usuário</label>
+          <label class="label" for="exampleInputEmail1">Nome do usuário</label>
           <input
             type="text"
             class="form-control"
@@ -24,7 +24,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">Email do usuário</label>
+          <label class="label" for="exampleInputEmail1">Email do usuário</label>
           <input
             type="email"
             class="form-control"
@@ -34,7 +34,7 @@
           />
         </div>
         <div class="form-group">
-          <label>Tipo de usuário</label>
+          <label class="label">Tipo de usuário</label>
           <select
             class="form-control form-control-sm"
             v-model="user.role"
@@ -46,7 +46,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1"> Senha</label>
+          <label for="exampleInputPassword1" class="label"> Senha</label>
           <input
             type="password"
             class="form-control"
@@ -56,7 +56,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Confirmar Senha</label>
+          <label class="label" for="exampleInputPassword1">Confirmar Senha</label>
           <input
             type="password"
             class="form-control"
@@ -161,11 +161,11 @@ export default defineComponent({
   background-color: rgb(209, 211, 214);
 }
 .form-update {
+  
   color: #777;
-  padding: 1rem;
   width: 20rem;
   height: auto;
-  /* border-radius: 10%; */
+  border-radius: 10%;
   text-align: center;
 }
 .form-group {
@@ -193,8 +193,9 @@ export default defineComponent({
 }
 
 .btn-white {
-  background-color: #fff;
-  color: #777;
+  font-weight: 600;
+  background-color: rgba(48, 72, 205, 0.793);
+  color: rgb(255, 255, 255);
 }
 
 .btn-white::after {

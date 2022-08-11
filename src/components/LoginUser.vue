@@ -90,7 +90,6 @@ import { defineComponent, ref } from "vue";
 import { mapMutations } from "vuex";
 import { SocketModule } from "@/services/socket";
 import { POSITION, useToast } from "vue-toastification";
-import auth from "@/store/auth";
 
 export default defineComponent({
   name: "LoginUser",
