@@ -7,7 +7,7 @@
     <hr />
     <form class="form-login">
       <div class="title-form">
-        <div class="vuaida">
+        <div>
           <img src="../assets/images/logo.svg" />
         </div>
         <span class="subtitle2">Controle de acesso de funcionários</span>
@@ -202,11 +202,6 @@ span {
   display: flex;
   align-items: center;
   color: #040404;
-}
-.vuaida {
-  width: 200px;
-  position: relative;
-  margin: 1rem;
 }
 .title-form {
   animation: go-back 1s;
