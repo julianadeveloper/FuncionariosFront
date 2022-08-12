@@ -49,7 +49,7 @@ export default createStore({
         getDarkThemeOn: (state) => state.DarkThemeOn,
       },
       mutations: {
-        MudaTema: (state, context) => (state.DarkThemeOn = !state.DarkThemeOn),
+        MudaTema: (state) => (state.DarkThemeOn = !state.DarkThemeOn),
       },
       // actions: {
       //   MudaTema: (context ) => context.commit('MudaTema')

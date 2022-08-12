@@ -8,9 +8,10 @@ export class logoutService {
   }
 
   async logoutUser() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("sessionLogin");
-    localStorage.removeItem("role");
+    // localStorage.removeItem("token");
+    // localStorage.removeItem("sessionLogin");
+    // localStorage.removeItem("role");
+    localStorage.clear()
     await  this.router.push({ name: "login" });
   }
 }

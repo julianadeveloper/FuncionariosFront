@@ -1,11 +1,16 @@
 <template>
   <section id="body-section-dashboard">
-    <div class="body-menu">
+    <div
+      class="body-menu"
+      :class="{
+        'dark-mode': DarkthemeOn,
+      }"
+    >
       <div class="body-icon">
         <i class="fa-solid fa-users"></i>
       </div>
 
-      <span  class="list-users">Listar Usuarios</span>
+      <span class="list-users">Listar Usuarios</span>
       <div class="link-acess">
         <a class="btn-dashboard" @click="$router.push({ name: 'home' })">
           Acessar
@@ -13,7 +18,13 @@
       </div>
     </div>
 
-    <div class="body-menu" v-if="isAdmin">
+    <div
+      class="body-menu"
+      :class="{
+        'dark-mode': DarkthemeOn,
+      }"
+      v-if="isAdmin"
+    >
       <div class="body-icon">
         <i class="fa-solid fa-user-large"></i>
       </div>
@@ -43,7 +54,15 @@ export default defineComponent({
     return { user, apiService };
   },
   computed: {
-    ...mapGetters({ isAdmin: "authModule/isAdmin" }),
+    ...mapGetters({
+      isAdmin: "authModule/isAdmin",
+      DarkthemeOn: "ThemeModule/getDarkThemeOn",
+    }),
+  },
+  methods: {
+    changeCard() {
+      this.DarkthemeOn = !this.DarkthemeOn;
+    },
   },
 });
 </script>
@@ -82,6 +101,9 @@ span {
   background: rgba(255, 255, 255, 0.649);
   margin-bottom: 100%;
 }
+.body-menu.dark-mode {
+  background: #855bfd;
+}
 .body-menu {
   padding: 1rem;
   margin: 3rem;
@@ -90,7 +112,8 @@ span {
   height: 440px;
   left: 791px;
   top: 167px;
-  background: #855bfd;
+  background: #6b5e8d;
+
   border-radius: 4px;
   justify-content: space-evenly;
   display: flex;

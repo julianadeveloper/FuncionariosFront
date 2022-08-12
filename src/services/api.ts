@@ -1,4 +1,3 @@
-import User from "@/interface/User";
 import store from "@/store";
 import axios, { AxiosInstance } from "axios";
 

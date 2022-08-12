@@ -36,7 +36,7 @@ export default defineComponent({
   data() {
     return {
       searchUsername: "",
-      logoutService: new logoutService(this.$router)
+      logoutService: new logoutService(this.$router),
     };
   },
 
@@ -56,34 +56,40 @@ export default defineComponent({
         timeout: 2000,
       });
     },
-    async  logout() {
-       await this.logoutService.logoutUser()
-      this.chamaToast()
+     chamaToastLogout() {
+      const toast = useToast();
+
+      // or with options
+      toast.error("Você não está mais cadastrado no Vuaida. Conta removida", {
+        position: POSITION.TOP_CENTER,
+        timeout: 5000,
+      });
+    },
+    async logout() {
+      await this.logoutService.logoutUser();
+      this.chamaToast();
     },
   },
   async mounted() {
-  await this.socketService.registerListener(
-    "cards-users",
-    "removed-user",
-    (id: {id: string}) =>{
-
-      if(localStorage.getItem("sessionLogin") === String(id.id)){
-      console.log('voce sera deslogado')
-        localStorage.removeItem("token")
-        this.$router.push("/login")
-
+    await this.socketService.registerListener(
+      "cards-users",
+      "removed-user",
+      (id: { id: string }) => {
+        if (localStorage.getItem("sessionLogin") === String(id.id)) {
+          this.chamaToastLogout()
+          localStorage.removeItem("token");
+          this.$router.push("/login");
+        }
       }
-    }
-  )
+    );
     await this.socketService.registerListener(
       "is-logged",
       "is-logged",
       (data) => {
         let sessionUser = localStorage.getItem("sessionLogin");
         if (String(sessionUser) == String(data._id._id)) {
-
           setTimeout(() => {
-           this.logout()
+            this.logout();
           }, 3000);
           clearTimeout(3001);
         }
@@ -105,7 +111,7 @@ nav {
 
 #homeview {
   width: 100%;
-  height: 100vh;  /* background: var(--bg-login-primary); */
+  height: 100vh; /* background: var(--bg-login-primary); */
 }
 
 @media only screen and (max-width: 720px) {

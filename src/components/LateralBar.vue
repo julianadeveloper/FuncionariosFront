@@ -41,7 +41,7 @@
 import { logoutService } from "@/services/logout";
 import { defineComponent } from "vue";
 import { POSITION, useToast } from "vue-toastification";
-import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import UserProfile from "../components/UserProfile.vue";
 export default defineComponent({
   name: "LateralBar",

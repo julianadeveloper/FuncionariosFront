@@ -1,5 +1,12 @@
 <template>
-  <div v-for="(user, i) in users" :key="i" class="card">
+  <div
+    :class="{
+      'card-dark': DarkthemeOn,
+    }"
+    v-for="(user, i) in users"
+    :key="i"
+    class="card"
+  >
     <div class="card-content" :user="user">
       <i class="icon-user fa-solid fa-user fa-2xl"></i>
       <MyModal
@@ -41,7 +48,10 @@ export default defineComponent({
     },
   },
   computed: {
-    ...mapGetters({ isAdmin: "authModule/isAdmin" }),
+    ...mapGetters({
+      isAdmin: "authModule/isAdmin",
+      DarkthemeOn: "ThemeModule/getDarkThemeOn",
+    }),
   },
   watch: {
     search(value) {
@@ -62,6 +72,10 @@ export default defineComponent({
   },
 
   methods: {
+    changeClassTheme() {
+      this.DarkthemeOn = !this.DarkthemeOn;
+    },
+
     async updateComponent(users: User[]) {
       this.users = [];
       await this.listUsers();
@@ -85,7 +99,7 @@ export default defineComponent({
   async mounted() {
     this.users = [];
     await this.listUsers();
-  
+
     this.socketService.registerListener(
       "cards-users",
       "removed-user",

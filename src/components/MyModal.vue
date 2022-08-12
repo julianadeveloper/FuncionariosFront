@@ -11,11 +11,10 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
-import User from "../interface/User";
 import { ApiService } from "@/services/api";
+import { defineComponent, PropType } from "vue";
 import { POSITION, useToast } from "vue-toastification";
-import { mapGetters } from "vuex";
+import User from "../interface/User";
 
 export default defineComponent({
   name: "MyModal",

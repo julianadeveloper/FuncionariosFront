@@ -156,10 +156,9 @@ export default defineComponent({
       this.showPasswordConfirm = this.showPassword;
     },
     async update() {
-      const passwordOk = this.user.password == this.user.passwordConfirm;
-      const passvazia = "";
+      const passwordOk = this.user.password == this.user.passwordConfirm || "";
       try {
-        if (passwordOk || passvazia) {
+        if (passwordOk) {
           await this.apiService.userUpdate(this.user._id, this.user);
           this.$emit("update", this.user);
           this.chamaToast();
@@ -209,7 +208,6 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-
 .form-body {
   align-items: center;
   justify-content: center;
