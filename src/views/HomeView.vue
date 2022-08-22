@@ -63,13 +63,14 @@ export default defineComponent({
 .card-home {
   align-items: center;
   justify-content: center;
-  max-width: 100%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   color: black;
 }
+
 
 #homeview {
   overflow-x: hidden;
@@ -99,7 +100,7 @@ export default defineComponent({
   #homeview {
     display: flex;
     flex-wrap: wrap;
-    overflow: scroll;
+    /* overflow: scroll; */
   }
   #card-home {
     justify-content: row;

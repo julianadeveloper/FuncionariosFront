@@ -162,6 +162,9 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
 }
+.card:hover{
+  transform: translateY(-3px);
+  box-shadow:  10px 20px rgba(0, 0, 0, 0.2);}
 .card-content {
   height: 100%;
 }
