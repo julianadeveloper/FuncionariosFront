@@ -30,7 +30,7 @@
       </div>
       <span class="list-users">Registrar Usuario</span>
       <div class="link-acess">
-        <a class="btn-dashboard" @click="$router.push({ name: 'CreateView' })"
+        <a class="btn-cadastro" @click="$router.push({ name: 'CreateView' })"
           >Acessar</a
         >
       </div>
