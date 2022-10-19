@@ -11,7 +11,7 @@
       <i class="icon-user fa-solid fa-user fa-2xl"></i>
       <MyModal
         class="modal"
-        v-if="modal && user._id === userSelect"
+        
         :user="user"
         @closemymodal="close"
         @delete="updateComponent"

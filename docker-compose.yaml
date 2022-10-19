@@ -15,8 +15,7 @@ services:
     tty: true
     networks:
       - app-teste
-    volumes:
-      - .:/home/front
+
     
   
     
